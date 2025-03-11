@@ -14,6 +14,15 @@ end
 
 --------------------------------------------------------------------------------
 
+function jakiro_macropyre_lua:OnUpgrade()
+    local caster = self:GetCaster()
+    local innate_ability = caster:FindAbilityByName("jakiro_double_trouble")
+
+    if innate_ability then
+        local macropyre_level = self:GetLevel() + 1
+        innate_ability:SetLevel(macropyre_level) -- Sync levels
+    end
+end
 -- Custom KV
 -- Cast Range
 function jakiro_macropyre_lua:GetCastRange( vLocation, hTarget )

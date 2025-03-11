@@ -1,5 +1,20 @@
 "Hero_Jakiro"
-{    
+{
+	
+	"jakiro_double_trouble"
+	{
+	// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"jakiro_double_trouble"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS"
+		"MaxLevel"						"1"
+		"Innate"						"1"
+		"AbilityValues"
+		{
+			
+
+		}
+	}
     "jakiro_dual_breath_lua"
 	{
 		// Ability Technical Aspect

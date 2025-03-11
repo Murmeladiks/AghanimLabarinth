@@ -202,20 +202,20 @@ SPECIAL_ABILITY_UPGRADES["npc_dota_hero_jakiro"] =
 	-- "pathfinder_jakiro_liquid_fire_splinter",
 }
 
-SPECIAL_ABILITY_UPGRADES_FACET_REPLACEMENTS["npc_dota_hero_jakiro"] = {
-	["pathfinder_jakiro_liquid_fire_allies"] = {
-		RequiredFacetID = 2,
-		ReplacedSpecial = "pathfinder_special_jakiro_frigid_shrapnel"
-	},
-	["pathfinder_jakiro_liquid_fire_macropyre"] = {
-		RequiredFacetID = 2,
-		ReplacedSpecial = "pathfinder_special_jakiro_glacial_path"
-	},
-	["pathfinder_jakiro_liquid_fire_burst"] = {
-		RequiredFacetID = 2,
-		ReplacedSpecial = "pathfinder_special_jakiro_frozen_synchrony"
-	},
-}
+--SPECIAL_ABILITY_UPGRADES_FACET_REPLACEMENTS["npc_dota_hero_jakiro"] = {
+--	["pathfinder_jakiro_liquid_fire_allies"] = {
+--		RequiredFacetID = 2,
+--		ReplacedSpecial = "pathfinder_special_jakiro_frigid_shrapnel"
+--	},
+--	["pathfinder_jakiro_liquid_fire_macropyre"] = {
+--		RequiredFacetID = 2,
+--		ReplacedSpecial = "pathfinder_special_jakiro_glacial_path"
+--	},
+--	["pathfinder_jakiro_liquid_fire_burst"] = {
+--		RequiredFacetID = 2,
+--		ReplacedSpecial = "pathfinder_special_jakiro_frozen_synchrony"
+--	},
+--}
 
 item_jakiro_dual_breath_lua_range = item_small_scepter_fragment
 item_jakiro_dual_breath_lua_burn_damage = item_small_scepter_fragment
@@ -263,16 +263,16 @@ PURCHASABLE_SHARDS[ "npc_dota_hero_jakiro" ] =
 	"item_jakiro_macropyre_lua_pct_cooldown",
 }
 
-PURCHASABLE_SHARDS_FACET_ADDITIONS["npc_dota_hero_jakiro"] = {
-	[1] = {
-		"item_jakiro_liquid_fire_lua_slow_attack_speed_pct",
-		"item_jakiro_liquid_fire_lua_radius",
-		"item_jakiro_liquid_fire_lua_damage",
-		"item_jakiro_liquid_fire_lua_duration",
-	},
-	[2] = {
-		"item_jakiro_pf_liquid_ice_slow",
-		"item_jakiro_pf_liquid_ice_impact_damage",
-		"item_jakiro_pf_liquid_ice_bonus_damage",
-	},
-}
+--PURCHASABLE_SHARDS_FACET_ADDITIONS["npc_dota_hero_jakiro"] = {
+--	[1] = {
+--		"item_jakiro_liquid_fire_lua_slow_attack_speed_pct",
+--		"item_jakiro_liquid_fire_lua_radius",
+--		"item_jakiro_liquid_fire_lua_damage",
+--		"item_jakiro_liquid_fire_lua_duration",
+--	},
+--	[2] = {
+--		"item_jakiro_pf_liquid_ice_slow",
+--		"item_jakiro_pf_liquid_ice_impact_damage",
+--		"item_jakiro_pf_liquid_ice_bonus_damage",
+--	},
+--}

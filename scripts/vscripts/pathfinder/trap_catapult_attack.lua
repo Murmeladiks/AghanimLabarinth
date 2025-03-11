@@ -96,7 +96,7 @@ function trap_catapult_attack:OnProjectileHit( hTarget, vLocation )
 
 
 			local damage_percent = self:GetLevelSpecialValueFor("damage_percent", (self:GetLevel() - 1))
-			local final_damage = hTarget:GetMaxHealth() / (100 / damage_percent)
+			local final_damage = 0   --hTarget:GetMaxHealth() / (100 / damage_percent)
 		--print(final_damage)
 
 			local damage = {

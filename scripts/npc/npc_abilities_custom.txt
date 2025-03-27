@@ -12483,467 +12483,467 @@
 	//=================================================================================================================
 	// Disruptor: Thunder Strike
 	//=================================================================================================================
-	"aghsfort_disruptor_thunder_strike"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
-		"FightRecapLevel"				"1"
-		"AbilitySound"					"Hero_Disruptor.ThunderStrike.Target"
-		"AbilityTextureName"            "disruptor_thunder_strike"
-
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastAnimation"			"ACT_DOTA_THUNDER_STRIKE"
-		"AbilityCastGestureSlot"		"DEFAULT"
-		"AbilityCastPoint"				"0.05 0.05 0.05 0.05"
-
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"15 13 11 9"
-
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"130 140 150 160"
-
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityValues"
-		{
-            "AbilityCastRange"
-			{
-				"value"						"800"
-				"special_bonus_shard"		"+800"
-			}
-            "radius"						
-			{
-				"value" 					        "240"
-				"special_bonus_unique_disruptor_3" "+100"
-				"affected_by_aoe_increase"	        "1"
-			}
-            "strikes"
-			{
-				"value"						"4"
-				"special_bonus_shard"		"+2"
-			}
-            "strike_interval"			    "2.0 2.0 2.0 2.0"
-            "strike_damage"					"45 70 95 120"
-            "strike_damage_bonus"
-			{
-				"value"                                                     "0"
-				"special_bonus_unique_disruptor_consecutive_strike_damage"	"+10"
-			}
-            "slow_duration"
-			{
-				"value"						    "0.1"
-				"special_bonus_unique_disruptor" ".5"
-			}
-            "slow_amount"			        "100"
-            "shard_ground_delay"			"7"
-		}
-	}
-
-	//=================================================================================================================
-	// Ability: Special Bonus
-	//=================================================================================================================
-  	"aghsfort_special_disruptor_thunder_strike_interval_upgrade"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
-
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"            "disruptor_thunder_strike"
-		"AbilityValues"
-        {
-            "value" "50"
-        }
-	}
-	//=================================================================================================================
-	// Ability: Special Bonus
-	//=================================================================================================================
-  	"aghsfort_special_disruptor_thunder_strike_mana_restore"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
-
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"            "disruptor_thunder_strike"
-		"AbilityValues"
-        {
-            "restore_radius" "450"
-            "restore_amount" "8"
-            "int_increase_amount" "2"
-            "int_increase_duration" "25"
-        }
-	}
-	//=================================================================================================================
-	// Ability: Special Bonus
-	//=================================================================================================================
-  	"aghsfort_special_disruptor_thunder_strike_crit_chance"
-  	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
-
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"            "disruptor_thunder_strike"
-		"AbilityValues"
-        {
-            "crit_chance" "25"
-            "crit_pct" "175"
-        }
-	}
-	//=================================================================================================================
-	// Ability: Special Bonus
-	//=================================================================================================================
-  	"aghsfort_special_disruptor_thunder_strike_on_attack"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
-
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"            "disruptor_thunder_strike"
-		"AbilityValues"
-        {
-            "strike_chance" "60"
-        }
-	}
-
-	//=================================================================================================================
-	// Disruptor: Glimpse
-	//=================================================================================================================
-	"aghsfort_disruptor_glimpse"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
-		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
-		"FightRecapLevel"				"1"
-		"AbilitySound"					"Hero_Disruptor.Glimpse.Target"
-		"AbilityTextureName"            "disruptor_glimpse"
-
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"				"0.05 0.05 0.05 0.05"
-
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"100"
-		
-		// Cast Range
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"600 1000 1400 1800"
-
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityValues"
-		{
-            "AbilityCooldown"
-			{
-				"value"									"18.0 16.0 14.0 12.0"
-				"special_bonus_unique_disruptor_4"		"-6"
-			}
-            "backtrack_time"			"4.0"
-            "cast_range"				"600 1000 1400 1800"
-            "cast_radius"				"250"
-            "bonus_damage"
-            {
-                "value"								"15 30 45 60"
-                "special_bonus_unique_disruptor_9"	"+20"
-            }               
-		}
-		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
-	}
-
-
-	//=================================================================================================================
-	// Ability: Special Bonus Glimpse AoE Increase
-	//=================================================================================================================
-  	"aghsfort_special_disruptor_glimpse_cast_aoe"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
-
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"            "disruptor_glimpse"
-		"AbilityValues"
-        {
-            "value" "250"
-        }
-	}
-	//=================================================================================================================
-	// Ability: Special Bonus Glimpse hit on arrival
-	//=================================================================================================================
-  	"aghsfort_special_disruptor_glimpse_hit_on_arrival"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
-
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"            "disruptor_glimpse"
-		"AbilityValues"
-        {
-            "hit_radius" "250"
-            "int_pct" "170"
-        }
-	}
-	//=================================================================================================================
-	// Ability: Special Bonus Glimpse Travel Damage
-	//=================================================================================================================
-  	"aghsfort_special_disruptor_glimpse_travel_damage"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
-
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"            "disruptor_glimpse"
-		"AbilityValues"
-        {
-            "value" "100"
-        }
-	}	
-	//=================================================================================================================
-	// Disruptor: Kinetic Field
-	//=================================================================================================================
-	"aghsfort_disruptor_kinetic_field"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"FightRecapLevel"				"1"
-		"AbilitySound"					"Hero_Disruptor.KineticField"
-		"AbilityTextureName"            "disruptor_kinetic_field"
-
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastAnimation"			"ACT_DOTA_KINETIC_FIELD"
-		"AbilityCastGestureSlot"		"DEFAULT"
-		"AbilityCastPoint"				"0.05 0.05 0.05 0.05"
-
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"18 16 14 12"
-
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"70 80 90 100"
-		
-		// Cast Range
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"900 900 900 900"
-
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityValues"
-        {
-            "radius" "340"
-            "formation_time" "1.2 1.2 1.2 1.2"
-            "duration"
-            {
-                "value" "2.8 3.2 3.4 4"
-                "LinkedSpecialBonus" "special_bonus_unique_disruptor_5"
-            }
-        }
-	}	
-
-	//=================================================================================================================
-	// Ability: Special Bonus Kinetic Field Instant Setup
-	//=================================================================================================================
-  	"aghsfort_special_disruptor_kinetic_field_instant_setup"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
-
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"            "disruptor_kinetic_field"
-		"AbilityValues"
-        {
-            "value" "60"
-        }
-	}	
-	//=================================================================================================================
-	// Ability: Special Bonus Kinetic Field Allied Buff
-	//=================================================================================================================
-  	"aghsfort_special_disruptor_kinetic_field_allied_attack_buff"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
-
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"            "disruptor_kinetic_field"
-		"AbilityValues"
-        {
-            "value" "60"
-        }
-	}	
-
-	//=================================================================================================================
-	// Ability: Special Bonus Kinetic Field Damage
-	//=================================================================================================================
-  	"aghsfort_special_disruptor_kinetic_field_damage"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
-
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"            "disruptor_kinetic_field"
-		"AbilityValues"
-        {
-            "value" "50"
-        }
-	}	
-	//=================================================================================================================
-	// Ability: Special Bonus Kinetic Field Allied Heal
-	//=================================================================================================================
-  	"aghsfort_special_disruptor_kinetic_field_allied_heal"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
-
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"            "disruptor_kinetic_field"
-		"AbilityValues"
-        {
-            "value" "50"
-        }
-	}	
-    //=================================================================================================================
-    // Ability: Special Bonus Kinetic Field Instant Setup
-    //=================================================================================================================
-    "aghsfort_special_disruptor_kinetic_field_double_ring"
-    {
-        // General
-        //-------------------------------------------------------------------------------------------------------------
-        //"AbilityType"                 "DOTA_ABILITY_TYPE_ATTRIBUTES"
-
-        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-        "AbilityTextureName"            "disruptor_kinetic_field"
-        "AbilityValues"
-        {
-            "value" "2"
-        }
-    }
-	//=================================================================================================================
-	// Disruptor: Static Storm
-	//=================================================================================================================
-	"aghsfort_disruptor_static_storm"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
-		"FightRecapLevel"				"2"
-		"AbilitySound"					"Hero_Disruptor.StaticStorm.Cast"
-		"AbilityTextureName"            "disruptor_static_storm"
-
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastAnimation"			"ACT_DOTA_STATIC_STORM"
-		"AbilityCastGestureSlot"		"DEFAULT"
-		"AbilityCastPoint"				"0.05 0.05 0.05 0.05"
-
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"90 80 70"
-
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"125 175 225"
-		
-		// Cast Range
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"800 800 800 800"
-
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityValues"
-        {
-            "radius" "500"
-            "pulses" "20"
-            "damage_max" "200 275 350"
-            "duration" "5.0"
-        }
-	}
-
-	//=================================================================================================================
-	// Ability: Special Bonus Static Storm Kinetic Field On Cast
-	//=================================================================================================================
-  	"aghsfort_special_disruptor_static_storm_kinetic_field_on_cast"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
-
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"            "disruptor_static_storm"
-		"AbilityValues"
-        {
-        }
-	}	
-
-	//=================================================================================================================
-	// Ability: Special Bonus Static Storm Crits on attack
-	//=================================================================================================================
-  	"aghsfort_special_disruptor_static_storm_crits_on_attacks"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
-
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"            "disruptor_static_storm"
-		"AbilityValues"
-        {
-            "crit_chance" "30"
-            "crit_damage" "150"
-        }
-	}	
-
-	//=================================================================================================================
-	// Ability: Special Bonus Static Storm Damage Reduction
-	//=================================================================================================================
-  	"aghsfort_special_disruptor_static_storm_damage_reduction"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
-
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"AbilityTextureName"            "disruptor_static_storm"
-		"AbilityValues"
-        {
-            "damage_reduction_pct" "50"
-            "move_slow_pct" "50"
-        }
-	}	
-
-	//=================================================================================================================
-	// Disruptor: END
-	//=================================================================================================================
+	//"aghsfort_disruptor_thunder_strike"
+	//{
+	//	// General
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+	//	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	//	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	//	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+	//	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+	//	"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+	//	"FightRecapLevel"				"1"
+	//	"AbilitySound"					"Hero_Disruptor.ThunderStrike.Target"
+	//	"AbilityTextureName"            "disruptor_thunder_strike"
+//
+	//	// Casting
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	"AbilityCastAnimation"			"ACT_DOTA_THUNDER_STRIKE"
+	//	"AbilityCastGestureSlot"		"DEFAULT"
+	//	"AbilityCastPoint"				"0.05 0.05 0.05 0.05"
+//
+	//	// Time		
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	"AbilityCooldown"				"15 13 11 9"
+//
+	//	// Cost
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	"AbilityManaCost"				"130 140 150 160"
+//
+	//	// Special
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	"AbilityValues"
+	//	{
+    //        "AbilityCastRange"
+	//		{
+	//			"value"						"800"
+	//			"special_bonus_shard"		"+800"
+	//		}
+    //        "radius"						
+	//		{
+	//			"value" 					        "240"
+	//			"special_bonus_unique_disruptor_3" "+100"
+	//			"affected_by_aoe_increase"	        "1"
+	//		}
+    //        "strikes"
+	//		{
+	//			"value"						"4"
+	//			"special_bonus_shard"		"+2"
+	//		}
+    //        "strike_interval"			    "2.0 2.0 2.0 2.0"
+    //        "strike_damage"					"45 70 95 120"
+    //        "strike_damage_bonus"
+	//		{
+	//			"value"                                                     "0"
+	//			"special_bonus_unique_disruptor_consecutive_strike_damage"	"+10"
+	//		}
+    //        "slow_duration"
+	//		{
+	//			"value"						    "0.1"
+	//			"special_bonus_unique_disruptor" ".5"
+	//		}
+    //        "slow_amount"			        "100"
+    //        "shard_ground_delay"			"7"
+	//	}
+	//}
+//
+	////=================================================================================================================
+	//// Ability: Special Bonus
+	////=================================================================================================================
+  	//"aaghsfort_special_disruptor_thunder_strike_interval_upgrade"
+	//{
+	//	// General
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+//
+	//	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	//	"AbilityTextureName"            "disruptor_thunder_strike"
+	//	"AbilityValues"
+    //    {
+    //        "value" "50"
+    //    }
+	//}
+	////=================================================================================================================
+	//// Ability: Special Bonus
+	////=================================================================================================================
+  	//"aghsfort_special_disruptor_thunder_strike_mana_restore"
+	//{
+	//	// General
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+//
+	//	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	//	"AbilityTextureName"            "disruptor_thunder_strike"
+	//	"AbilityValues"
+    //    {
+    //        "restore_radius" "450"
+    //        "restore_amount" "8"
+    //        "int_increase_amount" "2"
+    //        "int_increase_duration" "25"
+    //    }
+	//}
+	////=================================================================================================================
+	//// Ability: Special Bonus
+	////=================================================================================================================
+  	//"aghsfort_special_disruptor_thunder_strike_crit_chance"
+  	//{
+	//	// General
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+//
+	//	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	//	"AbilityTextureName"            "disruptor_thunder_strike"
+	//	"AbilityValues"
+    //    {
+    //        "crit_chance" "25"
+    //        "crit_pct" "175"
+    //    }
+	//}
+	////=================================================================================================================
+	//// Ability: Special Bonus
+	////=================================================================================================================
+  	//"aghsfort_special_disruptor_thunder_strike_on_attack"
+	//{
+	//	// General
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+//
+	//	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	//	"AbilityTextureName"            "disruptor_thunder_strike"
+	//	"AbilityValues"
+    //    {
+    //        "strike_chance" "60"
+    //    }
+	//}
+//
+	////=================================================================================================================
+	//// Disruptor: Glimpse
+	////=================================================================================================================
+	//"aghsfort_disruptor_glimpse"
+	//{
+	//	// General
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	//	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	//	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	//	"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
+	//	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+	//	"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+	//	"FightRecapLevel"				"1"
+	//	"AbilitySound"					"Hero_Disruptor.Glimpse.Target"
+	//	"AbilityTextureName"            "disruptor_glimpse"
+//
+	//	// Casting
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	"AbilityCastPoint"				"0.05 0.05 0.05 0.05"
+//
+	//	// Cost
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	"AbilityManaCost"				"100"
+	//	
+	//	// Cast Range
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	"AbilityCastRange"				"600 1000 1400 1800"
+//
+	//	// Special
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	"AbilityValues"
+	//	{
+    //        "AbilityCooldown"
+	//		{
+	//			"value"									"18.0 16.0 14.0 12.0"
+	//			"special_bonus_unique_disruptor_4"		"-6"
+	//		}
+    //        "backtrack_time"			"4.0"
+    //        "cast_range"				"600 1000 1400 1800"
+    //        "cast_radius"				"250"
+    //        "bonus_damage"
+    //        {
+    //            "value"								"15 30 45 60"
+    //            "special_bonus_unique_disruptor_9"	"+20"
+    //        }               
+	//	}
+	//	"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
+	//}
+//
+//
+	////=================================================================================================================
+	//// Ability: Special Bonus Glimpse AoE Increase
+	////=================================================================================================================
+  	//"aghsfort_special_disruptor_glimpse_cast_aoe"
+	//{
+	//	// General
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+//
+	//	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	//	"AbilityTextureName"            "disruptor_glimpse"
+	//	"AbilityValues"
+    //    {
+    //        "value" "250"
+    //    }
+	//}
+	////=================================================================================================================
+	//// Ability: Special Bonus Glimpse hit on arrival
+	////=================================================================================================================
+  	//"aghsfort_special_disruptor_glimpse_hit_on_arrival"
+	//{
+	//	// General
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+//
+	//	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	//	"AbilityTextureName"            "disruptor_glimpse"
+	//	"AbilityValues"
+    //    {
+    //        "hit_radius" "250"
+    //        "int_pct" "170"
+    //    }
+	//}
+	////=================================================================================================================
+	//// Ability: Special Bonus Glimpse Travel Damage
+	////=================================================================================================================
+  	//"aghsfort_special_disruptor_glimpse_travel_damage"
+	//{
+	//	// General
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+//
+	//	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	//	"AbilityTextureName"            "disruptor_glimpse"
+	//	"AbilityValues"
+    //    {
+    //        "value" "100"
+    //    }
+	//}	
+	////=================================================================================================================
+	//// Disruptor: Kinetic Field
+	////=================================================================================================================
+	//"aghsfort_disruptor_kinetic_field"
+	//{
+	//	// General
+	//	//-------------------------------------------------------------------------------------------------------------
+//
+	//	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+	//	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+	//	"FightRecapLevel"				"1"
+	//	"AbilitySound"					"Hero_Disruptor.KineticField"
+	//	"AbilityTextureName"            "disruptor_kinetic_field"
+//
+	//	// Casting
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	"AbilityCastAnimation"			"ACT_DOTA_KINETIC_FIELD"
+	//	"AbilityCastGestureSlot"		"DEFAULT"
+	//	"AbilityCastPoint"				"0.05 0.05 0.05 0.05"
+//
+	//	// Time		
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	"AbilityCooldown"				"18 16 14 12"
+//
+	//	// Cost
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	"AbilityManaCost"				"70 80 90 100"
+	//	
+	//	// Cast Range
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	"AbilityCastRange"				"900 900 900 900"
+//
+	//	// Special
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	"AbilityValues"
+    //    {
+    //        "radius" "340"
+    //        "formation_time" "1.2 1.2 1.2 1.2"
+    //        "duration"
+    //        {
+    //            "value" "2.8 3.2 3.4 4"
+    //            "LinkedSpecialBonus" "special_bonus_unique_disruptor_5"
+    //        }
+    //    }
+	//}	
+//
+	////=================================================================================================================
+	//// Ability: Special Bonus Kinetic Field Instant Setup
+	////=================================================================================================================
+  	//"aghsfort_special_disruptor_kinetic_field_instant_setup"
+	//{
+	//	// General
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+//
+	//	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	//	"AbilityTextureName"            "disruptor_kinetic_field"
+	//	"AbilityValues"
+    //    {
+    //        "value" "60"
+    //    }
+	//}	
+	////=================================================================================================================
+	//// Ability: Special Bonus Kinetic Field Allied Buff
+	////=================================================================================================================
+  	//"aghsfort_special_disruptor_kinetic_field_allied_attack_buff"
+	//{
+	//	// General
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+//
+	//	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	//	"AbilityTextureName"            "disruptor_kinetic_field"
+	//	"AbilityValues"
+    //    {
+    //        "value" "60"
+    //    }
+	//}	
+//
+	////=================================================================================================================
+	//// Ability: Special Bonus Kinetic Field Damage
+	////=================================================================================================================
+  	//"aghsfort_special_disruptor_kinetic_field_damage"
+	//{
+	//	// General
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+//
+	//	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	//	"AbilityTextureName"            "disruptor_kinetic_field"
+	//	"AbilityValues"
+    //    {
+    //        "value" "50"
+    //    }
+	//}	
+	////=================================================================================================================
+	//// Ability: Special Bonus Kinetic Field Allied Heal
+	////=================================================================================================================
+  	//"aghsfort_special_disruptor_kinetic_field_allied_heal"
+	//{
+	//	// General
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+//
+	//	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	//	"AbilityTextureName"            "disruptor_kinetic_field"
+	//	"AbilityValues"
+    //    {
+    //        "value" "50"
+    //    }
+	//}	
+    ////=================================================================================================================
+    //// Ability: Special Bonus Kinetic Field Instant Setup
+    ////=================================================================================================================
+    //"aghsfort_special_disruptor_kinetic_field_double_ring"
+    //{
+    //    // General
+    //    //-------------------------------------------------------------------------------------------------------------
+    //    //"AbilityType"                 "DOTA_ABILITY_TYPE_ATTRIBUTES"
+//
+    //    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+    //    "AbilityTextureName"            "disruptor_kinetic_field"
+    //    "AbilityValues"
+    //    {
+    //        "value" "2"
+    //    }
+    //}
+	////=================================================================================================================
+	//// Disruptor: Static Storm
+	////=================================================================================================================
+	//"aghsfort_disruptor_static_storm"
+	//{
+	//	// General
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+	//	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+	//	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+	//	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+	//	"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+	//	"FightRecapLevel"				"2"
+	//	"AbilitySound"					"Hero_Disruptor.StaticStorm.Cast"
+	//	"AbilityTextureName"            "disruptor_static_storm"
+//
+	//	// Casting
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	"AbilityCastAnimation"			"ACT_DOTA_STATIC_STORM"
+	//	"AbilityCastGestureSlot"		"DEFAULT"
+	//	"AbilityCastPoint"				"0.05 0.05 0.05 0.05"
+//
+	//	// Time		
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	"AbilityCooldown"				"90 80 70"
+//
+	//	// Cost
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	"AbilityManaCost"				"125 175 225"
+	//	
+	//	// Cast Range
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	"AbilityCastRange"				"800 800 800 800"
+//
+	//	// Special
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	"AbilityValues"
+    //    {
+    //        "radius" "500"
+    //        "pulses" "20"
+    //        "damage_max" "200 275 350"
+    //        "duration" "5.0"
+    //    }
+	//}
+//
+	////=================================================================================================================
+	//// Ability: Special Bonus Static Storm Kinetic Field On Cast
+	////=================================================================================================================
+  	//"aghsfort_special_disruptor_static_storm_kinetic_field_on_cast"
+	//{
+	//	// General
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+//
+	//	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	//	"AbilityTextureName"            "disruptor_static_storm"
+	//	"AbilityValues"
+    //    {
+    //    }
+	//}	
+//
+	////=================================================================================================================
+	//// Ability: Special Bonus Static Storm Crits on attack
+	////=================================================================================================================
+  	//"aghsfort_special_disruptor_static_storm_crits_on_attacks"
+	//{
+	//	// General
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+//
+	//	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	//	"AbilityTextureName"            "disruptor_static_storm"
+	//	"AbilityValues"
+    //    {
+    //        "crit_chance" "30"
+    //        "crit_damage" "150"
+    //    }
+	//}	
+//
+	////=================================================================================================================
+	//// Ability: Special Bonus Static Storm Damage Reduction
+	////=================================================================================================================
+  	//"aghsfort_special_disruptor_static_storm_damage_reduction"
+	//{
+	//	// General
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+//
+	//	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	//	"AbilityTextureName"            "disruptor_static_storm"
+	//	"AbilityValues"
+    //    {
+    //        "damage_reduction_pct" "50"
+    //        "move_slow_pct" "50"
+    //    }
+	//}	
+//
+	////=================================================================================================================
+	//// Disruptor: END
+	////=================================================================================================================
 
 	//=================================================================================================================
 	// Phantom Assassin : Start
@@ -14467,450 +14467,450 @@
     //=================================================================================================================
     // Ability: Spear of Mars
     //=================================================================================================================
-    "aghsfort_mars_spear"
-    {
-        // General
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityTextureName"            "mars_spear"
-        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL"
-        "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"   
-        "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
-        "SpellDispellableType"          "SPELL_DISPELLABLE_YES_STRONG"
-        "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
-        "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-        "FightRecapLevel"               "1"
-        "AbilitySound"                  "Hero_Mars.Spear.Cast"
-
-        // Casting
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityCastPoint"              "0.25"
-
-        // Time     
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityCooldown"               "14.0"
-
-        // Cost
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityManaCost"               "100"
-
-        // Special
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityValues"
-        {
-            "damage"
-            {
-                "value" "100 175 250 325"
-                "LinkedSpecialBonus" "special_bonus_unique_mars_spear_bonus_damage"
-            }
-            "spear_speed" "1400"
-            "spear_width" "125"
-            "spear_vision" "300"
-            "spear_range" "900 1000 1100 1200"
-            "activity_duration" "1.7"
-            "stun_duration"
-            {
-                "value" "1.6 2.0 2.4 2.8"
-                "LinkedSpecialBonus" "special_bonus_unique_mars_spear_stun_duration"
-            }
-            "knockback_duration" "0.25"
-            "knockback_distance" "75"
-        }
-        "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_5"
-    }
-
-    //=================================================================================================================
-    // Mars: God's Rebuke
-    //=================================================================================================================
-    "aghsfort_mars_gods_rebuke"
-    {
-        // General
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityTextureName"            "mars_gods_rebuke"
-        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NORMAL_WHEN_STOLEN"
-        "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
-        "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-        "AbilityUnitDamageType"         "DAMAGE_TYPE_PHYSICAL"  
-        "FightRecapLevel"               "1"
-        "AbilitySound"                  "Hero_Mars.Shield.Cast"
-
-        // Casting
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityCastAnimation"          "ACT_DOTA_CAST_ABILITY_4"
-        "AbilityCastPoint"              "0.2"
-
-        // Time     
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityCooldown"               "16 14 12 10"
-
-        // Cost
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityManaCost"               "65 70 75 80"
-
-        // Special
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityValues"
-        {
-            "crit_mult"
-			{
-				"value"								                "120 150 180 220"
-				"special_bonus_unique_mars_gods_rebuke_extra_crit"		"+65"
-				"DamageTypeTooltip"			                        "DAMAGE_TYPE_PHYSICAL"
-			}
-            "angle"                     "140"
-            "radius"					
-			{
-				"value"				                        "500"
-				"special_bonus_unique_mars_rebuke_radius"	"+100"
-				"affected_by_aoe_increase"	                "1"		
-			}
-            "AbilityCastRange"					
-			{
-				"value"				                        "500"
-				"special_bonus_unique_mars_rebuke_radius"	"+100"
-				"affected_by_aoe_increase"	                "1"		
-			}
-            "knockback_duration"        "0.3"
-            "knockback_distance"        "150"
-            "knockback_slow"            "40"
-            "knockback_slow_duration"   "2"
-            "activity_duration"         "2"
-            "bonus_damage_vs_heroes"    "35"
-        }
-    }
-
-    //=================================================================================================================
-    // Ability: Mars Bulwark
-    //=================================================================================================================
-    "aghsfort_mars_bulwark"
-    {
-        // General
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityTextureName"            "mars_bulwark"
-        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-        "AbilityCastAnimation"          "ACT_INVALID"
-
-        // Time     
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityCooldown"               "20 18 16 14"
-        "AbilityDuration"               "5.0"
-
-        // Cost
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityManaCost"               "25"
-        
-        // Special
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityValues"
-        {
-            "physical_damage_reduction"
-			{
-				"value"		                                            "10 15 20 25"
-				"special_bonus_unique_mars_bulwark_damage_reduction"	"+12"
-			}
-			"forward_angle"					"140"
-			"physical_damage_reduction_side"
-			{
-				"value"												    "8 12 16 20"
-				"special_bonus_unique_mars_bulwark_damage_reduction"	"+6"
-			}
-            "side_angle"                    "240"
-            "redirect_chance"               "70"
-            "redirect_range"                "800"
-            "redirect_speed_penatly"                "20"
-            "active_bulwark_block_bonus"     "50"
-            "active_duration"               "4 5 6 7"
-        }
-    }
-    
-    //=================================================================================================================
-    // Phoenix: Sun Ray Stop
-    //=================================================================================================================
-    "aghsfort_mars_bulwark_stop"
-    {
-        // General
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityTextureName"            "aghsfort_mars_bulwark_stop"
-        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-        
-        // Casting
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityCastPoint"              "0.0 0.0 0.0 0.0"
-        "AbilityCastAnimation"          "ACT_INVALID"
-    }
-
-
-    //=================================================================================================================
-    // Ability: Mars Arena of Blood
-    //=================================================================================================================
-    "aghsfort_mars_arena_of_blood"
-    {
-        "AbilityTextureName"            "mars_arena_of_blood"
-        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
- 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
- 		"AbilitySound"					"Hero_Mars.ArenaOfBlood.Start"
-
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"400"
-		"AbilityCastPoint"				"0.2"
- 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
-
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"90 75 60"
-		
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"200"
-		
-		// Special	
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityValues"
-        {
-            "duration" "5 6 7"
-            "radius" "550"
-            "width" "100"
-            "spear_damage" "120 185 250"
-            "formation_time" "0.3"
-            "spear_distance_from_wall" "360"
-            "spear_attack_interval" "1.0"
-            "warrior_count" "14"
-            "first_warrior_angle" "0.0"
-            "warrior_fade_min_dist" "350.0"
-            "warrior_fade_max_dist" "450.0"
-        }
-	}
-    //=================================================================================================================
-    // Ability: Special Bonus
-    //=================================================================================================================
-    "aghsfort_special_mars_spear_multiskewer"
-    {
-        // General
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-        "AbilityTextureName"            "mars_spear"
-        "AbilityValues"
-        {
-            "value" "7"
-        }
-    }
-    //=================================================================================================================
-    // Ability: Special Bonus
-    //=================================================================================================================
-    "aghsfort_special_mars_spear_impale_explosion"
-    {
-        // General
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-        "AbilityTextureName"            "mars_spear"
-        "AbilityValues"
-        {
-            "value" "450"
-        }
-    }  
-    //=================================================================================================================
-    // Ability: Special Bonus
-    //=================================================================================================================
-    "aghsfort_special_mars_spear_burning_trail"
-    {
-        // General
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-        "AbilityTextureName"            "mars_spear"
-        "AbilityValues"
-        {
-            "trail_duration" "4"
-            "damage_pct" "20"
-            "path_radius" "150"
-            "linger_duration" "0.2"
-            "burn_interval" "0.5"
-        }
-    }
-    //=================================================================================================================
-    // Ability: Special Bonus
-    //=================================================================================================================
-    "aghsfort_special_mars_gods_rebuke_full_circle"
-    {
-        // General
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-        "AbilityTextureName"            "mars_gods_rebuke"
-        "AbilityValues"
-        {
-        }
-    } 
-
-    //=================================================================================================================
-    // Ability: Special Bonus
-    //=================================================================================================================
-    "aghsfort_special_mars_gods_rebuke_stun"
-    {
-        // General
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-        "AbilityTextureName"            "mars_gods_rebuke"
-        "AbilityValues"
-        {
-            "value" "2"
-            "stun_duration_mult" "50"
-        }
-    }
-
-    //=================================================================================================================
-    // Ability: Special Bonus
-    //=================================================================================================================
-    "aghsfort_special_mars_gods_rebuke_strength_buff"
-    {
-        // General
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-        "AbilityTextureName"            "mars_gods_rebuke"
-        "AbilityValues"
-        {
-            "buff_duration" "10"
-            "strength_gain" "4"
-        }
-    } 
-    //=================================================================================================================
-    // Ability: Special Bonus
-    //=================================================================================================================
-    "aghsfort_special_mars_bulwark_counter_rebuke"
-    {
-        // General
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-        "AbilityTextureName"            "mars_bulwark"
-        "AbilityValues"
-        {
-            "value" "17"
-        }
-    } 
-    //=================================================================================================================
-    // Ability: Special Bonus
-    //=================================================================================================================
-    "aghsfort_special_mars_bulwark_healing"
-    {
-        // General
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-        "AbilityTextureName"            "mars_bulwark"
-        "AbilityValues"
-        {
-            "value" "4"
-        }
-    } 
-    //=================================================================================================================
-    // Ability: Special Bonus
-    //=================================================================================================================
-    "aghsfort_special_mars_bulwark_spears"
-    {
-        // General
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-        "AbilityTextureName"            "mars_bulwark"
-        "AbilityValues"
-        {
-            "stack_limit" "3"
-            "stack_interval" "1.10"
-        }
-    }
-     //=================================================================================================================
-    // Ability: Special Bonus
-    //=================================================================================================================
-    "aghsfort_special_mars_bulwark_soldiers"
-    {
-        // General
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-        "AbilityTextureName"            "mars_bulwark"
-        "AbilityValues"
-        {
-            "soldier_count" "3"
-            "soldier_offset" "200"
-            "bonus_damage_pct" "30"
-            "attack_damage_tooltip" "25"
-            "attack_range_tooltip" "300"
-        }
-    }
-         
-    //=================================================================================================================
-    // Ability: Special Bonus
-    //=================================================================================================================
-    "aghsfort_special_mars_bulwark_return"
-    {
-        // General
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-        "AbilityTextureName"            "mars_bulwark"
-        "AbilityValues"
-        {
-            "value" "35"
-        }
-    } 
-    //=================================================================================================================
-    // Ability: Special Bonus
-    //=================================================================================================================
-    "aghsfort_special_mars_arena_of_blood_fear"
-    {
-        // General
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-        "AbilityTextureName"            "mars_arena_of_blood"
-        "AbilityValues"
-        {
-            "value" "3"
-        }
-    } 
-    //=================================================================================================================
-    // Ability: Special Bonus
-    //=================================================================================================================
-    "aghsfort_special_mars_arena_of_blood_global"
-    {
-        // General
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-        "AbilityTextureName"            "mars_arena_of_blood"
-        "AbilityValues"
-        {
-            "value" "25"
-        }
-    }
-    //=================================================================================================================
-    // Ability: Special Bonus
-    //=================================================================================================================
-    "aghsfort_special_mars_arena_of_blood_attack_buff"
-    {
-        // General
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-        "AbilityTextureName"            "mars_arena_of_blood"
-        "AbilityValues"
-        {
-            "attack_speed" "25"
-            "bonus_damage" "35"
-        }
-    }   
-    //=================================================================================================================
-    // Ability: Special Bonus
-    //=================================================================================================================
-    "aghsfort_special_mars_arena_of_blood_outside_perimeter"
-    {
-        // General
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-        "AbilityTextureName"            "mars_arena_of_blood"
-        "AbilityValues"
-        {
-            "value" "250"
-        }
-    }
-
-
-
+    //"aghsfort_mars_spear"
+    //{
+    //    // General
+    //    //-------------------------------------------------------------------------------------------------------------
+    //    "AbilityTextureName"            "mars_spear"
+    //    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL"
+    //    "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"   
+    //    "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
+    //    "SpellDispellableType"          "SPELL_DISPELLABLE_YES_STRONG"
+    //    "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    //    "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    //    "FightRecapLevel"               "1"
+    //    "AbilitySound"                  "Hero_Mars.Spear.Cast"
+    //
+    //    // Casting
+    //    //-------------------------------------------------------------------------------------------------------------
+    //    "AbilityCastPoint"              "0.25"
+    //
+    //    // Time     
+    //    //-------------------------------------------------------------------------------------------------------------
+    //    "AbilityCooldown"               "14.0"
+    //
+    //    // Cost
+    //    //-------------------------------------------------------------------------------------------------------------
+    //    "AbilityManaCost"               "100"
+    //
+    //    // Special
+    //    //-------------------------------------------------------------------------------------------------------------
+    //    "AbilityValues"
+    //    {
+    //        "damage"
+    //        {
+    //            "value" "100 175 250 325"
+    //            "LinkedSpecialBonus" "special_bonus_unique_mars_spear_bonus_damage"
+    //        }
+    //        "spear_speed" "1400"
+    //        "spear_width" "125"
+    //        "spear_vision" "300"
+    //        "spear_range" "900 1000 1100 1200"
+    //        "activity_duration" "1.7"
+    //        "stun_duration"
+    //        {
+    //            "value" "1.6 2.0 2.4 2.8"
+    //            "LinkedSpecialBonus" "special_bonus_unique_mars_spear_stun_duration"
+    //        }
+    //        "knockback_duration" "0.25"
+    //        "knockback_distance" "75"
+    //    }
+    //    "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_5"
+    //}
+    //
+    ////=================================================================================================================
+    //// Mars: God's Rebuke
+    ////=================================================================================================================
+    //"aghsfort_mars_gods_rebuke"
+    //{
+    //    // General
+    //    //-------------------------------------------------------------------------------------------------------------
+    //    "AbilityTextureName"            "mars_gods_rebuke"
+    //    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NORMAL_WHEN_STOLEN"
+    //    "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    //    "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    //    "AbilityUnitDamageType"         "DAMAGE_TYPE_PHYSICAL"  
+    //    "FightRecapLevel"               "1"
+    //    "AbilitySound"                  "Hero_Mars.Shield.Cast"
+    //
+    //    // Casting
+    //    //-------------------------------------------------------------------------------------------------------------
+    //    "AbilityCastAnimation"          "ACT_DOTA_CAST_ABILITY_4"
+    //    "AbilityCastPoint"              "0.2"
+    //
+    //    // Time     
+    //    //-------------------------------------------------------------------------------------------------------------
+    //    "AbilityCooldown"               "16 14 12 10"
+    //
+    //    // Cost
+    //    //-------------------------------------------------------------------------------------------------------------
+    //    "AbilityManaCost"               "65 70 75 80"
+    //
+    //    // Special
+    //    //-------------------------------------------------------------------------------------------------------------
+    //    "AbilityValues"
+    //    {
+    //        "crit_mult"
+	//		{
+	//			"value"								                "120 150 180 220"
+	//			"special_bonus_unique_mars_gods_rebuke_extra_crit"		"+65"
+	//			"DamageTypeTooltip"			                        "DAMAGE_TYPE_PHYSICAL"
+	//		}
+    //        "angle"                     "140"
+    //        "radius"					
+	//		{
+	//			"value"				                        "500"
+	//			"special_bonus_unique_mars_rebuke_radius"	"+100"
+	//			"affected_by_aoe_increase"	                "1"		
+	//		}
+    //        "AbilityCastRange"					
+	//		{
+	//			"value"				                        "500"
+	//			"special_bonus_unique_mars_rebuke_radius"	"+100"
+	//			"affected_by_aoe_increase"	                "1"		
+	//		}
+    //        "knockback_duration"        "0.3"
+    //        "knockback_distance"        "150"
+    //        "knockback_slow"            "40"
+    //        "knockback_slow_duration"   "2"
+    //        "activity_duration"         "2"
+    //        "bonus_damage_vs_heroes"    "35"
+    //    }
+    //}
+    //
+    ////=================================================================================================================
+    //// Ability: Mars Bulwark
+    ////=================================================================================================================
+    //"aghsfort_mars_bulwark"
+    //{
+    //    // General
+    //    //-------------------------------------------------------------------------------------------------------------
+    //    "AbilityTextureName"            "mars_bulwark"
+    //    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    //    "AbilityCastAnimation"          "ACT_INVALID"
+    //
+    //    // Time     
+    //    //-------------------------------------------------------------------------------------------------------------
+    //    "AbilityCooldown"               "20 18 16 14"
+    //    "AbilityDuration"               "5.0"
+    //
+    //    // Cost
+    //    //-------------------------------------------------------------------------------------------------------------
+    //    "AbilityManaCost"               "25"
+    //    
+    //    // Special
+    //    //-------------------------------------------------------------------------------------------------------------
+    //    "AbilityValues"
+    //    {
+    //        "physical_damage_reduction"
+	//		{
+	//			"value"		                                            "10 15 20 25"
+	//			"special_bonus_unique_mars_bulwark_damage_reduction"	"+12"
+	//		}
+	//		"forward_angle"					"140"
+	//		"physical_damage_reduction_side"
+	//		{
+	//			"value"												    "8 12 16 20"
+	//			"special_bonus_unique_mars_bulwark_damage_reduction"	"+6"
+	//		}
+    //        "side_angle"                    "240"
+    //        "redirect_chance"               "70"
+    //        "redirect_range"                "800"
+    //        "redirect_speed_penatly"                "20"
+    //        "active_bulwark_block_bonus"     "50"
+    //        "active_duration"               "4 5 6 7"
+    //    }
+    //}
+    //
+    ////=================================================================================================================
+    //// Phoenix: Sun Ray Stop
+    ////=================================================================================================================
+    //"aghsfort_mars_bulwark_stop"
+    //{
+    //    // General
+    //    //-------------------------------------------------------------------------------------------------------------
+    //    "AbilityTextureName"            "aghsfort_mars_bulwark_stop"
+    //    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    //    
+    //    // Casting
+    //    //-------------------------------------------------------------------------------------------------------------
+    //    "AbilityCastPoint"              "0.0 0.0 0.0 0.0"
+    //    "AbilityCastAnimation"          "ACT_INVALID"
+    //}
+    //
+    //
+    ////=================================================================================================================
+    //// Ability: Mars Arena of Blood
+    ////=================================================================================================================
+    //"aghsfort_mars_arena_of_blood"
+    //{
+    //    "AbilityTextureName"            "mars_arena_of_blood"
+    //    "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	//	"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+ 	//	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+	//	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+	//	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	//	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+ 	//	"AbilitySound"					"Hero_Mars.ArenaOfBlood.Start"
+    //
+	//	// Casting
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	"AbilityCastRange"				"400"
+	//	"AbilityCastPoint"				"0.2"
+ 	//	"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
+    //
+	//	// Time		
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	"AbilityCooldown"				"90 75 60"
+	//	
+	//	// Cost
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	"AbilityManaCost"				"200"
+	//	
+	//	// Special	
+	//	//-------------------------------------------------------------------------------------------------------------
+	//	"AbilityValues"
+    //    {
+    //        "duration" "5 6 7"
+    //        "radius" "550"
+    //        "width" "100"
+    //        "spear_damage" "120 185 250"
+    //        "formation_time" "0.3"
+    //        "spear_distance_from_wall" "360"
+    //        "spear_attack_interval" "1.0"
+    //        "warrior_count" "14"
+    //        "first_warrior_angle" "0.0"
+    //        "warrior_fade_min_dist" "350.0"
+    //        "warrior_fade_max_dist" "450.0"
+    //    }
+	//}
+    ////=================================================================================================================
+    //// Ability: Special Bonus
+    ////=================================================================================================================
+    //"aghsfort_special_mars_spear_multiskewer"
+    //{
+    //    // General
+    //    //-------------------------------------------------------------------------------------------------------------
+    //    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+    //    "AbilityTextureName"            "mars_spear"
+    //    "AbilityValues"
+    //    {
+    //        "value" "7"
+    //    }
+    //}
+    ////=================================================================================================================
+    //// Ability: Special Bonus
+    ////=================================================================================================================
+    //"aghsfort_special_mars_spear_impale_explosion"
+    //{
+    //    // General
+    //    //-------------------------------------------------------------------------------------------------------------
+    //    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+    //    "AbilityTextureName"            "mars_spear"
+    //    "AbilityValues"
+    //    {
+    //        "value" "450"
+    //    }
+    //}  
+    ////=================================================================================================================
+    //// Ability: Special Bonus
+    ////=================================================================================================================
+    //"aghsfort_special_mars_spear_burning_trail"
+    //{
+    //    // General
+    //    //-------------------------------------------------------------------------------------------------------------
+    //    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+    //    "AbilityTextureName"            "mars_spear"
+    //    "AbilityValues"
+    //    {
+    //        "trail_duration" "4"
+    //        "damage_pct" "20"
+    //        "path_radius" "150"
+    //        "linger_duration" "0.2"
+    //        "burn_interval" "0.5"
+    //    }
+    //}
+    ////=================================================================================================================
+    //// Ability: Special Bonus
+    ////=================================================================================================================
+    //"aghsfort_special_mars_gods_rebuke_full_circle"
+    //{
+    //    // General
+    //    //-------------------------------------------------------------------------------------------------------------
+    //    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+    //    "AbilityTextureName"            "mars_gods_rebuke"
+    //    "AbilityValues"
+    //    {
+    //    }
+    //} 
+    //
+    ////=================================================================================================================
+    //// Ability: Special Bonus
+    ////=================================================================================================================
+    //"aghsfort_special_mars_gods_rebuke_stun"
+    //{
+    //    // General
+    //    //-------------------------------------------------------------------------------------------------------------
+    //    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+    //    "AbilityTextureName"            "mars_gods_rebuke"
+    //    "AbilityValues"
+    //    {
+    //        "value" "2"
+    //        "stun_duration_mult" "50"
+    //    }
+    //}
+    //
+    ////=================================================================================================================
+    //// Ability: Special Bonus
+    ////=================================================================================================================
+    //"aghsfort_special_mars_gods_rebuke_strength_buff"
+    //{
+    //    // General
+    //    //-------------------------------------------------------------------------------------------------------------
+    //    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+    //    "AbilityTextureName"            "mars_gods_rebuke"
+    //    "AbilityValues"
+    //    {
+    //        "buff_duration" "10"
+    //        "strength_gain" "4"
+    //    }
+    //} 
+    ////=================================================================================================================
+    //// Ability: Special Bonus
+    ////=================================================================================================================
+    //"aghsfort_special_mars_bulwark_counter_rebuke"
+    //{
+    //    // General
+    //    //-------------------------------------------------------------------------------------------------------------
+    //    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+    //    "AbilityTextureName"            "mars_bulwark"
+    //    "AbilityValues"
+    //    {
+    //        "value" "17"
+    //    }
+    //} 
+    ////=================================================================================================================
+    //// Ability: Special Bonus
+    ////=================================================================================================================
+    //"aghsfort_special_mars_bulwark_healing"
+    //{
+    //    // General
+    //    //-------------------------------------------------------------------------------------------------------------
+    //    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+    //    "AbilityTextureName"            "mars_bulwark"
+    //    "AbilityValues"
+    //    {
+    //        "value" "4"
+    //    }
+    //} 
+    ////=================================================================================================================
+    //// Ability: Special Bonus
+    ////=================================================================================================================
+    //"aghsfort_special_mars_bulwark_spears"
+    //{
+    //    // General
+    //    //-------------------------------------------------------------------------------------------------------------
+    //    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+    //    "AbilityTextureName"            "mars_bulwark"
+    //    "AbilityValues"
+    //    {
+    //        "stack_limit" "3"
+    //        "stack_interval" "1.10"
+    //    }
+    //}
+    // //=================================================================================================================
+    //// Ability: Special Bonus
+    ////=================================================================================================================
+    //"aghsfort_special_mars_bulwark_soldiers"
+    //{
+    //    // General
+    //    //-------------------------------------------------------------------------------------------------------------
+    //    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+    //    "AbilityTextureName"            "mars_bulwark"
+    //    "AbilityValues"
+    //    {
+    //        "soldier_count" "3"
+    //        "soldier_offset" "200"
+    //        "bonus_damage_pct" "30"
+    //        "attack_damage_tooltip" "25"
+    //        "attack_range_tooltip" "300"
+    //    }
+    //}
+    //     
+    ////=================================================================================================================
+    //// Ability: Special Bonus
+    ////=================================================================================================================
+    //"aghsfort_special_mars_bulwark_return"
+    //{
+    //    // General
+    //    //-------------------------------------------------------------------------------------------------------------
+    //    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+    //    "AbilityTextureName"            "mars_bulwark"
+    //    "AbilityValues"
+    //    {
+    //        "value" "35"
+    //    }
+    //} 
+    ////=================================================================================================================
+    //// Ability: Special Bonus
+    ////=================================================================================================================
+    //"aghsfort_special_mars_arena_of_blood_fear"
+    //{
+    //    // General
+    //    //-------------------------------------------------------------------------------------------------------------
+    //    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+    //    "AbilityTextureName"            "mars_arena_of_blood"
+    //    "AbilityValues"
+    //    {
+    //        "value" "3"
+    //    }
+    //} 
+    ////=================================================================================================================
+    //// Ability: Special Bonus
+    ////=================================================================================================================
+    //"aghsfort_special_mars_arena_of_blood_global"
+    //{
+    //    // General
+    //    //-------------------------------------------------------------------------------------------------------------
+    //    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+    //    "AbilityTextureName"            "mars_arena_of_blood"
+    //    "AbilityValues"
+    //    {
+    //        "value" "25"
+    //    }
+    //}
+    ////=================================================================================================================
+    //// Ability: Special Bonus
+    ////=================================================================================================================
+    //"aghsfort_special_mars_arena_of_blood_attack_buff"
+    //{
+    //    // General
+    //    //-------------------------------------------------------------------------------------------------------------
+    //    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+    //    "AbilityTextureName"            "mars_arena_of_blood"
+    //    "AbilityValues"
+    //    {
+    //        "attack_speed" "25"
+    //        "bonus_damage" "35"
+    //    }
+    //}   
+    ////=================================================================================================================
+    //// Ability: Special Bonus
+    ////=================================================================================================================
+    //"aghsfort_special_mars_arena_of_blood_outside_perimeter"
+    //{
+    //    // General
+    //    //-------------------------------------------------------------------------------------------------------------
+    //    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+    //    "AbilityTextureName"            "mars_arena_of_blood"
+    //    "AbilityValues"
+    //    {
+    //        "value" "250"
+    //    }
+    //}
+    //
+    //
+    //
     //=================================================================================================================
     // Mars: End
     //=================================================================================================================
@@ -16623,7 +16623,7 @@
             "particle"  "particles/units/heroes/hero_juggernaut/juggernaut_healing_ward_base.vpcf"
 		}
 		
-//-------------------------------------------------------------------------------------------------------------
+     //-------------------------------------------------------------------------------------------------------------
 		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
@@ -18461,7 +18461,7 @@
             "focal_point_max_multiplier"					// 0 disables
             {
                 "value"										"0"
-                "special_bonus_facet_phoenix_hotspot"	"150"
+                "special_bonus_facet_phoenix_hotspot"	"200"
             }
             "focal_point_start_length_pct"
             {
@@ -18535,7 +18535,7 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
-//		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO | DOTA_UNIT_TARGET_FLAG_CHECK_DISABLE_HELP"
+     //  "AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO | DOTA_UNIT_TARGET_FLAG_CHECK_DISABLE_HELP"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
@@ -18638,7 +18638,7 @@
         "BaseClass"                     "ability_datadriven"    
         "AbilityValues"
         {
-            "burst_mult" "0.75"
+            "burst_mult" "1.5"
             "stun_duration" "1.75"
             "speed_mult" "100"
         }   
@@ -18968,6 +18968,7 @@
 		"AssociatedConsumable"			"0"
 		"AbilityCooldown"				"20"
 	}
+
 }
 
 #base "../vscripts/libraries/perk_manager/perk_abilities.kv"
@@ -18977,12 +18978,14 @@
 #base "heroes/dawnbreaker/npc_abilities_dawnbreaker.txt"
 #base "heroes/dazzle/npc_abilities_dazzle.txt"
 #base "heroes/dragon_knight/npc_abilities_dragon_knight.txt"
+#base "heroes/disruptor/npc_abilities_disruptor.txt"
 #base "heroes/furry/npc_abilities_hoodwink.txt"
 #base "heroes/jakiro/npc_abilities_jakiro.txt"
 #base "heroes/legion_commander/npc_abilities_legion_commander.txt"
 #base "heroes/lich/npc_abilities_lich.txt"
 #base "heroes/lina/npc_abilities_lina.txt"
 #base "heroes/luna/npc_abilities_luna.txt"
+#base "heroes/mars/npc_abilities_mars.txt"
 #base "heroes/magnus/npc_abilities_magnus.txt"
 #base "heroes/marci/npc_abilities_custom.txt"
 #base "heroes/medusa/npc_abilities_custom.txt"
@@ -18999,3 +19002,5 @@
 #base "heroes/winter_wyvern/npc_abilities_winter_wyvern.txt"
 #base "heroes/witch_doctor/npc_abilities_witch_doctor.txt"
 #base "heroes/zuus/npc_abilities_custom.txt"
+#base "heroes/lion/npc_abilities_lion.txt"
+#base "heroes/drow_ranger/npc_abilities_drow_ranger.txt"

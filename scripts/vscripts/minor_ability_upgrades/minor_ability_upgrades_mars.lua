@@ -24,13 +24,13 @@ local Mars =
 		 value = 100,
 	},
 
-	{
-		 description = "aghsfort_mars_spear_flat_stun_duration",
-		 ability_name = "aghsfort_mars_spear",
-		 special_value_name = "stun_duration",
-		 operator = MINOR_ABILITY_UPGRADE_OP_ADD,
-		 value = 0.75,
-	},
+	-- {
+	-- 	 description = "aghsfort_mars_spear_flat_stun_duration",
+	-- 	 ability_name = "aghsfort_mars_spear",
+	-- 	 special_value_name = "stun_duration",
+	-- 	 operator = MINOR_ABILITY_UPGRADE_OP_ADD,
+	-- 	 value = 0.75,
+	-- },
 
 
 	-- {

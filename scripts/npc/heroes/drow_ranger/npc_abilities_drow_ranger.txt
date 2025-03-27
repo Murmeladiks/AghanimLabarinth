@@ -1,0 +1,504 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Drow Ranger: Frost Arrows (Lua version)
+	//=================================================================================================================
+	"drow_ranger_frost_arrows_lua"
+	{
+		// Ability Technical Aspect
+		// base script folder	: scripts/vscripts
+		// base texture folder	: resource/flash3/images/spellicons
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/drow_ranger/drow_ranger_frost_arrows_lua/drow_ranger_frost_arrows_lua"
+		"AbilityTextureName"			"drow_ranger_frost_arrows_lua"
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_drowranger.vsndevts"
+			"particle"	"particles/units/heroes/hero_drow/drow_frost_arrow.vpcf"
+		}
+		
+		// Ability General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+
+		// Ability Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"625"
+
+		// Ability Resource
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0"
+		"AbilityManaCost"				"12"
+
+		// Damage
+		//-------------------------------------------------------------------------------------------------------------
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"frost_arrows_movement_speed"	"-16 -32 -48 -64"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"frost_arrows_hero_duration_tooltip"	"1.5"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"frost_arrows_creep_duration"	"7.0"
+			}
+		}
+	}
+
+    //=================================================================================================================
+	// Drow Ranger: Gust (Lua version)
+	//=================================================================================================================
+	"drow_ranger_gust_lua"
+	{
+		// Ability Technical Aspect
+		// base script folder	: scripts/vscripts
+		// base texture folder	: resource/flash3/images/spellicons
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/drow_ranger/drow_ranger_gust_lua/drow_ranger_gust_lua"
+		"AbilityTextureName"			"drow_ranger_gust_lua"
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_drowranger.vsndevts"
+			"particle"	"particles/units/heroes/hero_drow/drow_silence_wave.vpcf"
+			"particle"	"particles/units/heroes/hero_drow/drow_hero_silence.vpcf"
+		}
+		
+		// Ability General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+
+		// Ability Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"900"
+		"AbilityCastPoint"				"0.25"
+
+		// Ability Resource
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"16 15 14 13"
+		"AbilityManaCost"				"90"
+
+		// Damage
+		//-------------------------------------------------------------------------------------------------------------
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"wave_speed"		"2000.0"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"wave_width"		"250"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"silence_duration"	"3 4 5 6"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"knockback_distance_max"	"450"
+			}
+			"05"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"knockback_duration"		"0.6 0.7 0.8 0.9"
+			}
+			"06"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"knockback_height"		"0"
+			}
+		}
+	}
+
+    //=================================================================================================================
+	// Ability: Drow Ranger Gust
+	//=================================================================================================================
+	"aghsfort2_drow_ranger_wave_of_silence"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityTextureName"            "drow_ranger_wave_of_silence"
+        "BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+		"FightRecapLevel"				"1"
+		"AbilitySound"					"Hero_DrowRanger.Silence"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"900"
+		"AbilityCastPoint"				"0.25"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"16 15 14 13"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"50"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+            "wave_speed"		"2000.0"
+			"wave_width"
+			{
+				"value"		"250"
+				"special_bonus_unique_drow_ranger_4"    "+250"
+			}
+            "silence_duration"	"3 4 5 6"
+            "knockback_distance_max"	"450"
+            "knockback_duration"		"0.8 1.0 1.2 1.4"
+            "wave_length"		"900"
+			"blind_percent"
+			{
+				"value"		"30"
+                "LinkedSpecialBonus"    "aghsfort2_talent_drow_ranger_wave_of_silence_blind"
+			}
+            "vec_min"		"1150"
+            "vec_max"		"1150"
+            "start_radius"
+            {
+  				"value"		"250"
+				"special_bonus_unique_drow_ranger_4"    "+250"
+            }
+            "end_radius"
+            {
+  				"value"		"250"
+				"special_bonus_unique_drow_ranger_4"    "+250"
+            }
+		}
+        // "AbilitySpecial"
+		// {
+  		// 	"01"
+		// 	{
+		// 		"var_type"					"FIELD_INTEGER"
+        //         "wave_speed"		"2000"
+        //     }
+  		// 	"02"
+		// 	{
+		// 		"var_type"					"FIELD_INTEGER"
+        //         "wave_width" 		"250"
+		// 		"special_bonus_unique_drow_ranger_4"    "+250"
+        //     }
+  		// 	"03"
+		// 	{
+		// 		"var_type"					"FIELD_FLOAT"
+        //         "silence_duration"	"3 4 5 6"
+        //     }
+  		// 	"04"
+		// 	{
+		// 		"var_type"					"FIELD_INTEGER"
+        //         "knockback_distance_max"	"450"
+        //     }
+        //     "05"
+		// 	{
+		// 		"var_type"					"FIELD_FLOAT"
+        //         "knockback_duration"		"0.8 1.0 1.2 1.4"
+        //     }
+  		// 	"06"
+		// 	{
+		// 		"var_type"					"FIELD_INTEGER"
+        //         "wave_length"		"900"
+        //     }
+  		// 	"07"
+		// 	{
+		// 		"var_type"					"FIELD_INTEGER"
+		// 	    "blind_percent"     "30"
+        //         "LinkedSpecialBonus"    "aghsfort2_talent_drow_ranger_wave_of_silence_blind"
+        //     }
+  		// 	"08"
+		// 	{
+		// 		"var_type"					"FIELD_INTEGER"
+        //         "vec_min"		"1150"
+        //     }
+  		// 	"09"
+		// 	{
+		// 		"var_type"					"FIELD_INTEGER"
+        //         "vec_max"		"1150"
+        //     }
+  		// 	"10"
+		// 	{
+		// 		"var_type"					"FIELD_INTEGER"
+        //         "start_radius"		"250"
+		// 		"special_bonus_unique_drow_ranger_4"    "+250"
+        //     }
+  		// 	"11"
+		// 	{
+		// 		"var_type"					"FIELD_INTEGER"
+        //         "end_radius"		"250"
+		// 		"special_bonus_unique_drow_ranger_4"    "+250"
+        //     }
+		// }
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
+	}
+
+    //=================================================================================================================
+	// Drow Ranger: Multishot (Lua version)
+	//=================================================================================================================
+	"drow_ranger_multishot_lua"
+	{
+		// Ability Technical Aspect
+		// base script folder	: scripts/vscripts
+		// base texture folder	: resource/flash3/images/spellicons
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/drow_ranger/drow_ranger_multishot_lua/drow_ranger_multishot_lua"
+		"AbilityTextureName"			"drow_ranger_multishot"
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_drowranger.vsndevts"
+			"particle"	"particles/units/heroes/hero_drow/drow_multishot_proj_linear_proj.vpcf"
+			"particle"	"particles/units/heroes/hero_drow/drow_base_attack_linear_proj.vpcf"
+		}
+		
+		// Ability General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+
+
+		// Ability Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.0"
+		"AbilityChannelTime"			"1.75"
+
+		// Ability Resource
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"26 24 22 20"
+		"AbilityManaCost"				"50 70 90 110"
+
+		// Damage
+		//-------------------------------------------------------------------------------------------------------------
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"arrow_count"				"12"
+			}			
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"arrow_damage_pct"			"85 110 135 160"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"arrow_slow_duration"		"1.25 2 2.75 3.5"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"arrow_width"					"90"
+			}
+			"05"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"arrow_speed"					"1200"
+			}
+			"06"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"arrow_range_multiplier"	"2"
+			}
+			"07"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"arrow_angle"					"50"
+			}
+		}
+	}
+
+    "aghsfort2_drow_ranger_multishot"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityTextureName"            "drow_ranger_multishot"
+        "BaseClass"						"drow_ranger_multishot"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"				"1"
+	
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.0"
+		"AbilityChannelTime"			"2.0"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"22 20 18 16"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"50 70 90 110"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"wave_count"
+			{
+				"value"				"3"
+				"LinkedSpecialBonus"		"special_bonus_unique_drow_ranger_8"
+			}			
+            "arrow_count_per_wave"		"4"
+			"arrow_damage_pct"
+			{
+				"value"				"85 110 135 160"
+				"LinkedSpecialBonus"		"special_bonus_unique_drow_ranger_1"
+			}
+            "arrow_width"					"90"
+            "arrow_speed"					"1200"
+			"range"
+			{
+				"value"                 	"1200"
+				"LinkedSpecialBonus"		"aghsfort2_talent_drow_ranger_multishot_range"
+			}
+            "per_arrow_angle"			"12"
+            "wave_delay"                "0.1"
+            "arrow_delay"                "0.06"
+		}
+		"AbilityCastAnimation"		"ACT_DOTA_CHANNEL_ABILITY_3"
+	}
+
+    //=================================================================================================================
+	// Drow Ranger: Marksmanship (Lua version)
+	//=================================================================================================================
+	"drow_ranger_marksmanship_lua"
+	{
+		// Ability Technical Aspect
+		// base script folder	: scripts/vscripts
+		// base texture folder	: resource/flash3/images/spellicons
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/drow_ranger/drow_ranger_marksmanship_lua/drow_ranger_marksmanship_lua"
+		"AbilityTextureName"			"drow_ranger_marksmanship"
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"3"
+
+		"HasScepterUpgrade"			"1"
+
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_drowranger.vsndevts"
+			"particle"	"particles/units/heroes/hero_drow/drow_marksmanship.vpcf"
+			"particle"	"particles/units/heroes/hero_drow/drow_marksmanship_start.vpcf"
+		}
+		
+		// Ability General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+
+		// Ability Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"400"
+
+		// Ability Resource
+		//-------------------------------------------------------------------------------------------------------------
+
+		// Damage
+		//-------------------------------------------------------------------------------------------------------------
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"chance"	"20 30 40"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"bonus_damage"	"70 80 90"
+				"CalculateSpellDamageTooltip"	"0"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"agility_multiplier"		"28 36 44"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"agility_range"		"1200"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"split_count_scepter"			"2"
+				"RequiresScepter"		"1"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"scepter_range"					"375"
+				"RequiresScepter"		"1"
+			}
+			"07"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage_reduction_scepter"		"50"
+				"RequiresScepter"		"1"
+				"CalculateSpellDamageTooltip"	"0"
+			}
+			"08"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"disable_range"		"400"
+			}
+		}
+	}
+
+}

@@ -1,5 +1,774 @@
-"DOTAAbilities"
+"Hero_Disruptor"
 {
-    "npc_dota_hero_disruptor_aghsfort"
-	
-}
+    
+	//=================================================================================================================
+	// Disruptor: START
+	//=================================================================================================================
+
+	//=================================================================================================================
+	// Disruptor: Thunder Strike
+	//=================================================================================================================
+	"aghsfort_disruptor_thunder_strike"
+	{
+		
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "BaseClass"						"disruptor_thunder_strike"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+        "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"   
+        "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
+        "SpellDispellableType"          "SPELL_DISPELLABLE_YES"
+        "FightRecapLevel"               "1"
+        "AbilitySound"                  "Hero_Disruptor.ThunderStrike.Target"
+
+        "HasShardUpgrade"               "1"
+
+        // Casting
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCastAnimation"          "ACT_DOTA_THUNDER_STRIKE"
+        "AbilityCastGestureSlot"        "DEFAULT"
+        "AbilityCastPoint"              "0.05 0.05 0.05 0.05"
+
+        // Time     
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"               "18 15 12 9"
+
+        // Cost
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityManaCost"               "125 130 135 140"
+
+        // Special
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            "AbilityCastRange"
+            {
+                "value"                     "800"
+                "special_bonus_shard"       "+400"
+            }
+            "radius"                        
+            {
+                "value"                     "240"
+                "affected_by_aoe_increase"  "1"
+            }
+
+            "strikes"
+            {
+                "value"                     "4"
+				"special_bonus_unique_disruptor_thunder_strike_cover" "+3"
+                "special_bonus_shard"       "+1"
+            }
+
+            "strike_interval"     
+			{
+				"value" 												"2.0"
+				"special_bonus_unique_disruptor_thunder_strike_cover"	"-1.0"
+			}          
+            "strike_damage"                 "25 55 85 115"
+            "strike_damage_bonus"
+            {
+                "value"                     "0"
+                "special_bonus_unique_disruptor_consecutive_strike_damage"          "+10"
+            }
+            "slow_duration"
+            {
+                "value"                     "0.4"
+                "special_bonus_unique_disruptor" ".5"
+            }
+
+            "slow_amount"                   "100"
+            "shard_ground_delay"            "5"
+
+            "hits_units_inside_kinetic"
+            {
+                "value"                                     "0"
+                "special_bonus_facet_disruptor_thunderstorm"    "+1"
+            }
+        }
+    
+	}
+
+	//=================================================================================================================
+	// Ability: Special Bonus
+	//=================================================================================================================
+  	"aghsfort_special_disruptor_thunder_strike_interval_upgrade"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityTextureName"            "disruptor_thunder_strike"
+		"AbilityValues"
+		{
+			
+			"value"					"50"
+			
+		}
+	}
+	//=================================================================================================================
+	// Ability: Special Bonus
+	//=================================================================================================================
+  	"aghsfort_special_disruptor_thunder_strike_mana_restore"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityTextureName"            "disruptor_thunder_strike"
+		"AbilityValues"
+		{
+			
+				 
+				"restore_radius"					"450"
+		
+				 
+				"restore_amount"					"8"
+		
+                 
+                "int_increase_amount"                    "2"
+        
+                "int_increase_duration"                    "25"
+                  
+		}
+	}
+	//=================================================================================================================
+	// Ability: Special Bonus
+	//=================================================================================================================
+  	"aghsfort_special_disruptor_thunder_strike_crit_chance"
+  	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityTextureName"            "disruptor_thunder_strike"
+		"AbilityValues"
+		{
+			
+				 
+				"crit_chance"					"25"
+		
+				 
+				"crit_pct"					"175"
+			
+		}
+	}
+	//=================================================================================================================
+	// Ability: Special Bonus
+	//=================================================================================================================
+  	"aghsfort_special_disruptor_thunder_strike_on_attack"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityTextureName"            "disruptor_thunder_strike"
+		"AbilityValues"
+		{
+			
+				 
+			"strike_chance"					"60"
+			
+		}
+	}
+
+	//=================================================================================================================
+	// Disruptor: Glimpse
+	//=================================================================================================================
+	"aghsfort_disruptor_glimpse"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"BaseClass"						"ability_data_driven"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+		"FightRecapLevel"				"1"
+		"AbilitySound"					"Hero_Disruptor.Glimpse.Target"
+		"AbilityTextureName"            "disruptor_glimpse"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.05 0.05 0.05 0.05"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"18.0 16.0 14.0 12.0"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"100"
+		
+		// Cast Range
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"600 1000 1400 1800"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			
+				 
+				"backtrack_time"			"4.0 4.0 4.0 4.0"
+		
+				 
+				"cast_range"				"600 1000 1400 1800"
+		
+				 
+				"cast_radius"				"250"
+		
+                 
+                "bonus_damage"               "20 40 60 80"
+            
+
+		}
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
+	}
+
+
+	//=================================================================================================================
+	// Ability: Special Bonus Glimpse AoE Increase
+	//=================================================================================================================
+  	"aghsfort_special_disruptor_glimpse_cast_aoe"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityTextureName"            "disruptor_glimpse"
+		"AbilityValues"
+		{
+			
+				 
+				"value"					"250"
+			
+		}
+	}
+	//=================================================================================================================
+	// Ability: Special Bonus Glimpse hit on arrival
+	//=================================================================================================================
+  	"aghsfort_special_disruptor_glimpse_hit_on_arrival"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityTextureName"            "disruptor_glimpse"
+		"AbilityValues"
+		{
+			
+				 
+				"hit_radius"					"250"
+		
+				 
+				"int_pct"					"170"
+						
+		}
+	}
+	//=================================================================================================================
+	// Ability: Special Bonus Glimpse Travel Damage
+	//=================================================================================================================
+  	"aghsfort_special_disruptor_glimpse_travel_damage"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityTextureName"            "disruptor_glimpse"
+		"AbilityValues"
+		{
+			
+				 
+				"value"					"100"
+			
+		}
+	}	
+	//=================================================================================================================
+	// Disruptor: Kinetic Field
+	//=================================================================================================================
+	"aghsfort_disruptor_kinetic_field"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"disruptor_kinetic_field"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"				"1"
+		"AbilitySound"					"Hero_Disruptor.KineticField"
+		"AbilityTextureName"            "disruptor_kinetic_field"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastAnimation"			"ACT_DOTA_KINETIC_FIELD"
+		"AbilityCastGestureSlot"		"DEFAULT"
+		"AbilityCastPoint"				"0.05 0.05 0.05 0.05"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"19 16 13 10"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"70"
+		
+		// Cast Range
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"900 900 900 900"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+		
+				 
+				"radius"					"350"
+		
+				 
+				"formation_time"			"1.2 1.2 1.2 1.2"
+		
+			"duration"
+			{
+				 
+				"value"					"2.8 3.2 3.4 4"
+				"LinkedSpecialBonus"		"special_bonus_unique_disruptor_5"
+			}
+          
+                 
+                "intellect_bonus"            "10 14 18 22"
+                       
+		}
+	}	
+
+	//=================================================================================================================
+	// Ability: Special Bonus Kinetic Field Instant Setup
+	//=================================================================================================================
+  	"aghsfort_special_disruptor_kinetic_field_instant_setup"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityTextureName"            "disruptor_kinetic_field"
+		"AbilityValues"
+		{
+			
+				 
+				"value"					"60"
+			
+		}
+	}	
+	//=================================================================================================================
+	// Ability: Special Bonus Kinetic Field Allied Buff
+	//=================================================================================================================
+  	"aghsfort_special_disruptor_kinetic_field_allied_attack_buff"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityTextureName"            "disruptor_kinetic_field"
+		"AbilityValues"
+		{
+			
+				 
+				"value"					"60"
+			
+		}
+	}	
+
+	//=================================================================================================================
+	// Ability: Special Bonus Kinetic Field Damage
+	//=================================================================================================================
+  	"aghsfort_special_disruptor_kinetic_field_damage"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityTextureName"            "disruptor_kinetic_field"
+		"AbilityValues"
+		{
+			
+				 
+				"value"					"50"
+			
+		}
+	}	
+	//=================================================================================================================
+	// Ability: Special Bonus Kinetic Field Allied Heal
+	//=================================================================================================================
+  	"aghsfort_special_disruptor_kinetic_field_allied_heal"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityTextureName"            "disruptor_kinetic_field"
+		"AbilityValues"
+		{
+			
+				"value"					"50"
+			
+		}
+	}	
+    //=================================================================================================================
+    // Ability: Special Bonus Kinetic Field Instant Setup
+    //=================================================================================================================
+    "aghsfort_special_disruptor_kinetic_field_double_ring"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        //"AbilityType"                 "DOTA_ABILITY_TYPE_ATTRIBUTES"
+
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+        "AbilityTextureName"            "disruptor_kinetic_field"
+        "AbilityValues"
+        {
+           
+                 
+                "value"                 "2"
+            
+        }
+    }
+	//=================================================================================================================
+	// Disruptor: Static Storm
+	//=================================================================================================================
+	"aghsfort_disruptor_static_storm"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"disruptor_static_storm"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+		"FightRecapLevel"				"2"
+		"AbilitySound"					"Hero_Disruptor.StaticStorm.Cast"
+		"AbilityTextureName"            "disruptor_static_storm"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastAnimation"			"ACT_DOTA_STATIC_STORM"
+		"AbilityCastGestureSlot"		"DEFAULT"
+		"AbilityCastPoint"				"0.05 0.05 0.05 0.05"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"60 55 50"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"125 175 225"
+		
+		// Cast Range
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"800 800 800 800"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			
+				 
+				"radius"					"500"
+			
+			"pulses"
+			{
+				 
+				"value"					"20"
+                "LinkedSpecialBonus"            "special_bonus_unique_disruptor_7"
+                "LinkedSpecialBonusField"       "value2"
+			}
+			
+				 
+				"damage_max"				"200 275 350"
+		
+			"duration"
+            {
+                 
+                "value"                  "5.0"
+                "LinkedSpecialBonus"        "special_bonus_unique_disruptor_7"
+            }
+		}
+	}
+
+	//=================================================================================================================
+	// Ability: Special Bonus Static Storm Kinetic Field On Cast
+	//=================================================================================================================
+  	"aghsfort_special_disruptor_static_storm_kinetic_field_on_cast"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityTextureName"            "disruptor_static_storm"
+		"AbilityValues"
+		{
+
+		}
+	}	
+
+	//=================================================================================================================
+	// Ability: Special Bonus Static Storm Crits on attack
+	//=================================================================================================================
+  	"aghsfort_special_disruptor_static_storm_crits_on_attacks"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityTextureName"            "disruptor_static_storm"
+		"AbilityValues"
+		{
+			
+				 
+				"crit_chance"						"30"
+			
+                 
+                "crit_damage"                       "150"
+                      
+		}
+	}	
+
+	//=================================================================================================================
+	// Ability: Special Bonus Static Storm Damage Reduction
+	//=================================================================================================================
+  	"aghsfort_special_disruptor_static_storm_damage_reduction"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		//"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityTextureName"            "disruptor_static_storm"
+		"AbilityValues"
+		{
+			
+				 
+				"damage_reduction_pct"						"50"
+		
+                 
+                "move_slow_pct"                      "50"
+            
+		}
+	}	
+
+	//=================================================================================================================
+	// Disruptor: END
+	//=================================================================================================================
+
+    
+    "disruptor_electromagnetic_repulsion_damage"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+        "AbilityTextureName"            "disruptor_electromagnetic_repulsion"
+        "BaseClass"                     "ability_lua" 
+        "ScriptFile"                    "heroes/disruptor/disruptor_electromagnetic_repulsion_damage"  
+        
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            
+        }
+    }  
+
+    "special_bonus_unique_disruptor_electromagnetic_repulsion_no_cooldown"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+        "AbilityTextureName"            "disruptor_electromagnetic_repulsion"
+        "BaseClass"                     "special_bonus_base" 
+        
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            
+        }
+    }  
+    "disruptor_static_storm_pacific"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+        "AbilityTextureName"            "disruptor_static_storm"
+        "BaseClass"                     "ability_lua" 
+        "ScriptFile"                    "heroes/disruptor/disruptor_static_storm_pacific"  
+        
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            
+        }
+    }  
+    "disruptor_static_storm_dreams"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+        "AbilityTextureName"            "disruptor_static_storm"
+        "BaseClass"                     "ability_lua" 
+        "ScriptFile"                    "heroes/disruptor/disruptor_static_storm_dreams"  
+        
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            
+        }
+    }  
+    "disruptor_static_storm_perfect"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+        "AbilityTextureName"            "disruptor_static_storm"
+        "BaseClass"                     "ability_lua" 
+        "ScriptFile"                    "heroes/disruptor/disruptor_static_storm_perfect"  
+        
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            
+        }
+    }  
+    "disruptor_kinetic_field_ring"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+        "AbilityTextureName"            "disruptor_kinetic_field"
+        "BaseClass"                     "ability_lua" 
+        "ScriptFile"                    "heroes/disruptor/disruptor_kinetic_field_ring"  
+        
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            
+        }
+    }  
+    "disruptor_kinetic_field_heal"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+        "AbilityTextureName"            "disruptor_kinetic_field"
+        "BaseClass"                     "ability_lua" 
+        "ScriptFile"                    "heroes/disruptor/disruptor_kinetic_field_heal"  
+        
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            
+        }
+    }  
+    "disruptor_kinetic_field_damage"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+        "AbilityTextureName"            "disruptor_kinetic_field"
+        "BaseClass"                     "ability_lua" 
+        "ScriptFile"                    "heroes/disruptor/disruptor_kinetic_field_damage"  
+        
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            
+        }
+    }  
+    "disruptor_glimpse_past"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+        "AbilityTextureName"            "disruptor_glimpse"
+        "BaseClass"                     "ability_lua" 
+        "ScriptFile"                    "heroes/disruptor/disruptor_glimpse_past"  
+        
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            
+        }
+    }  
+    "disruptor_thunder_strike_weapon"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+        "AbilityTextureName"            "disruptor_thunder_strike"
+        "BaseClass"                     "ability_lua" 
+        "ScriptFile"                    "heroes/disruptor/disruptor_thunder_strike_weapon"  
+        
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            
+        }
+    }  
+    "disruptor_thunder_strike_critical"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+        "AbilityTextureName"            "disruptor_thunder_strike"
+        "BaseClass"                     "ability_lua" 
+        "ScriptFile"                    "heroes/disruptor/disruptor_thunder_strike_critical"  
+        
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            
+        }
+    }  
+    "special_bonus_unique_disruptor_thunder_strike_cover"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+        "AbilityTextureName"            "disruptor_thunder_strike"
+        "BaseClass"                     "special_bonus_base" 
+        
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            
+        }
+    }  
+    "disruptor_thunder_strike_mana_storm"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+        "AbilityTextureName"            "disruptor_thunder_strike"
+        "BaseClass"                     "ability_lua" 
+        "ScriptFile"                    "heroes/disruptor/disruptor_thunder_strike_mana_storm"  
+        
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            
+        }
+    }  
+    }
+

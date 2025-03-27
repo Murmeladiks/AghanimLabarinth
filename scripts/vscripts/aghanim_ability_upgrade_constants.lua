@@ -22,6 +22,8 @@ _G.MINOR_ABILITY_UPGRADES =
    npc_dota_hero_juggernaut = require( "minor_ability_upgrades/minor_ability_upgrades_juggernaut" ),
    npc_dota_hero_venomancer = require( "minor_ability_upgrades/minor_ability_upgrades_venomancer" ),
    npc_dota_hero_phoenix = require( "minor_ability_upgrades/minor_ability_upgrades_phoenix" ),
+   npc_dota_hero_lion = require( "minor_ability_upgrades/minor_ability_upgrades_lion" ),
+   npc_dota_hero_drow_ranger = require( "minor_ability_upgrades/minor_ability_upgrades_drow_ranger" ),
    --non hero specific upgrades (bonus HP/mana/damage/etc.)
    base_stats_upgrades = require( "minor_ability_upgrades/base_minor_stats_upgrades" ),
 }
@@ -33,9 +35,17 @@ _G.STAT_UPGRADE_EXCLUDES =
       "aghsfort_minor_stat_upgrade_bonus_attack_speed",
    },
 
+   npc_dota_hero_lion =
+   {
+   },
+
    npc_dota_hero_disruptor =
    {
       "aghsfort_minor_stat_upgrade_bonus_evasion",
+   },
+
+   npc_dota_hero_drow_ranger =
+   {
    },
 
    npc_dota_hero_snapfire = 
@@ -96,6 +106,8 @@ _G.ULTIMATE_ABILITY_NAMES =
    npc_dota_hero_juggernaut = "juggernaut_omni_slash",
    npc_dota_hero_venomancer = "venomancer_poison_nova",
    npc_dota_hero_phoenix = "phoenix_supernova",
+   npc_dota_hero_lion = "lion_finger_of_death",
+   npc_dota_hero_drow_ranger = "drow_ranger_marksmanship",
 }
 
 -- Lists for ability upgrades go here
@@ -119,6 +131,26 @@ SPECIAL_ABILITY_UPGRADES["npc_dota_hero_phoenix"] =
    "pathfinder_supernova_heal_bkb",
 }
 
+SPECIAL_ABILITY_UPGRADES["npc_dota_hero_drow_ranger"] =
+{
+   "aghsfort2_special_drow_ranger_frost_arrows_split",
+   "aghsfort2_special_drow_ranger_frost_arrows_move_damage",
+   "aghsfort2_special_drow_ranger_frost_arrows_wave",
+
+   "aghsfort2_special_drow_ranger_wave_of_silence_echo",
+   "aghsfort2_special_drow_ranger_wave_of_silence_movement",
+   "aghsfort2_special_drow_ranger_wave_of_silence_cooldown",
+   "aghsfort2_special_drow_ranger_wave_of_silence_frost",
+
+   "aghsfort2_special_drow_ranger_multi_shot_move",
+   "aghsfort2_special_drow_ranger_multi_shot_side_line",
+   "aghsfort2_special_drow_ranger_multi_shot_buff",
+
+   "aghsfort2_special_drow_ranger_marksmanship_waveofsilence",
+   "aghsfort2_special_drow_ranger_marksmanship_aoe",
+   
+   -- "aghsfort2_special_drow_ranger_multi_shot_refire",
+}
 
 SPECIAL_ABILITY_UPGRADES["npc_dota_hero_juggernaut"] =
 {
@@ -184,24 +216,29 @@ SPECIAL_ABILITY_UPGRADES["npc_dota_hero_omniknight"] =
 
 SPECIAL_ABILITY_UPGRADES["npc_dota_hero_disruptor"] =
 {
-	"aghsfort_special_disruptor_thunder_strike_interval_upgrade",
-	"aghsfort_special_disruptor_thunder_strike_mana_restore",
-	"aghsfort_special_disruptor_thunder_strike_crit_chance",
-	"aghsfort_special_disruptor_thunder_strike_on_attack",
+	"special_bonus_unique_disruptor_thunder_strike_cover",
+	--"aghsfort_special_disruptor_thunder_strike_mana_restore",
+	"disruptor_thunder_strike_critical",
+   "disruptor_thunder_strike_weapon",
 
 --	"aghsfort_special_disruptor_glimpse_cast_aoe",
-	"aghsfort_special_disruptor_glimpse_hit_on_arrival",
-	"aghsfort_special_disruptor_glimpse_travel_damage",
+	"disruptor_glimpse_past",
+	--"aghsfort_special_disruptor_glimpse_travel_damage",
 
 	--"aghsfort_special_disruptor_kinetic_field_instant_setup",
-	"aghsfort_special_disruptor_kinetic_field_damage",
-	"aghsfort_special_disruptor_kinetic_field_allied_heal",
-	"aghsfort_special_disruptor_kinetic_field_allied_attack_buff",
-   "aghsfort_special_disruptor_kinetic_field_double_ring",
+	"disruptor_kinetic_field_damage",
+   "disruptor_kinetic_field_heal",
+   "disruptor_kinetic_field_ring",
+	--"aghsfort_special_disruptor_kinetic_field_allied_attack_buff",
+   "disruptor_static_storm_perfect",
+   "disruptor_static_storm_dreams",
+   "disruptor_static_storm_pacific",
+   "special_bonus_unique_disruptor_electromagnetic_repulsion_no_cooldown",
+   "disruptor_electromagnetic_repulsion_damage",
 
-	"aghsfort_special_disruptor_static_storm_kinetic_field_on_cast",
-	"aghsfort_special_disruptor_static_storm_crits_on_attacks",
-	"aghsfort_special_disruptor_static_storm_damage_reduction",
+	--"aghsfort_special_disruptor_static_storm_kinetic_field_on_cast",
+	--"aghsfort_special_disruptor_static_storm_crits_on_attacks",
+	--"aghsfort_special_disruptor_static_storm_damage_reduction",
 }
 
 SPECIAL_ABILITY_UPGRADES["npc_dota_hero_snapfire"] =
@@ -253,24 +290,26 @@ SPECIAL_ABILITY_UPGRADES["npc_dota_hero_tusk"] =
 
 SPECIAL_ABILITY_UPGRADES["npc_dota_hero_mars"] = 
 {
-   "aghsfort_special_mars_spear_multiskewer",
-   "aghsfort_special_mars_spear_impale_explosion",
-   "aghsfort_special_mars_spear_burning_trail",
+   --"special_bonus_unique_mars_spear_impale_targets",
+   "mars_spear_boomstick",
+   "mars_spear_trail_blazer",
+   "special_bonus_unique_mars_spear_distance",
 
-   "aghsfort_special_mars_gods_rebuke_full_circle",
+   "special_bonus_unique_mars_gods_rebuke_circle",
    "aghsfort_special_mars_gods_rebuke_stun",
    "aghsfort_special_mars_gods_rebuke_strength_buff",
 
-   "aghsfort_special_mars_bulwark_counter_rebuke",
+   "mars_bulwark_retort",
    --"aghsfort_special_mars_bulwark_healing",
    --"aghsfort_special_mars_bulwark_return",
-   "aghsfort_special_mars_bulwark_spears",
-   "aghsfort_special_mars_bulwark_soldiers",
+   "mars_bulwark_bastion",
+   "mars_bulwark_scepter",
 
-   "aghsfort_special_mars_arena_of_blood_outside_perimeter",
+   --"aghsfort_special_mars_arena_of_blood_outside_perimeter",
    --"aghsfort_special_mars_arena_of_blood_fear",
-   "aghsfort_special_mars_arena_of_blood_global",
+   "special_bonus_unique_mars_arena_range",
    "aghsfort_special_mars_arena_of_blood_attack_buff",
+   "special_bonus_unique_mars_arena_spear_distance",
 }
 SPECIAL_ABILITY_UPGRADES["npc_dota_hero_viper"] = 
 {
@@ -337,6 +376,25 @@ SPECIAL_ABILITY_UPGRADES["npc_dota_hero_slark"] =
    "aghsfort_special_slark_shadow_dance_dark_pact_pulses",
    "aghsfort_special_slark_shadow_dance_leash",
 
+}
+
+SPECIAL_ABILITY_UPGRADES["npc_dota_hero_lion"] = 
+{
+   "aghsfort_lion_legend_impale_split",
+   "aghsfort_lion_legend_impale_shred",
+   "aghsfort_lion_legend_impale_tripple",
+
+   "aghsfort_lion_legend_voodoo_gold",
+   "aghsfort_lion_legend_voodoo_aoe",
+   "aghsfort_lion_legend_voodoo_death",
+
+   "aghsfort_lion_legend_drain_ally",
+   "aghsfort_lion_legend_drain_tripple",
+   "aghsfort_lion_legend_drain_amp",
+
+   "aghsfort_lion_legend_finger_charge",
+   "aghsfort_lion_legend_finger_aoe",
+   "aghsfort_lion_legend_finger_doom",
 }
 
 require( "items/item_small_scepter_fragment" )

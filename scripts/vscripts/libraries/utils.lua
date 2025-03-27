@@ -186,3 +186,7 @@ function table.remove_item(tbl,item)
 	end
 	return tbl
 end
+
+function IsValid(cobject)
+    return cobject ~= nil and not cobject:IsNull()
+end

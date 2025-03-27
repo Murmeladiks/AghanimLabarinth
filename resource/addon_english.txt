@@ -8239,5 +8239,194 @@
 	//>----------------------------------------------------------------------------------------------------------------------------------------------
 	//>- Ursa END ----------------------------------------------------------------------------------------------------------------------------
 	//>----------------------------------------------------------------------------------------------------------------------------------------------
+
+	//>----------------------------------------------------------------------------------------------------------------------------------------------
+	//>. Mars START --------------------------------------------------------------------------------------------------------------------------
+	//>----------------------------------------------------------------------------------------------------------------------------------------------
+
+	//>--- LEGENDARY -------------------------
+	"DOTA_Tooltip_ability_special_bonus_unique_mars_arena_range"								"Remote WorkPlace"
+	"DOTA_Tooltip_ability_special_bonus_unique_mars_arena_range_Description"					"Arena of Blood cast range becomes global and the cooldown is reduced by 20s."
+	"DOTA_Tooltip_Ability_mars_bulwark_retort"													"Retort"
+	"DOTA_Tooltip_Ability_mars_bulwark_retort_Description"										"During Active Bulwark, Mars has a 17%% chance to counter attack with God's Rebuke if attacked from the front."
+	"DOTA_Tooltip_Ability_mars_arena_buff" 														"Colosseum"
+	"DOTA_Tooltip_Ability_mars_arena_buff_Description" 											"Allies inside the Arena gain 35 bonus damage and 25 bonus attack speed."
+	"DOTA_Tooltip_modifier_mars_arena_buff_buffer"                           					"Colosseum"	
+	"DOTA_Tooltip_Ability_special_bonus_unique_mars_spear_impale_targets"						"Multiskewer"
+	"DOTA_Tooltip_Ability_special_bonus_unique_mars_spear_impale_targets_Description"			"Mars' spear can impale 7 additional enemies."
+	"DOTA_Tooltip_Ability_special_bonus_unique_mars_spear_distance"								"Tero Pitkämäki"
+	"DOTA_Tooltip_Ability_special_bonus_unique_mars_spear_distance_Description"					"Mars' spear can be thrown quickly and far."
+	"DOTA_Tooltip_Ability_mars_spear_trail_blazer"												"Trail Blazer"
+	"DOTA_Tooltip_Ability_mars_spear_trail_blazer_Description"									"Spear leaves a burning trail in its wake. The trail lasts for 4 seconds and burns enemies for 20% of Spear's damage every 0.5 seconds."
+	"DOTA_Tooltip_Ability_mars_spear_boomstick"  												"Mirror Spear"
+	"DOTA_Tooltip_Ability_mars_spear_boomstick_Description"  									"When throwing the Spear, a mirror spear will appear at its destination !DOES NOT WORK WITH BASTION!."
+	"DOTA_Tooltip_Ability_special_bonus_unique_mars_gods_rebuke_circle"							"Full Circle"
+	"DOTA_Tooltip_Ability_special_bonus_unique_mars_gods_rebuke_circle_Description"				"God's Rebuke deals damage in a full circle around Mars."
+	"DOTA_Tooltip_Ability_mars_bulwark_scepter"													"Phalanx"
+	"DOTA_Tooltip_Ability_mars_bulwark_scepter_Description"										"Creates 4 invulnerable soldiers on both sides of Mars front while Bulwark is toggled on. Soldiers move alongside Mars, dealing his attacks that have bonus damage, knock back and slow approaching enemies. An enemy can only be attacked by one soldier at a time."
+	"DOTA_Tooltip_Ability_mars_gods_rebuke_stun"												"Stunning Rebuke"
+	"DOTA_Tooltip_Ability_mars_gods_rebuke_stun_Description"									"God's Rebuke stuns enemies for 2 seconds."
+	"DOTA_Tooltip_Ability_mars_gods_rebuke_strength"											"Strong Arguement"
+	"DOTA_Tooltip_Ability_mars_gods_rebuke_strength_Description"								"God's Rebuke grants Mars 4 strength for 10 seconds for each enemy hit."
+	"DOTA_Tooltip_Ability_mars_bulwark_bastion"													"Bastion"
+	"DOTA_Tooltip_Ability_mars_bulwark_bastion_Description"										"When Bulwark is turned on, Mars releases 6 Spears in a short time, restore time: 16 seconds."
+	"DOTA_Tooltip_Ability_special_bonus_unique_mars_arena_spear_distance"						"Anyway, Here's Spearwall"
+	"DOTA_Tooltip_Ability_special_bonus_unique_mars_arena_spear_distance_Description"			"Soldiers in the Arena of Blood attack all the enemies in the arena, Soldiers' attack interval is halved."
+	
+	// Lion Begin
+	  // Legendary
+		"DOTA_Tooltip_Ability_aghsfort_lion_legend_impale_split"				"Chuan Chuan Xiang"
+		"DOTA_Tooltip_Ability_aghsfort_lion_legend_impale_split_Description"	"Each spike now split into %pieces% secondary spikes of %length_pct%x length on hitting any enemy or reaching its end with a delay as long as its air time. Secondary spikes from the same node only hit a target once, dealing %dmg_pct%x damage. "
+		// "DOTA_Tooltip_Ability_aghsfort_lion_legend_impale_split_Description"	"Each spike now split into %pieces% secondary spikes of %length_pct%x length on hitting the first enemy or reaching its end. Secondary spikes do not split or hit enemies already hit by its parent. "
+		"DOTA_Tooltip_Ability_aghsfort_lion_legend_impale_shred"				"Crack to Hell"
+		"DOTA_Tooltip_Ability_aghsfort_lion_legend_impale_shred_Description"	"During Spike airtime, Finger of Death deals %damage_mul%x as usual damage in PURE type. "
+		"DOTA_Tooltip_Ability_aghsfort_lion_legend_impale_tripple"				"Spikerock"
+		"DOTA_Tooltip_Ability_aghsfort_lion_legend_impale_tripple_Description"	"Lion launches 3 spikes on cast. "
+
+		"DOTA_Tooltip_Ability_aghsfort_lion_legend_voodoo_gold"					"Money Changes Hands"
+		"DOTA_Tooltip_Ability_aghsfort_lion_legend_voodoo_gold_Description"		"Hexed enemies drop gold bags on taking damage. The small bag contains %gold% gold, with a damage threshold of %thres%. When the damage goes beyond %mul_thres%, the bag dropped will be %mul%x as large. Bags last %life_time% seconds. "
+		"DOTA_Tooltip_Ability_aghsfort_lion_legend_voodoo_aoe"					"Lots of Fish"
+		"DOTA_Tooltip_Ability_aghsfort_lion_legend_voodoo_aoe_Description"		"Hex is now a %aoe% AOE point-target ability."
+		"DOTA_Tooltip_Ability_aghsfort_lion_legend_voodoo_death"				"Instant Barbecue"
+		"DOTA_Tooltip_Ability_aghsfort_lion_legend_voodoo_death_Description"	"Lion's other sepcial unit-target abilities also cast Hex on target. Finger of Death will also target hexed enemies within %range% range on casting."
+
+		"DOTA_Tooltip_Ability_aghsfort_lion_legend_drain_ally"					"Essence Injection"
+		"DOTA_Tooltip_Ability_aghsfort_lion_legend_drain_ally_Description"		"Essence Drain can target on allied heroes. When ally-casting, it cost Lion's mana and heal the target instead. Reduce Drain's base cooldown to %cd%s."
+		"DOTA_Tooltip_Ability_aghsfort_lion_legend_drain_tripple"				"Demon's Meal"
+		"DOTA_Tooltip_Ability_aghsfort_lion_legend_drain_tripple_Description"	"Essence Drain now has up to %extra_targets% extra targets with a %search_range% search radius around the original target. Lion gains spell immunity when channeling. "
+		"DOTA_Tooltip_Ability_aghsfort_lion_legend_drain_amp"					"Dementor"
+		"DOTA_Tooltip_Ability_aghsfort_lion_legend_drain_amp_Description"		"Essence Drain now amplifies Lion's spell during channeling. The bonus spell amp per tick equals to %amp_slow%x Drain's slow, and the buff lingers for %linger%s after channel finished."
+
+		"DOTA_Tooltip_Ability_aghsfort_lion_legend_finger_charge"				"Two-Finger Zen"
+		"DOTA_Tooltip_Ability_aghsfort_lion_legend_finger_charge_Description"	"Finger of Death now has %charges% charges. "
+		"DOTA_Tooltip_Ability_aghsfort_lion_legend_finger_aoe"					"They're All Dead!"
+		"DOTA_Tooltip_Ability_aghsfort_lion_legend_finger_aoe_Description"		"Finger of Death now also affects enemies in %aoe% AOE radius. "
+		"DOTA_Tooltip_Ability_aghsfort_lion_legend_finger_doom"					"Death Bringer"
+		"DOTA_Tooltip_Ability_aghsfort_lion_legend_finger_doom_Description"		"Finger of Death's debuff now lasts %duration_mul%x as long, and dooms the victim for the duration. The debuff also deals damage equal to %damage_pct%%% of that Finger's every second. "
+
+	  //Ability
+		"DOTA_Tooltip_Ability_aghsfort_lion_impale"											"Earth Spike"
+		"DOTA_Tooltip_Ability_aghsfort_lion_impale_description"								"Rock spikes burst from the earth along a straight path. Enemy units are hurled into the air, then are stunned and take damage when they fall."
+		"DOTA_Tooltip_Ability_aghsfort_lion_impale_Lore"									"The Demon Witch exercises his demonic covenant, opening a fissure from hell."
+		"DOTA_Tooltip_Ability_aghsfort_lion_impale_width"									"Spike Width: "
+		"DOTA_Tooltip_Ability_aghsfort_lion_impale_duration"								"Stun Duration: "
+		"DOTA_Tooltip_Ability_aghsfort_lion_impale_cast_range"								"Cast Range: "
+		"DOTA_Tooltip_Ability_aghsfort_lion_impale_length_buffer"							"Spikes Range Buffer: "
+		"DOTA_Tooltip_Ability_aghsfort_lion_impale_damage"									"Damage: "
+		"DOTA_Tooltip_Ability_aghsfort_lion_impale_air_time"								"Air Time: "
+
+		"DOTA_Tooltip_Ability_aghsfort_lion_voodoo"											"Hex"
+		"DOTA_Tooltip_Ability_aghsfort_lion_voodoo_description"								"Transforms an enemy unit into a harmless beast, with all special abilities disabled. Hex lasts shorter on captains and bosses. Dealing Magical damage every second based on Lion's Intelligence. "
+		"DOTA_Tooltip_Ability_aghsfort_lion_voodoo_Note0"								"Has instant damage on hit. Doesn't reduce damge for reduced duration. "
+		"DOTA_Tooltip_Ability_aghsfort_lion_voodoo_lore"									"Lion is compelled to share his transfiguration, twisting the essence of those who oppose him."
+		"DOTA_Tooltip_Ability_aghsfort_lion_voodoo_duration"								"Duration: "
+		"DOTA_Tooltip_Ability_aghsfort_lion_voodoo_movespeed"								"Fixed Movespeed: "
+		"DOTA_Tooltip_Ability_aghsfort_lion_voodoo_int_damage_tooltip"						"%Int Damage per Second: "
+		"DOTA_Tooltip_Ability_aghsfort_lion_voodoo_captain_factor"							"Captain Factor: "
+		"DOTA_Tooltip_Ability_aghsfort_lion_voodoo_boss_factor"								"Boss Factor: "
+		
+		"DOTA_Tooltip_Ability_aghsfort_lion_mana_drain"										"Essence Drain"
+		"DOTA_Tooltip_Ability_aghsfort_lion_mana_drain_description"							"Absorbs the life energies of a target enemy unit and transfer them to his mana every second. Dealing pure damange and gain mana equal to damage multiples a factor."
+		"DOTA_Tooltip_Ability_aghsfort_lion_mana_drain_note0"								"The damage per second equals to mana drain divides health mana factor, and is marked as health removal."
+		"DOTA_Tooltip_Ability_aghsfort_lion_mana_drain_note1"								"Drain breaks if the distance between the caster and the target runs %buff_distance% longer than its cast range. "
+		"DOTA_Tooltip_Ability_aghsfort_lion_mana_drain_note2"								"Drain ticks every %tick_interval% second."
+		"DOTA_Tooltip_Ability_aghsfort_lion_mana_drain_lore"								"Lesser creatures are nothing more than a source of magical restoration for the Demon Witch."
+		"DOTA_Tooltip_Ability_aghsfort_lion_mana_drain_duration"							"Max Channel Time: "
+		"DOTA_Tooltip_Ability_aghsfort_lion_mana_drain_drain_per_second"					"Mana Drain per Second: "
+		"DOTA_Tooltip_Ability_aghsfort_lion_mana_drain_damage_mana"							"Health Mana Factor: "
+		"DOTA_Tooltip_Ability_aghsfort_lion_mana_drain_movespeed"							"%Move Speed Slow: "
+		"DOTA_Tooltip_Ability_aghsfort_lion_mana_drain_buff_distance"						"Slow: "
+
+		"DOTA_Tooltip_Ability_aghsfort_lion_finger_of_death"								"Finger of Death"
+		"DOTA_Tooltip_Ability_aghsfort_lion_finger_of_death_description"					"Rips at an enemy unit, trying to turn it inside-out. Deals massive damage and grows stronger with each life it consumes. If an enemy dies during its effect, he gains power layers that increases the ripping power. Gets 1, %captain_layer%, and %boss_layer% from every creep, captain and boss, respectively."
+		"DOTA_Tooltip_Ability_aghsfort_lion_finger_of_death_lore"							"Lion's disfigured hand is also the source of his greatest power, capable of flooding victims with malefic force."
+		"DOTA_Tooltip_Ability_aghsfort_lion_finger_of_death_Note0"							"Damage has a %damage_delay% second's delay."
+		"DOTA_Tooltip_Ability_aghsfort_lion_finger_of_death_damage"							"Base Damage: "
+		"DOTA_Tooltip_Ability_aghsfort_lion_finger_of_death_damage_per_layer"				"Damage per Layer: "
+		"DOTA_Tooltip_Ability_aghsfort_lion_finger_of_death_hp_per_layer"					"HP per Layer: "
+		"DOTA_Tooltip_Ability_aghsfort_lion_finger_of_death_grace_period"					"Effect Duration: "
+
+
+	  //Minor
+		"aghsfort_lion_impale_mana_cost_cooldown"			                    		"+{s:value1}% {s:ability_name} Manacost/Cooldown Reduction"
+		"aghsfort_lion_impale_range"						                            "+{s:value1}/{s:value2} {s:ability_name} Distance/Speed"
+		"aghsfort_lion_impale_damage"						                            "+{s:value} {s:ability_name} Damage"
+		"aghsfort_lion_impale_stun"						                            	"+{s:value1}s/{s:value2}s {s:ability_name} Stun/Air Time"
+
+		"aghsfort_lion_voodoo_mana_cost_cooldown"					                    "+{s:value1}% {s:ability_name} Manacost/Cooldown Reduction"
+		"aghsfort_lion_voodoo_duration"								                    "+{s:value}s {s:ability_name} Duration"
+		"aghsfort_lion_voodoo_dmg"									                    "+{s:value2}% {s:ability_name} int damage per second"
+
+		"aghsfort_lion_mana_drain_mana_cost_cooldown"				                    "+{s:value1}% {s:ability_name} Manacost/Cooldown Reduction"
+		"aghsfort_lion_mana_drain_drain"							                    "+{s:value} {s:ability_name} Mana Drain per Second"
+		"aghsfort_lion_mana_drain_duration"							                    "+{s:value} {s:ability_name} Duration"
+		"aghsfort_lion_mana_drain_slow"						                    		"+{s:value}% {s:ability_name} Slow"
+			
+		"aghsfort_lion_finger_of_death_mana_cost_cooldown"				                "+{s:value1}% {s:ability_name} Manacost/Cooldown Reduction"
+		"aghsfort_lion_finger_of_death_damage"				                			"+{s:value} {s:ability_name} Base Damage"
+		"aghsfort_lion_finger_of_death_layer"				                			"+{s:value} {s:ability_name} Damage per Layer"
+
+	  //Talent Tree
+		"DOTA_Tooltip_Ability_special_bonus_unique_lion_impale+range"					"+{s:bonus_cast_range} Earth Spike Distance"
+		"DOTA_Tooltip_Ability_special_bonus_unique_lion_impale-cd"						"-{s:bonus_AbilityCooldown} Earth Spike CD"
+		"DOTA_Tooltip_Ability_special_bonus_unique_lion_voodoo+duration"				"+{s:bonus_duration} Hex Duration"
+		"DOTA_Tooltip_Ability_special_bonus_unique_lion_mana_drain+drain"				"+{s:bonus_drain_per_second} Essence Drain Per Sec"
+		"DOTA_Tooltip_Ability_special_bonus_unique_lion_finger_of_death+layer_dmg"			"+{s:bonus_damage_per_layer} Finger of Death Damage Per Layer"
+		"DOTA_Tooltip_Ability_special_bonus_unique_lion_finger_of_death+layer_hp"			"+{s:bonus_hp_per_layer} Finger of Death HP Per Layer"
+	
+	
+	  //Modifier
+		"DOTA_Tooltip_modifier_aghsfort_lion_finger_of_death"							"Finger of Death Stack"
+		"DOTA_Tooltip_modifier_aghsfort_lion_finger_of_death_Description"				"Finger of Death's damage increased by %dMODIFIER_PROPERTY_TOOLTIP%, HP increased by %dMODIFIER_PROPERTY_HEALTH_BONUS%"
+		"DOTA_Tooltip_modifier_aghsfort_lion_finger_of_death_debuff"					"Finger of Death Curse"
+		"DOTA_Tooltip_modifier_aghsfort_lion_finger_of_death_debuff_Description"		"If died under curse, Lion will gain Finger of Death Stacks. "
+		"DOTA_Tooltip_modifier_aghsfort_lion_mana_drain"								"Essence Drain"
+		"DOTA_Tooltip_modifier_aghsfort_lion_drain_amp"									"Dementor"
+		"DOTA_Tooltip_modifier_aghsfort_lion_drain_amp_Description"						"Spell Amp increased by %dMODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE%%%."
+
+	 // Lion End
+
+	"DOTA_Tooltip_ability_disruptor_thunder_strike_mana_storm"					"Mana Storm"
+	"DOTA_Tooltip_ability_disruptor_thunder_strike_mana_storm_Description"		"Every strike restores 8%% of max Mana to allies in a 450 radius around the target. Each strike also increases Disruptor's Intelligence by 2 for 25 seconds."
+	"DOTA_Tooltip_ability_special_bonus_unique_disruptor_thunder_strike_cover"	"Cloud Cover"
+	"DOTA_Tooltip_ability_special_bonus_unique_disruptor_thunder_strike_cover_Description"	"Interval between strikes reduced by 50%%. Amount of strikes increased by 3."
+	"DOTA_Tooltip_ability_disruptor_thunder_strike_critical"			"Critical Strike"
+	"DOTA_Tooltip_ability_disruptor_thunder_strike_critical_Description"			"Every strike has a 25%% chance to crit, dealing 175%% damage."
+	"DOTA_Tooltip_ability_disruptor_thunder_strike_weapon"		"Loaded Weapon"
+	"DOTA_Tooltip_ability_disruptor_thunder_strike_weapon_Description"		"Disruptor gains 60%% chance to cast a Thunder Strike on an attacked target."
+	"DOTA_Tooltip_ability_disruptor_glimpse_past"					"Blast in the Past"
+	"DOTA_Tooltip_ability_disruptor_glimpse_past_Description"		"When enemies arrives at their final destination, 170%% of Disruptor's Intelligence is dealt in a 250 radius around them."
+	"DOTA_Tooltip_ability_disruptor_kinetic_field_damage"		"Electric Fence"
+	"DOTA_Tooltip_ability_disruptor_kinetic_field_damage_Description"		"Kinetic Field/Kinetic Fence deals 50%% of Disruptor's Base Attack Damage to enemies trapped inside every 0.5 seconds."
+	"DOTA_Tooltip_ability_disruptor_kinetic_field_heal"		"Area of Bliss"
+	"DOTA_Tooltip_ability_disruptor_kinetic_field_heal_Description"		"Allies inside the kinetic field heal 50%% of Disruptor's Intelligence every 0.5 seconds."
+	"DOTA_Tooltip_ability_disruptor_kinetic_field_ring"		"Ring-ception"
+	"DOTA_Tooltip_ability_disruptor_kinetic_field_ring_Description"		"Creates a second Kinetic Field with a radius that is 2 times bigger than the original."
+	"DOTA_Tooltip_ability_disruptor_static_storm_perfect"					"Perfect Storm"
+	"DOTA_Tooltip_ability_disruptor_static_storm_perfect_Description"		"Static Storm automatically creates a Kinetic Field/kinetic fence on cast."
+	"DOTA_Tooltip_ability_disruptor_static_storm_dreams"	"Field of Dreams"
+	"DOTA_Tooltip_ability_disruptor_static_storm_dreams_Description"	"All attacks on the affected enemies have a 30%% chance to crit for 150%% damage."
+	"DOTA_Tooltip_ability_disruptor_static_storm_pacific"		"Pacific Storm"
+	"DOTA_Tooltip_ability_disruptor_static_storm_pacific_Description"		"All enemies caught in Static Storm deal 30%% less damage."
+	"DOTA_Tooltip_ability_special_bonus_unique_disruptor_electromagnetic_repulsion_no_cooldown"				"Electroprotection"
+	"DOTA_Tooltip_ability_special_bonus_unique_disruptor_electromagnetic_repulsion_no_cooldown_Description"	"Electromagnetic repulsion has no cooldown."
+	"DOTA_Tooltip_ability_disruptor_electromagnetic_repulsion_damage"		"Electromagnetic radiation"
+	"DOTA_Tooltip_ability_disruptor_electromagnetic_repulsion_damage_Description"		"When Electromagnetic repulsion works, it heals Disruptor and deals 50%% of Disruptor's Intelligence to the enemies pushed back."
+	"aghsfort_disruptor_glimpse_flat_max_damage"				"+{s:value} {s:ability_name} MAX DAMAGE"
+	"aghsfort_disruptor_kinetic_fence_mana_cost_cooldown"		"+{s:value1}% {s:ability_name} Manacost/Cooldown Reduction"
+	"aghsfort_disruptor_kinetic_fence_flat_duration"			"+{s:value} S {s:ability_name} DURATION"
+	"aghsfort_disruptor_kinetic_fence_wall_width"				"+{s:value} {s:ability_name} wall width"
+	"aghsfort_disruptor_kinetic_fence_formation_time"			"{s:value} % {s:ability_name} formation delay"
+	"aghsfort_disruptor_electromagnetic_repulsion_damage_threshold"	"{s:value} % {s:ability_name} damage threshold"
+
+
+
+
+
+
+
 	}
+
+	
+	
 }

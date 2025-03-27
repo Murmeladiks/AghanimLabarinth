@@ -246,27 +246,22 @@
 				"value"		"13"
 				"special_bonus_unique_windranger_focusfire_duration"	"+10"
 				"special_bonus_facet_windrunner_whirlwind"	"=0.0"
-				"RequiresFacet"					"windrunner_tailwind"
+				"RequiresFacet"					"windrunner_killshot"
 			}
-			"whirlwind_duration"				
-			{
-				"special_bonus_facet_windrunner_whirlwind"	"=8.0"
-				"special_bonus_unique_windranger_focusfire_duration"	"+6"
-				"RequiresFacet"					"windrunner_whirlwind"
-			}
+			
             "bonus_attack_speed"			
 			{
 				"value"		"400"
-				"special_bonus_facet_windrunner_whirlwind" "=0"				
+				//"special_bonus_facet_windrunner_whirlwind" "=0"				
 			}
             "attacks_per_second"
 			{
-				"special_bonus_facet_windrunner_whirlwind" 				"7 9 11"				
+				//"special_bonus_facet_windrunner_whirlwind" 				"7 9 11"				
 			}
             "is_unfocused"
 			{
 				"value"		"0"
-				"special_bonus_facet_windrunner_whirlwind"			"=1"
+				//"special_bonus_facet_windrunner_whirlwind"			"=1"
 			}
             "focusfire_damage_reduction"	"-50 -45 -40"
             "focusfire_fire_on_the_move"	"1"

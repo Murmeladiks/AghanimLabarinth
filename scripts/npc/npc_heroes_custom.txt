@@ -44,4 +44,6 @@
 #base "heroes/winter_wyvern/winter_wyvern.txt"
 #base "heroes/witch_doctor/witch_doctor.txt"
 #base "heroes/zuus/zuus.txt"
-#base "heroes/gyrocopter/gyrocopter.txt
+#base "heroes/gyrocopter/gyrocopter.txt"
+#base "heroes/lion/lion.txt"
+#base "heroes/drow_ranger/drow_ranger.txt"

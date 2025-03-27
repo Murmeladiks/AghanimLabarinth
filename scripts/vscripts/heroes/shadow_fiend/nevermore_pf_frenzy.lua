@@ -49,7 +49,7 @@ function modifier_nevermore_pf_frenzy:OnCreated()
 	local hAbility = self:GetAbility()
 
 	self.nAttackSpeed = hAbility:GetSpecialValueFor("bonus_attack_speed")
-	self.nCastSpeed = hAbility:GetSpecialValueFor("cast_speed_pct")
+	self.nCastSpeed = hAbility:GetSpecialValueFor("cast_speed_pct") - 100
 	self.nCost = hAbility:GetSpecialValueFor("soul_cost")
 end
 

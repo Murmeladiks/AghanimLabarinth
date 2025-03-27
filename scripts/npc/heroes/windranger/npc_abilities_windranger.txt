@@ -1,5 +1,28 @@
 "Hero_Windrunner"
 {
+	//=================================================================================================================
+	// Ability: Innate Like The Wind (min movespeed)
+	//=================================================================================================================
+	"windrunner_easy_breezy"
+	{				
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"min_movespeed"		
+			{
+				"value"						"240"
+				"special_bonus_unique_windranger_9"		"+40"
+			}
+			"max_movespeed"		
+			{
+				"value"						"600"
+				"special_bonus_unique_windranger_9"		"+40"
+			}			
+		}
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
+	}
+
     //=================================================================================================================
 	// Windrunner: Shackleshot
 	//=================================================================================================================
@@ -33,6 +56,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"800"
 		"AbilityCastPoint"				"0.15"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
 
         // Time		
 		//-------------------------------------------------------------------------------------------------------------
@@ -40,7 +64,7 @@
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"70 85 100 115"
+		"AbilityManaCost"				"70 80 90 100"
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
@@ -49,17 +73,33 @@
             "fail_stun_duration"	"0.6"
             "stun_duration"
 			{
-				"value"			"1.6 2.1 2.6 3.1"
-				"special_bonus_unique_windranger_shackle_duration"	"+1.5"	
+				"value"			"1.75 2.25 2.75 3.25"
+				"special_bonus_unique_windranger_shackle_duration"	"+0.75"	
 			}
             "shackle_distance"		"575"
             "arrow_speed"			"1650"
             "shackle_count"
 			{
 				"value"				"1"
-				"special_bonus_unique_windranger_shackle_count"		"+2"
+				//"special_bonus_unique_windranger_shackle_count"		"+2"
 			}
             "shackle_angle"			"23"
+			"bonus_damage_per_hero"
+			{
+				"special_bonus_facet_windrunner_tangled"	"6 10 14 18"
+			}
+			"bonus_damage_per_captain_mult"
+			{
+				"special_bonus_facet_windrunner_tangled"	"2"
+			}
+			"bonus_damage_per_boss_mult"
+			{
+				"special_bonus_facet_windrunner_tangled"	"3"
+			}
+			"damage_buff_duration"
+			{
+				"special_bonus_facet_windrunner_tangled"	"6"
+			}
 		}
 	}
 
@@ -89,7 +129,7 @@
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"2000"
+		"AbilityCastRange"				"1600"
 		"AbilityCastPoint"				"0.0"
 
         // Time		
@@ -107,24 +147,27 @@
 		{
             "powershot_damage"			
             {
-                "value"					"150 250 350 450"
+                "value"					"120 220 320 420"
 				"special_bonus_unique_windranger_powershot_damage"	"+100"
                 "CalculateSpellDamageTooltip"	"1"
             }
             "slow"	
             {
                 "value"				                                "20 25 30 35"
-                "special_bonus_unique_windranger_powershot_slow"	"+20"
             }
-            "slow_duration"	        "4"
+			"slow_duration"	
+			{
+				"value"															"4"
+				"special_bonus_unique_windranger_powershot_slow"				"+1"
+			}
             "damage_reduction"		"0"
             "arrow_width"			
             {
-                "value"		"125 125 125 125"
+                "value"						"125"
                 "affected_by_aoe_increase"	"1"
             }
-            "arrow_range"			"1650"
-            "arrow_speed"			"2400.0 2400.0 2400.0 2400.0"
+            "arrow_range"			"1600"
+            "arrow_speed"			"3000"
             "tree_width"
             {
                 "value"						"50.0"
@@ -136,6 +179,14 @@
                 "affected_by_aoe_increase"	"1"
             }
             "vision_duration"		"3.34 3.34 3.34 3.34"
+			"min_execute_threshold"
+			{
+				"special_bonus_facet_windrunner_killshot"	"5"
+			}
+			"max_execute_threshold"
+			{
+				"special_bonus_facet_windrunner_killshot"	"9 10 11 12"
+			}
 		}
 	}
 
@@ -170,7 +221,6 @@
 
         // Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"15 14 13 12"
 		"AbilityDuration"				"3 4 5 6"
 
 		// Cost
@@ -181,6 +231,11 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityValues"
 		{
+			"AbilityCooldown"
+			{
+				"value"									"24 22 20 18"
+				"special_bonus_unique_windranger_4"		"-2"
+			}
             "movespeed_bonus_pct"	    "50"
             "evasion_pct_tooltip"	    "100"
             "duration"					"3 4 5 6"
@@ -246,22 +301,27 @@
 				"value"		"13"
 				"special_bonus_unique_windranger_focusfire_duration"	"+10"
 				"special_bonus_facet_windrunner_whirlwind"	"=0.0"
-				"RequiresFacet"					"windrunner_killshot"
+				"RequiresFacet"					"windrunner_tailwind"
 			}
-			
+			"whirlwind_duration"				
+			{
+				"special_bonus_facet_windrunner_whirlwind"	"=8.0"
+				"special_bonus_unique_windranger_focusfire_duration"	"+6"
+				//"RequiresFacet"					"windrunner_whirlwind"
+			}
             "bonus_attack_speed"			
 			{
 				"value"		"400"
-				//"special_bonus_facet_windrunner_whirlwind" "=0"				
+				"special_bonus_facet_windrunner_whirlwind" "=0"				
 			}
             "attacks_per_second"
 			{
-				//"special_bonus_facet_windrunner_whirlwind" 				"7 9 11"				
+				"special_bonus_facet_windrunner_whirlwind" 				"7 9 11"				
 			}
             "is_unfocused"
 			{
 				"value"		"0"
-				//"special_bonus_facet_windrunner_whirlwind"			"=1"
+				"special_bonus_facet_windrunner_whirlwind"			"=1"
 			}
             "focusfire_damage_reduction"	"-50 -45 -40"
             "focusfire_fire_on_the_move"	"1"

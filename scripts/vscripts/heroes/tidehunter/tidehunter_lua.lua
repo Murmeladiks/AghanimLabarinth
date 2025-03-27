@@ -14,7 +14,7 @@ LinkLuaModifier("modifier_tidehunter_ravage_pf_puddle_effect", "heroes/tidehunte
 
 LinkLuaModifier("modifier_tidehunter_pf_crunch_victim", "heroes/tidehunter/tidehunter_lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_tidehunter_pf_crunch_buff", "heroes/tidehunter/tidehunter_lua", LUA_MODIFIER_MOTION_NONE)
-
+LinkLuaModifier("modifier_tidehunter_kraken_shell_boost_pf", "heroes/tidehunter/tidehunter_lua", LUA_MODIFIER_MOTION_NONE)
 
 tidehunter_gush_pf										= class({})
 modifier_tidehunter_gush_pf								= class({
@@ -29,6 +29,9 @@ modifier_tidehunter_kraken_shell_pf						= class({
 	IsDebuff	  			= function(self) return false end,
 })
 
+modifier_tidehunter_kraken_shell_boost_pf				= class({
+	IsPurgable	  			= function(self) return false end,
+})
 
 tidehunter_anchor_smash_pf								= class({})
 modifier_tidehunter_anchor_smash_pf						= class({
@@ -267,11 +270,43 @@ function tidehunter_kraken_shell_pf:GetIntrinsicModifierName()
 	return "modifier_tidehunter_kraken_shell_pf"
 end
 
+function tidehunter_kraken_shell_pf:OnSpellStart()
+	local hCaster = self:GetCaster()
+
+	hCaster:AddNewModifier(hCaster, self, "modifier_tidehunter_kraken_shell_boost_pf", {duration = self:GetSpecialValueFor("active_duration")})
+	hCaster:EmitSound("Hero_Tidehunter.KrakenShell")
+end
+
+function modifier_tidehunter_kraken_shell_boost_pf:OnCreated()
+	local hAbility = self:GetAbility()
+	local hCaster = self:GetCaster()
+
+	self.nMoveSlow = -hAbility:GetSpecialValueFor("active_move_speed_penalty_pct")
+
+	if IsClient() then return end
+	local nShellFX = ParticleManager:CreateParticle("particles/units/heroes/hero_tidehunter/tidehunter_shell.vpcf", PATTACH_ABSORIGIN_FOLLOW, hCaster)
+	ParticleManager:SetParticleControlEnt(nShellFX, 1, hCaster, PATTACH_ABSORIGIN_FOLLOW, nil, Vector(0, 0, 0), true)
+	self:AddParticle(nShellFX, false, false, -1, false, false)
+end
+
+function modifier_tidehunter_kraken_shell_boost_pf:DeclareFunctions()
+	return {MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE}
+end
+
+function modifier_tidehunter_kraken_shell_boost_pf:GetModifierMoveSpeedBonus_Percentage()
+	return self.nMoveSlow
+end
+
 function modifier_tidehunter_kraken_shell_pf:IsHidden() return self:GetStackCount() < 1 end
 
 ---------------------------
 -- KRAKEN SHELL MODIFIER --
 ---------------------------
+
+function modifier_tidehunter_kraken_shell_pf:OnCreated()
+	self.hParent = self:GetParent()
+	self.hAbility = self:GetAbility()
+end
 
 function modifier_tidehunter_kraken_shell_pf:DeclareFunctions()
 	return {		
@@ -282,7 +317,11 @@ function modifier_tidehunter_kraken_shell_pf:DeclareFunctions()
 end
 
 function modifier_tidehunter_kraken_shell_pf:GetModifierPhysical_ConstantBlock()
-	return self:GetAbility():GetSpecialValueFor("damage_reduction") + self:GetAbility():GetSpecialValueFor("bonus_reduction_per_kill") * self:GetStackCount()
+	if self.hParent:HasModifier("modifier_tidehunter_kraken_shell_boost_pf") then
+		return (self.hAbility:GetSpecialValueFor("damage_reduction") + self.hAbility:GetSpecialValueFor("bonus_reduction_per_kill") * self:GetStackCount()) * 2
+	else
+		return self.hAbility:GetSpecialValueFor("damage_reduction") + self.hAbility:GetSpecialValueFor("bonus_reduction_per_kill") * self:GetStackCount()
+	end
 end
 
 function modifier_tidehunter_kraken_shell_pf:OnDeath(event)

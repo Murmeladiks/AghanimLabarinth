@@ -118,7 +118,7 @@
 			"move_speed"
 			{
 				"value"					"10 14 18 22"
-				"special_bonus_unique_legion_commander_pta_movespeed"	"+10"
+				"special_bonus_unique_legion_commander_pta_movespeed"	"+12"
 			}
 			"hp_regen"
 			{
@@ -212,11 +212,11 @@
 		{
 			"duration"				
 			{
-				"value"				"3.75 4.5 5.25"		
+				"value"				"4.0 4.5 5.0"		
 			}
 			"AbilityCastRange"		
 			{
-				"value"			"200 250 300"
+				"value"			"200"
 			}
 			"reward_damage_creep"		"5"
 			"reward_damage_hero"		"14 17 20"

@@ -20,7 +20,7 @@
 				"affected_by_aoe_increase"	"1"	
 			}
 
-			"redirect_chance"	"15 20 25 30"		
+			"redirect_chance"	"14 21 28 35"		
  		}
 	}
 
@@ -52,7 +52,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityValues"
 		{		
-            "bonus_range"			"75 150 225 300"
+            "bonus_range"			"100"
             "bonus_damage"			"20 40 60 80"
             "projectile_speed"		"2000"
             "bounce_count"
@@ -160,12 +160,12 @@
 			"cast_range"						
 			{
 				"value"							"0"
-				"special_bonus_facet_hoodwink_hunter"	"50 100 150 200"				
+				"special_bonus_facet_hoodwink_hunter"	"75 150 225 300"				
 			}
 			"attack_range"
 			{
 				"value"							"0"
-				"special_bonus_facet_hoodwink_hunter"	"50 100 150 200"				
+				"special_bonus_facet_hoodwink_hunter"	"75 150 225 300"				
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
@@ -194,10 +194,6 @@
 		//-------------------------------------------------------------------------------------------------------------		
 		"AbilityCastPoint"				"0.0"
 
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"45"
-
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityManaCost"				"150"
@@ -206,6 +202,11 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityValues"
 		{
+			"AbilityCooldown"
+			{
+				"value"									"45"
+				"special_bonus_facet_hoodwink_hipshot"	"x0.5"
+			}
 			"arrow_speed"		"2200"
 			"arrow_width"		"125"
 			"arrow_range"
@@ -214,16 +215,46 @@
 				"special_bonus_unique_sharpshooter_arrow_range" 	"+9000"
 			}
 			"arrow_vision"		"350"
-			"max_charge_time"			"2.5"
-			"max_damage"				"600 1000 1400"
+			"max_charge_time"
+			{
+				"value"									"2.5"
+				"special_bonus_facet_hoodwink_hipshot"	"x0.75"
+			}
+			"max_damage"
+			{
+				"value"				"550 900 1250"
+				"special_bonus_facet_hoodwink_hipshot"	"x0.75"
+			}
 			"recoil_distance"			"350"
 			"recoil_height"				"75"
 			"recoil_duration"			"0.4"
-			"max_slow_debuff_duration"	"6.0"
-			"misfire_time"				"5.0"
+			"max_slow_debuff_duration"
+			{
+				"value"									"5.0"
+				"special_bonus_facet_hoodwink_hipshot"	"x0.75"
+			}
+			"misfire_time"
+			{
+				"value"									"5.0"
+				"special_bonus_facet_hoodwink_hipshot"	"x0.75"
+			}
 			"slow_move_pct"				"50"
-			"turn_rate"					"40"
+			"turn_rate"
+			{
+				"value"									"60"
+				"special_bonus_facet_hoodwink_hipshot"	"x1.33"
+			}
 			"max_hit"					"6"
+			"quick_draw_tooltip_pct_cooldown_reduction"
+			{
+				"value"									"0"
+				"special_bonus_facet_hoodwink_hipshot"	"50"	// TOOLTIP ONLY, special_bonus_facet_hoodwink_hipshot values should be set to ( 100 - value ) / 100
+			}
+			"quick_draw_tooltip_efficacy_pct"
+			{
+				"value"									"0"
+				"special_bonus_facet_hoodwink_hipshot"	"25"	// TOOLTIP ONLY, special_bonus_facet_hoodwink_hipshot values should be set to ( 100 - value ) / 100
+			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CHANNEL_ABILITY_6"
 	}

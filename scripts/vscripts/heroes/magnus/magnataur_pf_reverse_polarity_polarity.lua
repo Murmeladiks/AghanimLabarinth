@@ -10,16 +10,6 @@ end
 
 --------------------------------------------------------------------------------
 
-function magnataur_pf_reverse_polarity_polarity:GetBehavior()
-	if self:GetCaster():GetHeroFacetID() == 3 then
-		return DOTA_ABILITY_BEHAVIOR_NO_TARGET
-	end
-
-	return self.BaseClass.GetBehavior(self)
-end
-
---------------------------------------------------------------------------------
-
 function magnataur_pf_reverse_polarity_polarity:GetCastRange(vLocation, hTarget)
 	return self:GetSpecialValueFor("pull_radius")
 end
@@ -27,13 +17,12 @@ end
 --------------------------------------------------------------------------------
 
 function magnataur_pf_reverse_polarity_polarity:CanAbilityBeUpgraded()
-	return self:GetCaster():GetHeroFacetID() == 3
+	return false
 end
 
 --------------------------------------------------------------------------------
 
 function magnataur_pf_reverse_polarity_polarity:OnAbilityUpgrade(hUpgradeAbility)
-	if self:GetCaster():GetHeroFacetID() == 3 then return end
 	if hUpgradeAbility and hUpgradeAbility:GetName() == "magnataur_pf_reverse_polarity" then
 		self:SetLevel(hUpgradeAbility:GetLevel())
 	end

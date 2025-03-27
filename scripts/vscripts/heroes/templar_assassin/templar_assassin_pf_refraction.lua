@@ -253,7 +253,7 @@ function modifier_templar_assassin_pf_refraction_absorb:GetModifierIncomingDamag
 			ParticleManager:SetParticleControlForward(nHitFX, 1, (hParent:GetOrigin() - hAttacker:GetOrigin()):Normalized())
 			ParticleManager:SetParticleControlEnt(nHitFX, 2, hParent, PATTACH_ABSORIGIN_FOLLOW, nil, Vector(0, 0, 0), true)
 			ParticleManager:ReleaseParticleIndex(nHitFX)
-			return nReduction
+			return -self.nMaxAbsorb
 		else
 			self:SendBuffRefreshToClients()
 			return nShieldReduction

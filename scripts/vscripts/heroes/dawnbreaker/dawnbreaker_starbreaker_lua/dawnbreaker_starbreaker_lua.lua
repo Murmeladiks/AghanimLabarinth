@@ -5,6 +5,7 @@ LinkLuaModifier( "modifier_dawnbreaker_starbreaker_lua_slow", "heroes/dawnbreake
 LinkLuaModifier( "modifier_generic_custom_indicator", "heroes/generic/modifier_generic_custom_indicator", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier( "modifier_generic_stunned_lua", "heroes/generic/modifier_generic_stunned_lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier( "modifier_generic_arc_lua", "heroes/generic/modifier_generic_arc_lua", LUA_MODIFIER_MOTION_BOTH )
+LinkLuaModifier( "modifier_dawnbreaker_starbreaker_lua_blaze_buff", "heroes/dawnbreaker/dawnbreaker_starbreaker_lua/modifier_dawnbreaker_starbreaker_lua_blaze_buff", LUA_MODIFIER_MOTION_HORIZONTAL )
 
 function dawnbreaker_starbreaker_lua:Precache( context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_dawnbreaker.vsndevts", context )

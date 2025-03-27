@@ -22,6 +22,6 @@
 		"Ability14"		"special_bonus_unique_nevermore_necromastery_damage"
 		"Ability15"		"special_bonus_unique_nevermore_shadowraze_damage"
 		"Ability16"		"special_bonus_unique_nevermore_dark_lord_radius"
-		"Ability17"		"special_bonus_agility_40"
+		"Ability17"		"special_bonus_unique_nevermore_frenzy_castspeed"
 	}
 }

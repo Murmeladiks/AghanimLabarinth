@@ -87,39 +87,41 @@
 	//=================================================================================================================
 	"marci_companion_run_pf"
 	{
-
+		// General
+		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"ability_lua"
 		"ScriptFile"					"heroes/marci/marci_companion_run_pf"
 		"AbilityTextureName"			"marci_companion_run"
-		"FightRecapLevel"				"1"
-		"MaxLevel"						"4"
 		
-		// Ability General
-		//-------------------------------------------------------------------------------------------------------------
 		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_VECTOR_TARGETING | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_VECTOR_TARGETING | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_ALT_CASTABLE"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_CASTER | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
 
-		// Ability Casting
+		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastPoint"				"0.1"
 		"AbilityCastRange"				"450 550 650 750"
 
-		// Ability Resource
+		// Time
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"				"17 15 13 11"
-		"AbilityManaCost"				"70 80 90 100"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"75 90 105 120"
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityValues"
 		{
 			"move_speed"			"1700"
-			"min_jump_distance"		"150"
+			"min_jump_distance"		"0"
 			"max_jump_distance"
 			{
 				"value"										"450 550 650 750"
@@ -134,7 +136,7 @@
 			"debuff_duration"
 			{
 				"value"			"0.8 1.1 1.4 1.7"
-				"special_bonus_unique_marci_grapple_stun_duration"	"+0.5"
+				"special_bonus_unique_marci_grapple_stun_duration"	"+0.75"
 			}
 			"movement_slow_pct"			"30 40 50 60"
 			"min_lob_travel_time"		"0.1"
@@ -144,13 +146,31 @@
 			"min_acceleration"			"6000.0"
 			"max_acceleration"			"6000.0"
 			"vector_preview_radius"		"100"
-			"ally_buff_duration"		"5.0"
+			"ally_buff_duration"		"4.0"
 			"ally_movespeed_pct"	
 			{
-				"value"					"25 30 35 40"
+				"value"					"15 20 25 30"
 				"special_bonus_unique_marci_lunge_movespeed" "+10"
 			}
 			"impact_position_offset"	"64"
+			"ally_impact_damage_pct"
+			{
+				"value"					"0"
+				"RequiresFacet"		"marci_pickmeup"
+				"special_bonus_facet_marci_pickmeup"	"=25"
+			}
+			"postjump_unleash_duration"
+			{
+				"value"											"0"
+				"RequiresFacet"									"marci_fleeting_fury"
+				"special_bonus_facet_marci_fleeting_fury"		"=3"
+			}
+			"postjump_flurry_charges"
+			{
+				"value"											"0"
+				"RequiresFacet"									"marci_fleeting_fury"
+				"special_bonus_facet_marci_fleeting_fury"		"=1"
+			}
 		}
 	}
 
@@ -258,8 +278,8 @@
 			}
 			"lifesteal_pct"
 			{
-				"value"											"7.5 10.0 12.5 15.0"
-				"special_bonus_unique_marci_guardian_lifesteal"	"+5"
+				"value"											"10 12 14 16"
+				"special_bonus_unique_marci_guardian_lifesteal"	"+10"
 			}
 			"bonus_damage"		
 			{
@@ -270,39 +290,51 @@
 			{
 				"value"											"125"
 			}
-			"bonus_armor"										"4 7 10 13"
+			//"bonus_armor"										"4 7 10 13"
+			"max_partner_penalty"				"75"
 			"counter_cooldown"
 			{
 				"value"											"0.45"
 				"special_bonus_unique_marci_bodyguard_enemy"	"-0.15"
 			}
+			"shared_healing_percent"
+			{
+				"value"				"0"
+				"RequiresFacet"		"marci_buddy_system"
+				"special_bonus_facet_marci_buddy_system"	"=100"
+			}
 		}
 	}
 
+	//=================================================================================================================
+	// Marci: Unleashed
+	//=================================================================================================================
 	"marci_unleash_lua"
 	{
-
+		// General
+		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"ability_lua"
 		"ScriptFile"					"heroes/marci/marci_unleash_lua"
 		"AbilityTextureName"			"marci_unleash"
-		"FightRecapLevel"				"2"
-		"MaxLevel"						"3"
-		
-		// Ability General
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+		"FightRecapLevel"				"2"
+		"AbilitySound"					"Hero_Marci.Unleash.Cast"
 
-		// Ability Casting
+		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastPoint"				"0.2"
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
 
-		// Ability Resource
+		// Time
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"				"90 75 60"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
 		"AbilityManaCost"				"100 125 150"
 
 		// Special
@@ -313,9 +345,17 @@
 			"charges_per_flurry"			"3 4 5"
 			"flurry_bonus_attack_speed"		"700 975 1325"
 			"time_between_flurries"			"1.5"
-			"pulse_radius"					"800"
+			"pulse_radius"			
+			{
+				"value"		"800"
+				"affected_by_aoe_increase"	"1"	
+			}
 			"pulse_debuff_duration"			"2.0"
-			"pulse_damage"					"80 150 220"
+			"pulse_damage"					
+			{
+				"value"			"80 150 220"
+				"CalculateSpellDamageTooltip" "1"
+			}
 			"pulse_move_slow_pct"			"30.0"
 			"pulse_attack_slow_pct"			"60.0 80.0 100.0"
 			"max_time_window_per_hit"		"1.0"

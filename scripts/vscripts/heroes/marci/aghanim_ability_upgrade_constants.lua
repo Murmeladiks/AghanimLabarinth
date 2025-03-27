@@ -77,7 +77,7 @@ MINOR_ABILITY_UPGRADES["npc_dota_hero_marci"] = {
 		},
 	},
 	
-	
+	--[[
 	{
 		description = "marci_guardian_pf_lifesteal",
 		ability_name = "marci_pf_guardian",
@@ -112,6 +112,8 @@ MINOR_ABILITY_UPGRADES["npc_dota_hero_marci"] = {
 		},
 		required_facet = 1,
 	},
+
+	]]
 	
 	{
 		description = "marci_bodyguard_duration",
@@ -137,14 +139,14 @@ MINOR_ABILITY_UPGRADES["npc_dota_hero_marci"] = {
 		value = 5,
 		required_facet = 2,
 	},
-	{
+	--[[{
 		description = "marci_bodyguard_armor",
 		ability_name = "marci_pf_bodyguard",
 		special_value_name = "bonus_armor",
 		operator = MINOR_ABILITY_UPGRADE_OP_ADD,
 		value = 1.5,
 		required_facet = 2,
-	},
+	},]]
 	{
 		description = "marci_bodyguard_cooldown",
 		ability_name = "marci_pf_bodyguard",
@@ -205,20 +207,20 @@ SPECIAL_ABILITY_UPGRADES["npc_dota_hero_marci"] = {
 	"pathfinder_marci_grapple_mass",
 	"pathfinder_marci_grapple_stun",
 	
-	"pathfinder_marci_companion_run_unleash",
-	--"pathfinder_marci_companion_run_leap",
+	--"pathfinder_marci_companion_run_unleash",
+	"pathfinder_marci_companion_run_leap",
 	"pathfinder_marci_companion_run_global",
 	
 	--"pathfinder_marci_guardian_permanent",
-	"pathfinder_marci_guardian_enemy",
-	"pathfinder_marci_guardian_kick",
+	"special_bonus_unique_marci_bodyguard_enemy",
+	"pathfinder_marci_bodyguard_kick",
 	
 	"pathfinder_marci_unleash_passive",
 	"pathfinder_marci_unleash_pulse",
-	"pathfinder_marci_unleash_bash",
+	"pathfinder_marci_unleash_bash_bodyguard",
 }
 
-SPECIAL_ABILITY_UPGRADES_FACET_REPLACEMENTS["npc_dota_hero_marci"] = {
+--[[SPECIAL_ABILITY_UPGRADES_FACET_REPLACEMENTS["npc_dota_hero_marci"] = {
 	["pathfinder_marci_guardian_enemy"] = {
 		RequiredFacetID = 2,
 		ReplacedSpecial = "special_bonus_unique_marci_bodyguard_enemy"
@@ -231,7 +233,7 @@ SPECIAL_ABILITY_UPGRADES_FACET_REPLACEMENTS["npc_dota_hero_marci"] = {
 		RequiredFacetID = 2,
 		ReplacedSpecial = "pathfinder_marci_unleash_bash_bodyguard"
 	},
-}
+}]]
 
 item_marci_grapple_pf_stun = item_small_scepter_fragment
 item_marci_grapple_pf_damage = item_small_scepter_fragment
@@ -263,13 +265,16 @@ PURCHASABLE_SHARDS["npc_dota_hero_marci"] = {
 	"item_marci_companion_run_pf_jump",
 	"item_marci_companion_run_pf_debuff_duration",
 	"item_marci_companion_run_pf_cooldown",
+	"item_marci_bodyguard_lifesteal",
+	"item_marci_bodyguard_damage",
+	"item_marci_bodyguard_cooldown",
 	"item_marci_unleash_lua_duration",
 	"item_marci_unleash_lua_charges",
 	"item_marci_unleash_lua_flurries_cd",
 	"item_marci_unleash_lua_damage",
 }
 
-PURCHASABLE_SHARDS_FACET_ADDITIONS["npc_dota_hero_marci"] = {
+--[[PURCHASABLE_SHARDS_FACET_ADDITIONS["npc_dota_hero_marci"] = {
 	[1] = {
 		"item_marci_guardian_pf_lifesteal",
 		"item_marci_guardian_pf_damage",
@@ -280,4 +285,4 @@ PURCHASABLE_SHARDS_FACET_ADDITIONS["npc_dota_hero_marci"] = {
 		"item_marci_bodyguard_damage",
 		"item_marci_bodyguard_cooldown",
 	},
-}
+}]]

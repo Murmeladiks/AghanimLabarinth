@@ -1,0 +1,454 @@
+"Hero_Juggernaut"
+{    
+	//=================================================================================================================
+	// Ability: Juggernaut Blade Fury
+	//=================================================================================================================
+	"pathfinder_juggernaut_blade_fury"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/juggernaut/pathfinder_juggernaut_blade_fury"
+		"AbilityTextureName"			"juggernaut_blade_fury"
+
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+        "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+        "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_juggernaut.vsndevts"
+			"particle"	"particles/units/heroes/hero_juggernaut/juggernaut_blade_fury.vpcf"
+			"particle"	"particles/units/heroes/hero_juggernaut/juggernaut_blade_fury_tgt.vpcf"
+		}
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+        "AbilityCastPoint"              "0"
+		"AbilityCastRange"				"0"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"36 30 24 18"
+
+		// Cost		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"105 110 115 120"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+            "blade_fury_aspd_multiplier"
+			{
+				"value"		"2.0"
+			}
+			"blade_fury_radius"			
+			{
+				"value"						"260"
+				"affected_by_aoe_increase"	"1"
+			}
+            "blade_fury_damage"
+			{
+				"value"							"40 45 50 55"
+				"CalculateSpellDamageTooltip"	"1"
+			}
+			"duration"					"5.0"
+			"can_crit"
+			{
+				"value"						"0"
+				"special_bonus_facet_juggernaut_bladestorm"	"+1"
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Ability: Juggernaut Healing Ward
+	//=================================================================================================================
+	"pathfinder_juggernaut_summon_healing_ward"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/juggernaut/pathfinder_juggernaut_summon_healing_ward"
+		"AbilityTextureName"			"juggernaut_healing_ward"
+
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ALLIES_YES"
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+		
+		"precache"
+		{
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_juggernaut.vsndevts"
+		}		
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+        "AbilityCastRange"				"350"
+		"AbilityCastPoint"				"0.3"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
+
+		// Time
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"           "60"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+        "AbilityManaCost"           "120"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+        {
+			"radius"	
+			{
+				"value"				"500"
+				"affected_by_aoe_increase"	"1"
+			}
+            "duration"
+			{
+				"value" 			"25"
+				"special_bonus_unique_juggernaut_summon_healing_ward_duration"	"+25"
+			}
+            "max_health_regen" 		"1.5 2.0 2.5 3.0"
+            "ward_health" 			"500 555 650 780"
+        }
+	}
+
+	//=================================================================================================================
+	// Ability: Juggernaut Blade Dance
+	//=================================================================================================================
+	"pathfinder_juggernaut_blade_dance"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/juggernaut/pathfinder_juggernaut_blade_dance"
+		"AbilityTextureName"			"juggernaut_blade_dance"
+
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+		"IsBreakable"					"1"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"blade_dance_crit_chance"	"35"
+			"blade_dance_crit_mult"		"130 150 170 190"
+		}
+
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
+	}
+
+	//=================================================================================================================
+	// Ability: Juggernaut Omni Slash
+	//=================================================================================================================
+	"pathfinder_juggernaut_omni_slash"
+	{
+		"BaseClass"						"ability_lua"
+        "ScriptFile"					"heroes/juggernaut/pathfinder_juggernaut_omni_slash"
+        "AbilityTextureName"			"juggernaut_omni_slash"
+
+		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+		"FightRecapLevel"				"2"
+        "MaxLevel"                      "3"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"350"
+		"AbilityCastPoint"				"0.3"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"100"
+	
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"200 275 350"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"slash_rate_divisor"		"1.5"
+			"damage_bonus"
+			{
+				"value"					"25 30 35"
+				"CalculateSpellDamageTooltip"	"0"
+			}
+			"attack_speed_bonus"		"40"
+			"bounce_radius"			
+			{
+				"value"					"425"
+				"affected_by_aoe_increase"		"1"
+			}
+			"duration"
+			{
+				"value"					"3.0 3.25 3.5"
+				"special_bonus_unique_juggernaut_omnislash_duration"	"+3"
+			}
+		}
+	}
+
+    "pathfinder_special_juggernaut_blade_fury_ward"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+        "AbilityTextureName"            "juggernaut_blade_fury"
+        "BaseClass"                     "ability_datadriven"
+        "AbilityValues"
+        {
+            "radius" "600"
+            "duration_pct" "50"
+        }
+    }
+
+    "pathfinder_special_juggernaut_blade_fury_strength"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+        "AbilityTextureName"            "juggernaut_blade_fury"
+        "BaseClass"                     "ability_datadriven"
+        "AbilityValues"
+        {
+            "slow_pct" "75"
+        }
+    }
+
+    "pathfinder_special_juggernaut_healing_ward_earthshock"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+        "AbilityTextureName"            "juggernaut_healing_ward"
+        "BaseClass"                     "ability_datadriven"
+    }
+
+    "pathfinder_special_juggernaut_healing_ward_allies"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+        "AbilityTextureName"            "juggernaut_healing_ward"
+        "BaseClass"                     "ability_datadriven"
+        "AbilityValues"
+        {
+            "radius" "600"
+            "duration_percent" "60"
+        }
+    }
+
+    "pathfinder_special_juggernaut_blade_fury_flying"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+        "AbilityTextureName"            "juggernaut_blade_fury"
+        "BaseClass"                     "ability_datadriven"
+
+        "AbilityValues"
+        {
+            "damage_reduction" "35"
+        }
+    }
+
+    "pathfinder_special_juggernaut_blade_dance_reduce_omnislash_cooldown"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+        "AbilityTextureName"            "juggernaut_blade_dance"
+        "BaseClass"                     "ability_datadriven"
+
+        "AbilityValues"
+        {
+            "seconds" "0.75"
+        }
+    }
+
+    "pathfinder_special_juggernaut_blade_dance_illusion"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+        "AbilityTextureName"            "juggernaut_blade_dance"
+        "BaseClass"                     "ability_datadriven"
+        "AbilityValues"
+        {
+            "illusion_duration" "1.25"
+            "illusion_number" "15"
+        }
+    }
+
+    "pathfinder_special_juggernaut_healing_ward_creep"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+        "AbilityTextureName"            "juggernaut_healing_ward"
+        "BaseClass"                     "ability_datadriven"
+        "AbilityValues"
+        {
+            "health_multiplier" "40"
+            "dmg_percent" "20"
+        }
+    }
+
+    "pathfinder_special_juggernaut_wind_breathing_dummy"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "BaseClass"						"ability_lua"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+        "ScriptFile"					"heroes/juggernaut/pathfinder_special_juggernaut_wind_breathing_dummy"
+        "AbilityTextureName"            "juggernaut_swift_slash"        
+    }
+
+    "pathfinder_special_juggernaut_healing_ward_radiance"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "BaseClass"						"ability_datadriven"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"        
+        "AbilityTextureName"            "juggernaut_healing_ward"
+    }
+
+    "pathfinder_special_juggernaut_omni_tiny_slash"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "BaseClass"						"ability_datadriven"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"        
+        "AbilityTextureName"            "omniknight_pacify"
+        "AbilityValues"
+        {
+            "spawn_chance" "30"
+            "damage_percent" "90"
+            "duration" "10"
+        }
+    }
+
+    "pathfinder_healing_ward_burning_aura"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "BaseClass"						"ability_lua"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"    
+        "ScriptFile"					"heroes/juggernaut/pathfinder_healing_ward_burning_aura"    
+        "AbilityTextureName"            "juggernaut_healing_ward"
+        "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"
+        "MaxLevel"                      "1"
+        "AbilityValues"
+        {
+        }
+    }
+
+    "pathfinder_juggernaut_wind_breathing"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/juggernaut/pathfinder_juggernaut_wind_breathing"
+		"AbilityTextureName"			"juggernaut_swift_slash"
+
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"1"		
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.3"
+		"AbilityCastAnimation"			"ACT_DOTA_ATTACK_EVENT"
+
+		// Time
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"16"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"80 90 100"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+        {
+            "radius" "170"
+            "min_travel_distance" "200"
+            "max_travel_distance" "1800"
+        }
+	}
+
+    "pathfinder_healing_ward_earthshock"
+	{
+
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/juggernaut/pathfinder_healing_ward_earthshock"
+		"AbilityTextureName"			"juggernaut_healing_ward"
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"1"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_juggernaut.vsndevts"
+		}
+
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityValues"
+        {
+            "root_duration" "1.5"
+            "root_interval" "3"
+        }
+	}    
+
+    "special_bonus_unique_juggernaut_summon_healing_ward_duration"
+    {
+        "BaseClass"						"special_bonus_undefined"
+        
+        "AbilityType"                   "DOTA_ABILITY_TYPE_ATTRIBUTES"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"                   
+    }
+
+    "pathfinder_healing_ward_passive"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/juggernaut/pathfinder_healing_ward_passive"
+		"AbilityTextureName"			"juggernaut_healing_ward"
+
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"4"
+
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_juggernaut.vsndevts"
+            "particle"  "particles/units/heroes/hero_juggernaut/juggernaut_healing_ward_base.vpcf"
+		}
+	}
+}

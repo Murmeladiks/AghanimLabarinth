@@ -19,7 +19,6 @@
 		
 		"FightRecapLevel"				"1"
 
-
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"1200"
@@ -29,7 +28,6 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"				"13 12 11 10"
 		"AbilityDuration"				"0.6875 0.6875 0.6875 0.6875"
-
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -57,6 +55,100 @@
 			{
 				"value"					"0.7 0.8 0.9 1.0"
 				"special_bonus_unique_magnus_6"	"+0.5"
+			}
+			"swap_ability"
+			{
+				"value"				"0"
+				"special_bonus_facet_magnataur_diminishing_return" 	"=1"
+			}
+
+			"max_level_tooltip"
+			{
+				"special_bonus_facet_magnataur_diminishing_return" "=5"
+			}
+			"return_damage_pct_tooltip"
+			{
+				"value"			"0"
+				"special_bonus_facet_magnataur_diminishing_return"		"=50"
+			}
+			"return_shockwave_bonus_distance"
+			{
+				"special_bonus_facet_magnataur_diminishing_return"		"=200"
+			}
+		}
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
+	}
+
+	//=================================================================================================================
+	// Magnataur: Shockwave
+	//=================================================================================================================
+	"magnataur_pf_shockwave_return"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                     "ability_lua"
+        "ScriptFile"					"heroes/magnus/magnataur_pf_shockwave_return"
+		"AbilityTextureName"            "magnataur_shockwave"
+		
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"MaxLevel"						"5"
+		
+		"FightRecapLevel"				"1"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"1200"
+		"AbilityCastPoint"				"0.3"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"13 12 11 10"
+		"AbilityDuration"				"0.6875 0.6875 0.6875 0.6875"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"80 90 100 110"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"shock_speed"				"1200"
+			"shock_width"				
+			{
+				"value"	"200"
+				"affected_by_aoe_increase"	"1"
+			}
+			"shock_damage"				
+			{
+				"value"			"90 160 230 300 300"				
+				"special_bonus_unique_magnus"	"+125"
+			}
+			"pull_duration"				"0.2"
+			"movement_slow"				"75"
+			"pull_distance"		"150"
+			"basic_slow_duration"		
+			{
+				"value"					"0.7 0.8 0.9 1.0 1.0"
+				"special_bonus_unique_magnus_6"	"+0.5"
+			}
+			"return_damage_pct"			
+			{
+				"value"			"0"
+				"special_bonus_facet_magnataur_diminishing_return"		"=0 =0 =0 =0 =50"
+			}
+			"return_damage_pct_tooltip"
+			{
+				"value"			"0"
+				"special_bonus_facet_magnataur_diminishing_return"		"=50"
+			}
+			"return_shockwave_bonus_distance"
+			{
+				"special_bonus_facet_magnataur_diminishing_return"		"+200"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
@@ -150,6 +242,26 @@
 			{
 				"value"												"8"
 				"special_bonus_unique_magnataur_empower_charges"	"=0.1"
+			}
+			"always_on"			
+			{
+				"value"															"0"
+				"special_bonus_facet_magnataur_eternal_empowerment"				"=1"
+			}
+			"self_multiplier_bonus_stack_duration"
+			{
+				"value"															"0"
+				"special_bonus_facet_magnataur_eternal_empowerment"				"10"
+			}
+			"self_multiplier_bonus_max_stacks"		
+			{
+				"value"															"0"
+				"special_bonus_facet_magnataur_eternal_empowerment"				"8 12 16 20"
+			}
+			"self_multiplier_bonus_per_stack"		
+			{
+				"value"															"0"
+				"special_bonus_facet_magnataur_eternal_empowerment"				"2 3 4 5"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
@@ -347,7 +459,7 @@
 				"value"						"2.5 3.0 3.5"
 				"special_bonus_unique_magnus_5"	"+0.8"
 			}
-			"pull_duration"					"0.3 0.3 3.3"
+			"pull_duration"					"0.3 0.3 0.3"
         }
     }
 

@@ -117,6 +117,8 @@ function modifier_dragon_knight_pf_elder_dragon_form:OnCreated(kv)
 	self.nAttackRange = hAbility:GetSpecialValueFor("bonus_attack_range")
 	self.nDamage = hAbility:GetSpecialValueFor("bonus_attack_damage")
 	self.nScale = hAbility:GetSpecialValueFor("model_scale")
+	self.nSplashRadius = hAbility:GetSpecialValueFor("ranged_splash_radius")
+	self.nSplashDamagePct = hAbility:GetSpecialValueFor("ranged_splash_damage_pct") / 100
 
 	self.sTransformParticle = "particles/units/heroes/hero_dragon_knight/dragon_knight_transform_green.vpcf"
 	self.sDragonID = "default"
@@ -184,12 +186,38 @@ function modifier_dragon_knight_pf_elder_dragon_form:DeclareFunctions()
 		MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT,
 		MODIFIER_PROPERTY_ATTACK_RANGE_BONUS,
 		MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE,
+		MODIFIER_PROPERTY_PROCATTACK_FEEDBACK,
 		MODIFIER_PROPERTY_MODEL_CHANGE,
 		MODIFIER_PROPERTY_MODEL_SCALE,
 		MODIFIER_PROPERTY_TRANSLATE_ATTACK_SOUND,
 		MODIFIER_PROPERTY_PROJECTILE_NAME,
 		MODIFIER_PROPERTY_PROJECTILE_SPEED_BONUS,
 	}
+end
+
+--------------------------------------------------------------------------------
+
+function modifier_dragon_knight_pf_elder_dragon_form:GetModifierProcAttack_Feedback(event)
+	if IsClient() then return end
+	local hAttacker = event.attacker
+	local hTarget = event.target
+
+	local tSplashTable = {
+		attacker = hAttacker,
+		victim = nil,
+		damage = event.damage * self.nSplashDamagePct,
+		damage_type = DAMAGE_TYPE_PHYSICAL,
+		damage_flags = DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION + DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL,
+		ability = self.hAbility
+	}
+
+	local hEnemies = FindUnitsInRadius(hAttacker:GetTeamNumber(), hTarget:GetOrigin(), nil, self.nSplashRadius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, 0, 0, false)
+	for _, hEnemy in pairs (hEnemies) do
+		if hEnemy ~= hTarget then
+			tSplashTable.victim = hEnemy
+			ApplyDamage(tSplashTable)
+		end
+	end
 end
 
 --------------------------------------------------------------------------------

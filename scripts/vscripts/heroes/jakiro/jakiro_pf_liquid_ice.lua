@@ -27,6 +27,8 @@ function jakiro_pf_liquid_ice:GetCastRange( vLocation, hTarget )
 	return math.max(self.BaseClass.GetCastRange(self, vLocation, hTarget), self:GetCaster():Script_GetAttackRange())
 end
 
+--------------------------------------------------------------------------------
+
 function jakiro_pf_liquid_ice:OnProjectileHit(hTarget, vLocation)
 	if not hTarget then return end
 
@@ -121,6 +123,12 @@ function modifier_jakiro_pf_liquid_ice:OnAttack( event )
 	hAttacker:EmitSound("Hero_Jakiro.LiquidFrost")
 
 	hAbility:UseResources(true, false, false, true)
+
+	local hFire = hAttacker:FindAbilityByName("jakiro_pf_liquid_fire")
+
+	if hFire then
+		hFire:UseResources(false, false, false, true)
+	end
 
 	if self.nReadyFX then
 		ParticleManager:DestroyParticle(self.nReadyFX, false)

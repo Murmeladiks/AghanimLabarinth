@@ -6,7 +6,7 @@
 
 		"Ability1"				"marci_grapple_pf"
 		"Ability2"				"marci_companion_run_pf"
-		"Ability3"				"marci_pf_guardian"
+		"Ability3"				"marci_pf_bodyguard"
 		"Ability4"				"marci_pf_special_delivery"
 		"Ability5"				"generic_hidden"
 		"Ability6"				"marci_unleash_lua"

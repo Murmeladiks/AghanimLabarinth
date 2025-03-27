@@ -47,14 +47,10 @@
 			"stack_damage"
 			{
 				"value"								"20 30 40 50"
+				"CalculateSpellDamageTooltip"		"0"
 				"special_bonus_unique_nevermore_7"	"+30"
 			}
 			"movement_speed_debuff"
-			{
-				"value"											"0"
-				"special_bonus_facet_nevermore_shadowmire"		"3"
-			}
-			"attack_speed_debuff"
 			{
 				"value"											"0"
 				"special_bonus_facet_nevermore_shadowmire"		"3"
@@ -122,11 +118,6 @@
 				"value"											"0"
 				"special_bonus_facet_nevermore_shadowmire"		"4"
 			}
-			"attack_speed_debuff"
-			{
-				"value"											"0"
-				"special_bonus_facet_nevermore_shadowmire"		"4"
-			}
 			"stack_duration"				"8"
 			"AbilityCooldown"
 			{
@@ -189,11 +180,6 @@
 				"value"											"0"
 				"special_bonus_facet_nevermore_shadowmire"		"4"
 			}
-			"attack_speed_debuff"
-			{
-				"value"											"0"
-				"special_bonus_facet_nevermore_shadowmire"		"4"
-			}
 			"stack_duration"				"8"
 			"AbilityCooldown"
 			{
@@ -228,20 +214,20 @@
 		{
 			"bonus_attack_speed"	
 			{
-				"value"					"40 50 60 70"
+				"value"					"40 55 70 85"
 				"special_bonus_unique_nevermore_4"	"+30"
 			}
 			"cast_speed_pct"		
 			{
 				"value"													"100"
-				"special_bonus_unique_nevermore_frenzy_castspeed"		"+40"
+				"special_bonus_unique_nevermore_frenzy_castspeed"		"+50"
 			}
 			"cast_speed_pct_tooltip"
 			{
 				"value"													"0"
-				"special_bonus_unique_nevermore_frenzy_castspeed"		"=140"
+				"special_bonus_unique_nevermore_frenzy_castspeed"		"=150"
 			}
-			"duration"				"8"
+			"duration"				"7.5 8 8.5 9"
 			"soul_cost"				"5"
 		}
 	}

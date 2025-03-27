@@ -43,8 +43,6 @@ function templar_assassin_pf_meld:OnSpellStart()
 	local hCaster = self:GetCaster()
 	local nDuration = self:GetSpecialValueFor("duration")
 
-	
-
 	hCaster:AddNewModifier(hCaster, self, "modifier_templar_assassin_pf_meld", {duration = self:GetSpecialValueFor("meld_duration")})
 
 	hCaster:EmitSound("Hero_TemplarAssassin.Meld")
@@ -143,6 +141,7 @@ modifier_templar_assassin_pf_meld = class({})
 --------------------------------------------------------------------------------
 
 function modifier_templar_assassin_pf_meld:IsPurgable() return false end
+function modifier_templar_assassin_pf_meld:IsHidden() return self:GetStackCount() > 0 end
 
 --------------------------------------------------------------------------------
 
@@ -150,8 +149,12 @@ function modifier_templar_assassin_pf_meld:OnCreated()
 	local hAbility = self:GetAbility()
 	local hParent = self:GetParent()
 
+	self.nMaxAttackRange = hAbility:GetSpecialValueFor("attack_range_increase_max")
+	self.nRangeIncreaseTime = hAbility:GetSpecialValueFor("attack_range_increase_time")
+
 	if IsClient() then return end
 	self.ActiveRecords = {}
+	self.bStartedAttack = false
 
 	local nMeldFX = ParticleManager:CreateParticle("particles/units/heroes/hero_templar_assassin/templar_assassin_meld.vpcf", PATTACH_ABSORIGIN_FOLLOW, hParent)
 	ParticleManager:SetParticleControlEnt(nMeldFX, 1, hParent, PATTACH_ABSORIGIN_FOLLOW, nil, Vector(0, 0, 0), true)
@@ -176,6 +179,8 @@ end
 
 function modifier_templar_assassin_pf_meld:OnRefresh()
 	self.bStartedAttack = false
+	
+	if IsServer() then self:SetStackCount(0) end	
 end
 
 --------------------------------------------------------------------------------
@@ -200,7 +205,8 @@ function modifier_templar_assassin_pf_meld:DeclareFunctions()
 
 		MODIFIER_PROPERTY_INVISIBILITY_LEVEL,
 		MODIFIER_PROPERTY_PROJECTILE_NAME,
-		MODIFIER_PROPERTY_TRANSLATE_ACTIVITY_MODIFIERS
+		MODIFIER_PROPERTY_TRANSLATE_ACTIVITY_MODIFIERS,
+		MODIFIER_PROPERTY_ATTACK_RANGE_BONUS
 	}
 end
 
@@ -208,9 +214,15 @@ end
 
 function modifier_templar_assassin_pf_meld:CheckState()
 	return {
-		[MODIFIER_STATE_INVISIBLE] = true,
+		[MODIFIER_STATE_INVISIBLE] = self:GetStackCount() == 0,
 		[MODIFIER_STATE_NO_UNIT_COLLISION] = true
 	}
+end
+
+--------------------------------------------------------------------------------
+
+function modifier_templar_assassin_pf_meld:GetModifierAttackRangeBonus()
+	return self.nMaxAttackRange * math.min(self:GetElapsedTime() / self.nRangeIncreaseTime, 1)
 end
 
 --------------------------------------------------------------------------------
@@ -254,7 +266,7 @@ function modifier_templar_assassin_pf_meld:OnAttack(event)
 
 	for _, hEnemy in pairs(hEnemies) do
 		if hEnemy ~= hTarget then
-			hAbility:MeldAttack(hEnemy)
+			hAbility:MeldAttack(hAttacker, hEnemy)
 		end
 	end
 end
@@ -274,7 +286,7 @@ function modifier_templar_assassin_pf_meld:OnAttackLanded(event)
 	local hAttacker = event.attacker
 	local hTarget = event.target
 
-	if hAttacker == self:GetParent() and self.ActiveRecords[event.record] and hTarget and hTarget:GetTeam() ~= hAttacker:GetTeam() and not hTarget:IsBuilding() and not hTarget:IsOther() then	
+	if hAttacker == self:GetParent() and self.ActiveRecords[event.record] and hTarget and hTarget:GetTeam() ~= hAttacker:GetTeam() and not hTarget:IsBuilding() and not hTarget:IsOther() and not event.no_attack_cooldown then	
 		self:GetAbility():ApplyMeldEffects(hTarget)
 
 		self:Destroy()
@@ -284,7 +296,9 @@ end
 --------------------------------------------------------------------------------
 
 function modifier_templar_assassin_pf_meld:GetModifierInvisibilityLevel()
-	return 1
+	if self:GetStackCount() == 0 then
+		return 1
+	end
 end
 
 --------------------------------------------------------------------------------
@@ -292,7 +306,7 @@ end
 function modifier_templar_assassin_pf_meld:GetModifierProjectileName()
 	local hTarget = self:GetParent():GetAttackTarget()
 	if hTarget and not hTarget:IsBuilding() and not hTarget:IsOther() and not self.bAlreadyAttacked then
-		if IsServer() then self:GetAbility():MeldAttack(self:GetParent(), hTarget) end
+		--if IsServer() then self:GetAbility():MeldAttack(self:GetParent(), hTarget) end
 		return "particles/units/heroes/hero_templar_assassin/templar_assassin_meld_attack.vpcf"
 	end
 end
@@ -303,6 +317,9 @@ function modifier_templar_assassin_pf_meld:OnAttackFinished(event)
 	if event.attacker == self:GetParent() and not event.no_attack_cooldown then
 		self.bStartedAttack = true
 		self.bAlreadyAttacked = true
+		if IsServer() then
+			self:SetStackCount(1)
+		end
 	end	
 end
 

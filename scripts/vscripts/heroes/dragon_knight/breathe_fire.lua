@@ -65,14 +65,25 @@ end
 function pathfinder_dk_breathe_fire:OnProjectileHit( target, location )
 	if not target or target:IsNull() then return end
 
-	local damage = self:GetLevelSpecialValueFor( "damage", self:GetLevel() - 1 )
+	local damage = self:GetSpecialValueFor("damage")
 	local duration = self:GetSpecialValueFor( "duration" )
+	local nType = DAMAGE_TYPE_MAGICAL
+
+	if self:GetSpecialValueFor("physical_damage_type") > 0 then
+		nType = DAMAGE_TYPE_PHYSICAL
+	end
+
+	local hWyrmWrath = self:GetCaster():FindAbilityByName("dragon_knight_pf_dragon_blood")
+
+	if hWyrmWrath and hWyrmWrath:IsTrained() then
+		damage = damage + hWyrmWrath:GetSpecialValueFor("spell_damage")
+	end
 
 	local damageTable = {
 		victim = target,
 		attacker = self:GetCaster(),
 		damage = damage,
-		damage_type = self:GetAbilityDamageType(),
+		damage_type = nType,
 		ability = self,
 	}
 
@@ -199,14 +210,29 @@ function modifier_pathfinder_dk_macropyre_thinker:OnCreated( kv )
 	self.interval = self.shard_ability:GetLevelSpecialValueFor( "interval",1 )
 	self.debuff_duration = self:GetAbility():GetLevelSpecialValueFor( "duration",1 )
 
-	self.damage = self:GetAbility():GetLevelSpecialValueFor( "damage", self:GetAbility():GetLevel() - 1 ) * (self.shard_ability:GetLevelSpecialValueFor("damage_percent",1) / 100)
+	local dmg = self:GetAbility():GetSpecialValueFor("damage")
+
+	local hWyrmWrath = self:GetCaster():FindAbilityByName("dragon_knight_pf_dragon_blood")
+
+	if hWyrmWrath and hWyrmWrath:IsTrained() then
+		dmg = dmg + hWyrmWrath:GetSpecialValueFor("spell_damage")
+	end
+
+	self.damage = dmg * (self.shard_ability:GetLevelSpecialValueFor("damage_percent",1) / 100)
+
+	local nType = DAMAGE_TYPE_MAGICAL
+
+	if self:GetAbility():GetSpecialValueFor("physical_damage_type") > 0 then
+		nType = DAMAGE_TYPE_PHYSICAL
+	end
 
 	-- ability properties
 	self.abilityDamageType = self:GetAbility():GetAbilityDamageType()
 	self.abilityTargetTeam = self:GetAbility():GetAbilityTargetTeam()
-	self.abilityTargetType = self:GetAbility():GetAbilityTargetType()
+	self.abilityTargetType = nType
 	self.abilityTargetFlags = self:GetAbility():GetAbilityTargetFlags()
 	self.ability = self:GetAbility()
+
 
 	self.startpoint = Vector(kv.fromx, kv.fromy, kv.fromz)
 	self.endpoint = Vector(kv.tox, kv.toy, kv.toz)

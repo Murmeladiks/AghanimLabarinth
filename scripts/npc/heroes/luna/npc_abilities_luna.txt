@@ -165,10 +165,10 @@
 			"rotating_glaives_movement_radius"			"250"
 			"rotating_glaives_hit_radius"
 			{
-				"value"								"150"
+				"value"								"175"
 				"affected_by_aoe_increase"			"1"
 			}
-			"rotating_glaives_collision_damage"				"20 25 30 35"
+			"rotating_glaives_collision_damage"				"22 28 34 40"
 			"rotating_glaives_speed"
 			{
 				"value"									"160"
@@ -178,7 +178,7 @@
 			"rotating_glaives_damage_reduction"
 			{
 				"value"									"0"
-				"special_bonus_facet_luna_moonshield"	"10 15 20 25"
+				"special_bonus_facet_luna_moonshield"	"15 20 25 30"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"

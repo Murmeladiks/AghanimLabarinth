@@ -10,9 +10,9 @@
         "Ability6"				"dragon_knight_pf_elder_dragon_form"
         "Ability7"		        "dragon_knight_pf_inherited_vigor"
 
-        "Ability10"		"special_bonus_movement_speed_15"
-        "Ability11"		"special_bonus_unique_dragon_knight_dragon_tail_radius"
-        "Ability12"		"special_bonus_attack_damage_25"
+        //"Ability10"		"special_bonus_movement_speed_15"
+        //"Ability11"		"special_bonus_unique_dragon_knight_dragon_tail_radius"
+        //"Ability12"		"special_bonus_attack_damage_25"
         "Ability13"		"special_bonus_hp_400"
         "Ability14"		"special_bonus_unique_dragon_knight"
         "Ability15"		"special_bonus_strength_20"

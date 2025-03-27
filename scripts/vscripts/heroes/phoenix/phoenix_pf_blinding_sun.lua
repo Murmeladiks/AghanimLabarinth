@@ -49,7 +49,6 @@ function modifier_phoenix_pf_blinding_sun:OnIntervalThink()
 		if hParent:HasModifier(pszScriptName) then
 			self:SetStackCount(math.min(self:GetStackCount() + 1, self.nMaxStacks))
 			self:SetDuration(self:GetDuration(), true)
-			break
 		end
 	end
 end

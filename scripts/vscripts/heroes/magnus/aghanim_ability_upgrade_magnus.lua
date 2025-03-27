@@ -2,6 +2,7 @@ MINOR_ABILITY_UPGRADES["npc_dota_hero_magnataur"] = {
 	{
 		description = "aghsfort_magnataur_shockwave_flat_damage",
 		ability_name = "magnataur_pf_shockwave",
+		facet_ability_name = "magnataur_pf_shockwave_return",
 		special_value_name = "shock_damage",
 		operator = MINOR_ABILITY_UPGRADE_OP_ADD,
 		value = 75,
@@ -9,6 +10,7 @@ MINOR_ABILITY_UPGRADES["npc_dota_hero_magnataur"] = {
 	-- {
 	-- 	 description = "aghsfort_magnataur_shockwave_flat_shock_width",
 	-- 	 ability_name = "magnataur_pf_shockwave",
+	--   facet_ability_name = "magnataur_pf_shockwave_return",
 	-- 	 special_value_name = "shock_width",
 	-- 	 operator = MINOR_ABILITY_UPGRADE_OP_ADD,
 	-- 	 value = 50,
@@ -17,6 +19,7 @@ MINOR_ABILITY_UPGRADES["npc_dota_hero_magnataur"] = {
 	{
 		description = "aghsfort_magnataur_shockwave_flat_slow_duration",
 		ability_name = "magnataur_pf_shockwave",
+		facet_ability_name = "magnataur_pf_shockwave_return",
 		special_value_name = "basic_slow_duration",
 		operator = MINOR_ABILITY_UPGRADE_OP_ADD,
 		value = 1.25,
@@ -25,6 +28,7 @@ MINOR_ABILITY_UPGRADES["npc_dota_hero_magnataur"] = {
 	{
 		description = "aghsfort_magnataur_shockwave_mana_cost_cooldown",
 		ability_name = "magnataur_pf_shockwave",
+		facet_ability_name = "magnataur_pf_shockwave_return",
 		special_values =
 		{
 			{
@@ -159,12 +163,11 @@ STAT_UPGRADE_EXCLUDES["npc_dota_hero_magnataur"] = {"aghsfort_minor_stat_upgrade
 
 ULTIMATE_ABILITY_NAMES["npc_dota_hero_magnataur"] = "magnataur_reverse_polarity"
 
-
 SPECIAL_ABILITY_UPGRADES["npc_dota_hero_magnataur"] =
 {
 	"aghsfort_special_magnataur_shockwave_multishot",
 	"aghsfort_special_magnataur_shockwave_damage_reduction",
-	"aghsfort_special_magnataur_shockwave_boomerang",
+	--"aghsfort_special_magnataur_shockwave_boomerang",
 	
 	--"aghsfort_special_magnataur_empower_all_allies",
 	"special_bonus_unique_magnataur_empower_charges",
@@ -181,13 +184,6 @@ SPECIAL_ABILITY_UPGRADES["npc_dota_hero_magnataur"] =
 	"aghsfort_special_magnataur_reverse_polarity_polarity_dummy",
 	"aghsfort_special_magnataur_reverse_polarity_allies_crit",
 	"aghsfort_special_magnataur_reverse_polarity_steroid",
-}
-
-SPECIAL_ABILITY_UPGRADES_FACET_REPLACEMENTS["npc_dota_hero_magnataur"] = {
-	["aghsfort_special_magnataur_reverse_polarity_polarity_dummy"] = {
-		RequiredFacetID = 3,
-		ReplacedSpecial = "aghsfort_special_magnataur_reverse_polarity_polarity_dummy_facet"
-	}
 }
 
 item_aghsfort_magnataur_shockwave_flat_damage = item_small_scepter_fragment

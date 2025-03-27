@@ -8,10 +8,10 @@
 		"Ability3"				"windranger_windrun_lua"		
 		"Ability6"				"windranger_focus_fire_lua"	
 
-		"Ability10"		"special_bonus_mp_regen_250"
+		"Ability10"		"special_bonus_unique_windranger_powershot_slow"
 		"Ability11"		"special_bonus_unique_windranger_shackle_duration"
-		"Ability12"		"special_bonus_movement_speed_25"
-		"Ability13"		"special_bonus_unique_windranger_shackle_count"
+		"Ability12"		"special_bonus_unique_windranger_4"
+		"Ability13"		"special_bonus_unique_windranger_9"
 		"Ability14"		"special_bonus_unique_windranger_powershot_damage"
 		"Ability15"		"special_bonus_attack_range_100"
 		"Ability16"		"special_bonus_unique_windranger_focusfire_duration"

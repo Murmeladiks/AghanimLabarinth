@@ -1,15 +1,15 @@
 LinkLuaModifier("modifier_windranger_focus_fire_lua", 		"heroes/windranger/windranger_focus_fire_lua/modifier_windranger_focus_fire_lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_focus_fire_target", 				"heroes/windranger/windranger_focus_fire_lua/modifier_focus_fire_target", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_windrunner_pf_whirlwind", 		"heroes/windranger/windranger_focus_fire_lua/windranger_focus_fire_lua", LUA_MODIFIER_MOTION_NONE)
+--LinkLuaModifier("modifier_windrunner_pf_whirlwind", 		"heroes/windranger/windranger_focus_fire_lua/windranger_focus_fire_lua", LUA_MODIFIER_MOTION_NONE)
 
 --------------------------------------------------------------------------------
 
 windranger_focus_fire_lua = class({})
 
 --------------------------------------------------------------------------------
-
+--[[
 function windranger_focus_fire_lua:GetAbilityTextureName()
-	return self:GetCaster():GetHeroFacetID() == 2 and "windrunner_focusfire" --or "windrunner_whirlwind"
+	return self:GetCaster():GetHeroFacetID() == 2 and "windrunner_focusfire" or "windrunner_whirlwind"
 end
 
 --------------------------------------------------------------------------------
@@ -30,35 +30,35 @@ function windranger_focus_fire_lua:GetCastRange(vLocation, hTarget)
 	end
 
 	return self.BaseClass.GetCastRange(self, vLocation, hTarget)
-end
+end]]
 
 --------------------------------------------------------------------------------
 
 function windranger_focus_fire_lua:OnSpellStart()
 	local hCaster = self:GetCaster()
-
-	if hCaster:GetHeroFacetID() == 2 then
+	self:FocusFire(self:GetCursorTarget())
+	--[[if hCaster:GetHeroFacetID() == 2 then
 		self:FocusFire(self:GetCursorTarget())
 	else
 		self:Whirlwind()
-	end
+	end]]
 end
 
 --------------------------------------------------------------------------------
 
---function windranger_focus_fire_lua:Whirlwind()
---	local hCaster = self:GetCaster()
---
---	hCaster:AddNewModifier(hCaster, self, "modifier_windrunner_pf_whirlwind", {duration = self:GetSpecialValueFor("whirlwind_duration")})
---	hCaster:EmitSound("Ability.Focusfire")
---
---	if hCaster:HasShard("pathfinder_special_windranger_whirlwind_lifesteal") then
---		local hWindrun = hCaster:FindAbilityByName("windranger_windrun_lua")
---		if hWindrun and hWindrun:IsTrained() then
---			hWindrun:OnSpellStart()
---		end
---	end
---end
+function windranger_focus_fire_lua:Whirlwind()
+	local hCaster = self:GetCaster()
+
+	hCaster:AddNewModifier(hCaster, self, "modifier_windrunner_pf_whirlwind", {duration = self:GetSpecialValueFor("whirlwind_duration")})
+	hCaster:EmitSound("Ability.Focusfire")
+
+	if hCaster:HasShard("pathfinder_special_windranger_whirlwind_lifesteal") then
+		local hWindrun = hCaster:FindAbilityByName("windranger_windrun_lua")
+		if hWindrun and hWindrun:IsTrained() then
+			hWindrun:OnSpellStart()
+		end
+	end
+end
 
 --------------------------------------------------------------------------------
 
@@ -102,7 +102,7 @@ end
 
 --------------------------------------------------------------------------------
 
-modifier_windrunner_pf_whirlwind = class({})
+--[[modifier_windrunner_pf_whirlwind = class({})
 
 --------------------------------------------------------------------------------
 
@@ -259,4 +259,4 @@ function modifier_windrunner_pf_whirlwind:OnAttacked(event)
 	hTarget:AddNewModifier(hAttacker, self:GetAbility(), "modifier_bashed", {duration = 0.01})
 	hTarget:AddNewModifier(hAttacker, self:GetAbility(), "modifier_break", {duration = self.nBreakDuration * (1 - hTarget:GetStatusResistance())})
 	hTarget:EmitSound("DOTA_Item.MKB.Minibash")
-end
+end]]

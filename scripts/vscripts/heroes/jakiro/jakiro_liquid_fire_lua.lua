@@ -6,37 +6,13 @@ LinkLuaModifier("modifier_imba_liquid_fire_animate", 			"heroes/jakiro/jakiro_li
 LinkLuaModifier("modifier_jakiro_liquid_fire_lua", 				"heroes/jakiro/modifier_jakiro_liquid_fire_lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("pathfinder_jakiro_liquid_fire_allies_checker", "heroes/jakiro/jakiro_liquid_fire_lua", LUA_MODIFIER_MOTION_NONE)
 
-function jakiro_liquid_fire_lua:Spawn()
-	if IsClient() then return end
-	Timers:CreateTimer(0.1, function()
-		local hPlayerHero = PlayerResource:GetSelectedHeroEntity(self:GetCaster():GetPlayerOwnerID())
-
-		local vecAbilitiesToRemove = {
-			"jakiro_liquid_fire",
-			"jakiro_liquid_ice",
-		}
-
-		for _, sAbilityName in pairs(vecAbilitiesToRemove) do
-			if hPlayerHero:HasAbility(sAbilityName) then hPlayerHero:RemoveAbility(sAbilityName) end
-		end
-
-		
-		if hPlayerHero:GetHeroFacetID() == 2 and not hPlayerHero.bSwappedToLiquidfrost then
-			hPlayerHero.bSwappedToLiquidfrost = true
-
-			local hLiquidFrost = hPlayerHero:AddAbility("jakiro_pf_liquid_ice")
-			hPlayerHero:SwapAbilities("jakiro_liquid_fire_lua", "jakiro_pf_liquid_ice", false, true)
-			hPlayerHero:RemoveAbility("jakiro_liquid_fire_lua")
-		end
-	end)
-end
 
 function jakiro_liquid_fire_lua:GetAOERadius()
-	return self:GetLevelSpecialValueFor("radius", self:GetLevel())
+	return self:GetSpecialValueFor("radius")
 end
 
 function jakiro_liquid_fire_lua:GetCastRange(vLocation, hTarget)
-	return self:GetCaster():Script_GetAttackRange()--self:GetLevelSpecialValueFor("range", self:GetLevel())
+	return self:GetCaster():Script_GetAttackRange()
 end
 
 function jakiro_liquid_fire_lua:CastFilterResultTarget(target)

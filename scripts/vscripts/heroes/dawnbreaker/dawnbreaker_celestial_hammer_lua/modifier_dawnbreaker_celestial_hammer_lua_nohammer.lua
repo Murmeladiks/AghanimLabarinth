@@ -4,7 +4,6 @@ modifier_dawnbreaker_celestial_hammer_lua_nohammer = class({})
 --------------------------------------------------------------------------------
 -- Classifications
 function modifier_dawnbreaker_celestial_hammer_lua_nohammer:IsHidden() 		return true end
-function modifier_dawnbreaker_celestial_hammer_lua_nohammer:IsDebuff() 		return false end
 function modifier_dawnbreaker_celestial_hammer_lua_nohammer:IsPurgable() 	return false end
 function modifier_dawnbreaker_celestial_hammer_lua_nohammer:GetActivityTranslationModifiers() return "no_hammer" end
 

@@ -25,6 +25,9 @@ function modifier_dawnbreaker_starbreaker_lua:OnCreated( kv )
 	self.attacks = self:GetAbility():GetSpecialValueFor( "total_attacks" )
 	self.speed = self:GetAbility():GetSpecialValueFor( "movement_speed" )
 
+	self.nStarsurgeRadius = self:GetAbility():GetSpecialValueFor("movespeed_bonus_radius")
+	self.nStarsurgeCaptainMult = self:GetAbility():GetSpecialValueFor("movespeed_bonus_captain_mult")
+
 	self.tree_radius = 100
 	self.arc_height = 90
 	self.arc_duration = 0.4
@@ -34,6 +37,7 @@ function modifier_dawnbreaker_starbreaker_lua:OnCreated( kv )
 	self.forward = Vector( kv.x, kv.y, 0 )
 	self.bonus = 0
 	self.ctr = 0
+	self.nTotalHits = 0
 	local interval = self:GetDuration()/(self.attacks-1)
 
 	-- apply forward motion
@@ -49,6 +53,18 @@ function modifier_dawnbreaker_starbreaker_lua:OnDestroy()
 	self:GetParent():RemoveHorizontalMotionController( self )
 	self:GetParent():FadeGesture(ACT_DOTA_OVERRIDE_ABILITY_1)
 	self:GetParent():FadeGesture(ACT_DOTA_CAST_ABILITY_1)
+
+	if self.nTotalHits > 0 and self.nStarsurgeRadius > 0 then
+		local hCaster = self:GetCaster()
+		local hAbility = self:GetAbility()
+		local nDuration = hAbility:GetSpecialValueFor("movespeed_bonus_duration")
+
+		local hAllies = FindUnitsInRadius(hCaster:GetTeam(), hCaster:GetOrigin(), nil,self.nStarsurgeRadius, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS + DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO, 0, false)
+
+		for _, hAlly in pairs(hAllies) do
+			hAlly:AddNewModifier(hCaster, hAbility, "modifier_dawnbreaker_starbreaker_lua_blaze_buff", {duration = nDuration}):SetStackCount(self.nTotalHits)
+		end
+	end
 end
 
 function modifier_dawnbreaker_starbreaker_lua:DeclareFunctions()
@@ -144,8 +160,16 @@ function modifier_dawnbreaker_starbreaker_lua:Swipe()
 		false	-- bool, can grow cache
 	)
 
+	local bHitCounted = false
+	local bCaptainCounted = false
+
 	for _,enemy in pairs(enemies) do
 		if enemy and not enemy:IsNull() then
+			if not bHitCounted then
+				bHitCounted = true
+				self.nTotalHits = self.nTotalHits + 1
+			end
+
 			-- attack
 			self.bonus = self.swipe_damage
 			self.parent:PerformAttack( enemy, true, true, true, true, false, false, true )
@@ -158,6 +182,11 @@ function modifier_dawnbreaker_starbreaker_lua:Swipe()
 					"modifier_dawnbreaker_starbreaker_lua_slow", -- modifier name
 					{ duration = self.swipe_duration } -- kv
 				)
+			end
+
+			if (enemy:IsConsideredHero() or enemy:IsBoss()) and not bCaptainCounted then
+				bCaptainCounted = true
+				self.nTotalHits = self.nTotalHits + self.nStarsurgeCaptainMult - 1
 			end
 		end
 	end
@@ -198,6 +227,9 @@ function modifier_dawnbreaker_starbreaker_lua:Smash()
 		ParticleManager:ReleaseParticleIndex( nFXIndex )
 	end
 
+	local bHitCounted = false
+	local bCaptainCounted = false
+
 	-- find enemies
 	local enemies = FindUnitsInRadius(
 		self.parent:GetTeamNumber(),	-- int, your team number
@@ -213,6 +245,16 @@ function modifier_dawnbreaker_starbreaker_lua:Smash()
 
 	for _,enemy in pairs(enemies) do
 		if enemy and not enemy:IsNull() then
+			if not bHitCounted then
+				bHitCounted = true
+				self.nTotalHits = self.nTotalHits + 1				
+			end
+
+			if (enemy:IsConsideredHero() or enemy:IsBoss()) and not bCaptainCounted then
+				bCaptainCounted = true
+				self.nTotalHits = self.nTotalHits + self.nStarsurgeCaptainMult - 1
+			end
+
 			-- attack
 			self.bonus = self.smash_damage
 			self.parent:PerformAttack( enemy, true, true, true, true, false, false, true )

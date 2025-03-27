@@ -1,5 +1,16 @@
-pathfinder_juggernaut_blade_fury = class({})
 LinkLuaModifier( "modifier_pathfinder_juggernaut_blade_fury", "heroes/juggernaut/modifier_pathfinder_juggernaut_blade_fury", LUA_MODIFIER_MOTION_NONE )
+
+--------------------------------------------------------------------------------
+
+pathfinder_juggernaut_blade_fury = class({})
+
+--------------------------------------------------------------------------------
+
+function pathfinder_juggernaut_blade_fury:GetCastRange(vLocation, hTarget)
+	return self:GetSpecialValueFor("blade_fury_radius")
+end
+
+--------------------------------------------------------------------------------
 
 function pathfinder_juggernaut_blade_fury:OnSpellStart()	
 	if not IsServer() then return end

@@ -18,7 +18,7 @@ end
 
 function phantom_assassin_coup_de_grace_lua:Precache( context )
 	PrecacheResource("particle", "particles/units/heroes/hero_crystalmaiden/maiden_frostbite.vpcf", context)
-	PrecacheResource("particle", "particles/units/heroes/hero_monkey_king/monkey_king_quad_tap_stack.vpcf", context)
+	PrecacheResource("particle", "particles/units/heroes/hero_phantom_assassin/phantom_assassin_mark_overhead_counter.vpcf", context)
 	PrecacheResource("particle", "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf", context)
 	PrecacheResource("particle", "particles/units/heroes/hero_phantom_assassin/phantom_assassin_mark_overhead.vpcf", context)
 end
@@ -35,7 +35,7 @@ function phantom_assassin_coup_de_grace_lua:DaggerHit(hTarget)
 	local hCaster = self:GetCaster()
 	if not self:IsTrained() then return end
 
-	if hCaster:GetHeroFacetID() == 1 then
+	if self:GetSpecialValueFor("crit_chance") > 0 then
 		if not RollPseudoRandomPercentage(self:GetSpecialValueFor("dagger_crit_chance"), DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_DAGGER, hCaster) then return end
 
 		hCaster:AddNewModifier(hCaster, self, "modifier_phantom_assassin_pf_mark_of_death", {duration = self:GetSpecialValueFor("duration")})
@@ -84,7 +84,7 @@ function modifier_phantom_assassin_pf_coupdegrace:OnAttackLanded(event)
 
 	if hAttacker ~= self:GetParent() or hAttacker:PassivesDisabled() or not hTarget or hTarget:IsBuilding() or hTarget:IsOther() then return end
 
-	if hAttacker:GetHeroFacetID() == 1 then
+	if hAbility:GetSpecialValueFor("crit_chance") > 0 then
 		if not RollPseudoRandomPercentage(hAbility:GetSpecialValueFor("crit_chance"), DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT, hAttacker) then return end
 
 		hAttacker:AddNewModifier(hAttacker, hAbility, "modifier_phantom_assassin_pf_mark_of_death", {duration = self.nFocusDuration})
@@ -117,7 +117,7 @@ function modifier_phantom_assassin_pf_coup_counter:OnCreated(kv)
 	end
 	
 	if IsClient() then
-		self.nStackFX = ParticleManager:CreateParticle("particles/units/heroes/hero_monkey_king/monkey_king_quad_tap_stack.vpcf", PATTACH_OVERHEAD_FOLLOW, hParent)
+		self.nStackFX = ParticleManager:CreateParticle("particles/units/heroes/hero_phantom_assassin/phantom_assassin_mark_overhead_counter.vpcf", PATTACH_OVERHEAD_FOLLOW, hParent)
 		ParticleManager:SetParticleControl(self.nStackFX, 1, Vector(0, self:GetStackCount(), 0))
 		self:AddParticle(self.nStackFX, false, false, -1, false, true)
 		return

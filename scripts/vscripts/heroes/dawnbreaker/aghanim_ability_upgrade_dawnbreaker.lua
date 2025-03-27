@@ -163,7 +163,7 @@ SPECIAL_ABILITY_UPGRADES["npc_dota_hero_dawnbreaker"] =
 	"dawnbreaker_celestial_hammer_lua_illusion",
 	"dawnbreaker_celestial_hammer_lua_trail_heal",
 
-	--"dawnbreaker_luminosity_lua_charge",
+	"dawnbreaker_luminosity_lua_charge",
 	"dawnbreaker_luminosity_lua_stacking",
 	"dawnbreaker_luminosity_lua_explosion",
 

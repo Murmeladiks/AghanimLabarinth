@@ -11,7 +11,8 @@
 		"Ability5"					"pathfinder_nevermore_dark_lord"
 		"Ability6"					"pathfinder_nevermore_requiem"
 		"Ability7"					"pathfinder_nevermore_necromastery"
-		"Ability8"					"pathfinder_nevermore_shadowraze_damage"			
+
+		"Ability18"					"pathfinder_nevermore_shadowraze_damage"			
 		"Ability19"					"pathfinder_nevermore_shadowraze_stack_damage"	
 		"Ability20"					"pathfinder_nevermore_shadowraze_cooldown"
 				

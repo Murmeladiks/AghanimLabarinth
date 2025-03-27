@@ -18,6 +18,17 @@ end
 function magnataur_pf_shockwave:Spawn()
 	if IsClient() then return end
 	self.Shockwaves = {}
+
+	Timers:CreateTimer(0.1, function()
+		local hPlayerHero = PlayerResource:GetSelectedHeroEntity(self:GetCaster():GetPlayerOwnerID())
+
+		if self:GetLevelSpecialValueFor("swap_ability", 1) <= 0 or hPlayerHero.bSwappedToBoomerang then return end
+		hPlayerHero.bSwappedToBoomerang = true
+			
+		local hCurveVersion = hPlayerHero:AddAbility("magnataur_pf_shockwave_return")
+		hPlayerHero:SwapAbilities("magnataur_pf_shockwave", "magnataur_pf_shockwave_return", false, true)
+		hPlayerHero:RemoveAbility("magnataur_pf_shockwave")
+	end)
 end
 
 --------------------------------------------------------------------------------

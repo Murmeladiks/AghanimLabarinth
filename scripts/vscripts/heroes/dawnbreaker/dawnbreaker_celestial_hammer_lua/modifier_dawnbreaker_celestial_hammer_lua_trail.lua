@@ -26,7 +26,7 @@ function modifier_dawnbreaker_celestial_hammer_lua_trail:GetAuraRadius() 	return
 function modifier_dawnbreaker_celestial_hammer_lua_trail:GetAuraDuration() 	return 0.5 end
 
 function modifier_dawnbreaker_celestial_hammer_lua_trail:GetModifierAura()
-	return "modifier_dawnbreaker_celestial_hammer_lua_debuff"
+	return self.sAuraModifier
 end
 
 function modifier_dawnbreaker_celestial_hammer_lua_trail:GetAuraSearchTeam()
@@ -41,8 +41,12 @@ function modifier_dawnbreaker_celestial_hammer_lua_trail:GetAuraSearchType()
 	return DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC
 end
 
-function modifier_dawnbreaker_celestial_hammer_lua_trail:GetAuraSearchFlags()
-	return 0
+function modifier_dawnbreaker_celestial_hammer_lua_trail:GetAuraEntityReject(hEntity)
+	if hEntity:GetTeam() == self:GetCaster():GetTeam() then
+		self.sAuraModifier = "modifier_dawnbreaker_celestial_hammer_lua_buff"
+	else
+		self.sAuraModifier = "modifier_dawnbreaker_celestial_hammer_lua_debuff"
+	end
 end
 
 function modifier_dawnbreaker_celestial_hammer_lua_trail:PlayEffects( duration )

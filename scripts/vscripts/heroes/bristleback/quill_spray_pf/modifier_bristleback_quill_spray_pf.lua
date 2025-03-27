@@ -3,7 +3,7 @@ function modifier_bristleback_quill_spray_pf:IsPurgable()
 	return false
 end
 
-function modifier_bristleback_quill_spray_pf:OnCreated()
+function modifier_bristleback_quill_spray_pf:OnCreated(kv)
 	self.ability = self:GetAbility()
 	self.caster = self:GetCaster()
 	self.parent = self:GetParent()
@@ -21,9 +21,13 @@ function modifier_bristleback_quill_spray_pf:OnCreated()
 		victim = self.parent,
 		damage = math.min(self.quill_base_damage, self.max_damage),
 		damage_type = DAMAGE_TYPE_PHYSICAL,
-		damage_flags = DOTA_DAMAGE_FLAG_BYPASSES_BLOCK,
+		damage_flags = DOTA_DAMAGE_FLAG_BYPASSES_PHYSICAL_BLOCK,
 		ability = self.ability
 	}
+
+	if kv.bPassive and kv.bPassive == 1 then
+		self.damageTable.damage_flags = DOTA_DAMAGE_FLAG_BYPASSES_PHYSICAL_BLOCK + DOTA_DAMAGE_FLAG_REFLECTION
+	end
 
 	ApplyDamage(self.damageTable)
 
@@ -48,7 +52,7 @@ function modifier_bristleback_quill_spray_pf:OnCreated()
 	self:AddParticle(self.particle, false, false, -1, false, false)
 end
 
-function modifier_bristleback_quill_spray_pf:OnRefresh()
+function modifier_bristleback_quill_spray_pf:OnRefresh(kv)
 	self.quill_base_damage = self.ability:GetSpecialValueFor("quill_base_damage")
 	self.quill_stack_damage = self.ability:GetSpecialValueFor("quill_stack_damage")
 	self.quill_stack_duration = self.ability:GetSpecialValueFor("quill_stack_duration")
@@ -58,6 +62,12 @@ function modifier_bristleback_quill_spray_pf:OnRefresh()
 	self:AddIndependentStack(1, self.quill_stack_duration * (1 - self.parent:GetStatusResistance()), nil, true)
 	self.damageTable.damage = math.min(self.quill_base_damage + (self.quill_stack_damage * self:GetStackCount()), self.max_damage)
 
+	if kv.bPassive and kv.bPassive == 1 then
+		self.damageTable.damage_flags = DOTA_DAMAGE_FLAG_BYPASSES_PHYSICAL_BLOCK + DOTA_DAMAGE_FLAG_REFLECTION
+	else
+		self.damageTable.damage_flags = DOTA_DAMAGE_FLAG_BYPASSES_PHYSICAL_BLOCK
+	end
+	
 	ApplyDamage(self.damageTable)
 end
 

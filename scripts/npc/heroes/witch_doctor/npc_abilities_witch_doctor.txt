@@ -94,7 +94,7 @@
 
         // Cost
         //-------------------------------------------------------------------------------------------------------------
-        "AbilityManaCost"               "34 40 46 52"       
+        "AbilityManaCost"               "35 40 45 50"       
 
         // Special
         //-------------------------------------------------------------------------------------------------------------
@@ -195,10 +195,20 @@
             "bonus_damage"				
             {
                 "value"									"16 24 32 40"
-                "special_bonus_unique_witch_doctor_7"	"+30"
+                //"special_bonus_unique_witch_doctor_7"	"+30"
             }
             "bonus_damage_threshold"		"100"
-            "ticks"							"3"
+            "ticks"
+            {
+                "value"		"3"
+                "LinkedSpecialBonusField"		"value2"
+                "special_bonus_unique_witch_doctor_7"	"+2"
+            }
+            "AbilityDuration"
+            {
+                "value"									"12.0"
+                "special_bonus_unique_witch_doctor_7"	"+8"			// if updating this, update tick value above
+            }
             "max_bonus_damage"      		"180 220 240 260"
         }
     }

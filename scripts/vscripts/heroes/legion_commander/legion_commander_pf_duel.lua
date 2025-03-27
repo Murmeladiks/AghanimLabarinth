@@ -250,12 +250,7 @@ function modifier_legion_commander_pf_duel_taunted_target:OnDeath(kv)
 	local hParent = self:GetParent()
 	local hCaster = self:GetCaster()
 	local hAbility = self:GetAbility()
-	local hPTA = hCaster:FindAbilityByName("legion_commander_pf_press_the_attack")
-
-	if hPTA and hPTA:IsTrained() then
-		hPTA:PTA(hCaster)
-	end
-
+	
 	local nBonusDamage = hParent:IsConsideredHero() and hAbility:GetSpecialValueFor("reward_damage_hero") or hAbility:GetSpecialValueFor("reward_damage_creep")
 	
 	hCaster:AddNewModifier(hCaster, hAbility, "modifier_legion_commander_pf_duel_bonus", {nBonusDamage = nBonusDamage})
@@ -269,7 +264,13 @@ function modifier_legion_commander_pf_duel_taunted_target:OnDeath(kv)
 		ParticleManager:CreateParticle("particles/units/heroes/hero_legion_commander/legion_commander_duel_victory.vpcf", PATTACH_OVERHEAD_FOLLOW, hCaster)
 	)
 
-	if hCaster:GetHeroFacetID() == 2 then
+	if hAbility:GetSpecialValueFor("assist_reward_damage") > 0 then
+		local hPTA = hCaster:FindAbilityByName("legion_commander_pf_press_the_attack")
+
+		if hPTA and hPTA:IsTrained() then
+			hPTA:PTA(hCaster)
+		end
+
 		local nAssistDamage = nBonusDamage * hAbility:GetSpecialValueFor("assist_reward_damage") / 100
 		
 		for nEntityID, _ in pairs(self.hParticipatingUnits) do
@@ -277,6 +278,10 @@ function modifier_legion_commander_pf_duel_taunted_target:OnDeath(kv)
 
 			if hUnit and not hUnit:IsNull() and hUnit ~= hCaster then
 				hUnit:AddNewModifier(hCaster, hAbility, "modifier_legion_commander_pf_duel_bonus", {nBonusDamage = nAssistDamage})
+
+				if hPTA and hPTA:IsTrained() then
+					hPTA:PTA(hUnit)
+				end
 			end
 		end
 	end

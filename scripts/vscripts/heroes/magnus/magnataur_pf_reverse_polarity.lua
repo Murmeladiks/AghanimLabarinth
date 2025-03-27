@@ -15,46 +15,8 @@ end
 
 --------------------------------------------------------------------------------
 
-function magnataur_pf_reverse_polarity:Spawn()
-	if IsClient() then return end
-	local hCaster = self:GetCaster()
-	
-	if hCaster:GetHeroFacetID() == 3 then	
-		Timers:CreateTimer(FrameTime(), function()
-			hCaster:SwapAbilities("magnataur_pf_reverse_polarity", "magnataur_pf_reverse_polarity_polarity", false, true)
-		end)
-	end
-end
-
---------------------------------------------------------------------------------
-
-function magnataur_pf_reverse_polarity:GetBehavior()
-	if self:GetCaster():GetHeroFacetID() == 3 then
-		return DOTA_ABILITY_BEHAVIOR_NO_TARGET + DOTA_ABILITY_BEHAVIOR_HIDDEN + DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE
-	end
-
-	return self.BaseClass.GetBehavior(self)
-end
-
---------------------------------------------------------------------------------
-
 function magnataur_pf_reverse_polarity:GetCastRange(vLocation, hTarget)
 	return self:GetSpecialValueFor("pull_radius")
-end
-
---------------------------------------------------------------------------------
-
-function magnataur_pf_reverse_polarity:OnAbilityUpgrade(hUpgradeAbility)
-	if not self:GetCaster():GetHeroFacetID() == 3 then return end
-	if hUpgradeAbility and hUpgradeAbility:GetName() == "magnataur_pf_reverse_polarity_polarity" then
-		self:SetLevel(hUpgradeAbility:GetLevel())
-	end
-end
-
---------------------------------------------------------------------------------
-
-function magnataur_pf_reverse_polarity:CanAbilityBeUpgraded()
-	return self:GetCaster():GetHeroFacetID() == 2
 end
 
 --------------------------------------------------------------------------------

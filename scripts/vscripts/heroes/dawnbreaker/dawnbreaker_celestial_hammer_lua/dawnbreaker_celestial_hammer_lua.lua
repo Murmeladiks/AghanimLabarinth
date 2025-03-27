@@ -1,9 +1,11 @@
 -- Created by Elfansoer
-LinkLuaModifier("modifier_dawnbreaker_celestial_hammer_lua", "heroes/dawnbreaker/dawnbreaker_celestial_hammer_lua/modifier_dawnbreaker_celestial_hammer_lua", LUA_MODIFIER_MOTION_HORIZONTAL )
-LinkLuaModifier("modifier_dawnbreaker_celestial_hammer_lua_nohammer", "heroes/dawnbreaker/dawnbreaker_celestial_hammer_lua/modifier_dawnbreaker_celestial_hammer_lua_nohammer", LUA_MODIFIER_MOTION_HORIZONTAL )
-LinkLuaModifier("modifier_dawnbreaker_celestial_hammer_lua_thinker", "heroes/dawnbreaker/dawnbreaker_celestial_hammer_lua/modifier_dawnbreaker_celestial_hammer_lua_thinker", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier("modifier_dawnbreaker_celestial_hammer_lua_trail", "heroes/dawnbreaker/dawnbreaker_celestial_hammer_lua/modifier_dawnbreaker_celestial_hammer_lua_trail", LUA_MODIFIER_MOTION_NONE )
-LinkLuaModifier("modifier_dawnbreaker_celestial_hammer_lua_debuff", "heroes/dawnbreaker/dawnbreaker_celestial_hammer_lua/modifier_dawnbreaker_celestial_hammer_lua_debuff", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_dawnbreaker_celestial_hammer_lua", 			"heroes/dawnbreaker/dawnbreaker_celestial_hammer_lua/modifier_dawnbreaker_celestial_hammer_lua", LUA_MODIFIER_MOTION_HORIZONTAL )
+LinkLuaModifier("modifier_dawnbreaker_celestial_hammer_lua_nohammer", 	"heroes/dawnbreaker/dawnbreaker_celestial_hammer_lua/modifier_dawnbreaker_celestial_hammer_lua_nohammer", LUA_MODIFIER_MOTION_HORIZONTAL )
+LinkLuaModifier("modifier_dawnbreaker_celestial_hammer_lua_thinker", 	"heroes/dawnbreaker/dawnbreaker_celestial_hammer_lua/modifier_dawnbreaker_celestial_hammer_lua_thinker", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_dawnbreaker_celestial_hammer_lua_trail", 		"heroes/dawnbreaker/dawnbreaker_celestial_hammer_lua/modifier_dawnbreaker_celestial_hammer_lua_trail", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_dawnbreaker_celestial_hammer_lua_trail_buff", "heroes/dawnbreaker/dawnbreaker_celestial_hammer_lua/modifier_dawnbreaker_celestial_hammer_lua_trail_buff", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_dawnbreaker_celestial_hammer_lua_debuff", 	"heroes/dawnbreaker/dawnbreaker_celestial_hammer_lua/modifier_dawnbreaker_celestial_hammer_lua_debuff", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier("modifier_dawnbreaker_celestial_hammer_lua_buff", 		"heroes/dawnbreaker/dawnbreaker_celestial_hammer_lua/modifier_dawnbreaker_celestial_hammer_lua_buff", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier("modifier_frost_boss_pull", "pathfinder/frost_boss", LUA_MODIFIER_MOTION_HORIZONTAL )
 
 --------------------------------------------------------------------------------

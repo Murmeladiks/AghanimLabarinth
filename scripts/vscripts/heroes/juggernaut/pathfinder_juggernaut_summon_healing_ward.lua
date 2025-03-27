@@ -28,12 +28,12 @@ function pathfinder_juggernaut_summon_healing_ward:OnSpellStart()
 		healing_ward:AddAbility("pathfinder_healing_ward_passive"):SetLevel(1)
 	end
 
-	local ward_duration = self:GetLevelSpecialValueFor("duration", caster:FindAbilityByName("pathfinder_juggernaut_summon_healing_ward"):GetLevel() - 1)
+	local ward_duration = self:GetSpecialValueFor("duration")
 
 	caster_dmg = caster:GetAverageTrueAttackDamage(nil)
 	local dmg_pct = 50
 
-	local max_health = self:GetLevelSpecialValueFor("ward_health", (self:GetLevel() - 1))
+	local max_health = self:GetSpecialValueFor("ward_health")
 	if HasShard(caster, "pathfinder_special_juggernaut_healing_ward_creep") then		
 		if IsServer() then
 			local ward_creep_ability = caster:FindAbilityByName("pathfinder_special_juggernaut_healing_ward_creep")			

@@ -192,28 +192,18 @@ function modifier_pathfinder_shadowraze_debuff:OnCreated()
 	local hAbility = self:GetAbility()
 
 	self.nMoveSlow = -hAbility:GetSpecialValueFor("movement_speed_debuff")
-	self.nAttackSlow = -hAbility:GetSpecialValueFor("attack_speed_debuff")
 end
 
 --------------------------------------------------------------------------------
 
 function modifier_pathfinder_shadowraze_debuff:DeclareFunctions()
-	return {
-		MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
-		MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT
-	}
+	return {MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE}
 end
 
 --------------------------------------------------------------------------------
 
 function modifier_pathfinder_shadowraze_debuff:GetModifierMoveSpeedBonus_Percentage()
 	return self.nMoveSlow * self:GetStackCount()
-end
-
---------------------------------------------------------------------------------
-
-function modifier_pathfinder_shadowraze_debuff:GetModifierAttackSpeedBonus_Constant()
-	return self.nAttackSlow * self:GetStackCount()
 end
 
 --------------------------------------------------------------------------------

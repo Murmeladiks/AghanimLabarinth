@@ -7,9 +7,6 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_INNATE_UI"
-		"MaxLevel"						"4"
-		"Innate"						"1"
 		"DependentOnAbility"			"axe_culling_blade_lua"
 
 		"AbilityValues"
@@ -60,7 +57,12 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityValues"
 		{
-			"radius"				"300"
+			"radius"
+			{
+				"value"							"315"
+				"special_bonus_unique_axe_2"	"+800"
+				"affected_by_aoe_increase"	"1"
+			}
 			"bonus_armor"
 			{
 				"value"			"10 20 30 40"   // THIS IS ACTUAL DAMAGE REDUCTION IN PERCENT, DIDNT WANT TO CHANGE THE NAME IN CASE STUFF BREAKS
@@ -111,8 +113,18 @@
 		{
 			"duration"					"12.0"
 			"slow"						"-12"
+			"speed_bonus"
+			{
+				"value"							"3"
+				"special_bonus_unique_axe_8"	"+1.5"
+			}
 			"speed_bonus"				"3"
-			"damage_per_second"			"10 15 20 25"
+			"damage_per_second"	
+			{
+				"value"			"12 18 24 30"
+				"special_bonus_unique_axe_battle_hunger_damage"	"+100"
+				"CalculateSpellDamageTooltip" "1"
+			}
 			"radius"	                "180"
 			"max_stacks"				"3"
 		}
@@ -129,6 +141,7 @@
 
 		"FightRecapLevel"				"1"
 		"MaxLevel"						"4"
+		"IsBreakable"					"1"
 		"precache"
 		{
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_axe.vsndevts"
@@ -156,7 +169,11 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityValues"
 		{
-			"radius"					"275"
+			"radius"					
+			{
+				"value"						"275"
+				"affected_by_aoe_increase"	"1"
+			}
 			"trigger_chance"			"15 17 19 21"
 			"damage"					"90 130 170 210"
 		}
@@ -210,11 +227,19 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityValues"
 		{
-			"kill_threshold"			"250 325 400"
+			"kill_threshold"
+			{
+				"value"							"250 325 400"
+				"special_bonus_unique_axe_5"	"+180"
+			}
 			"damage"					"65"
 			"speed_bonus"				"30"
 			"atk_speed_bonus_tooltip"	"30"
-			"speed_duration"			"6"
+			"speed_duration"			
+			{
+				"value"					"6"
+				"special_bonus_unique_axe_culling_blade_speed_duration"		"+2"
+			}
 			"speed_aoe"					"900"
 		}
 	}
@@ -244,6 +269,14 @@
     }
 
     "special_bonus_unique_counter_helix_attack"
+    {
+        "BaseClass"						"special_bonus_undefined"        
+        "AbilityType"                   "DOTA_ABILITY_TYPE_ATTRIBUTES"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"   
+        "MaxLevel"						"1"                       
+    }
+
+	"special_bonus_unique_axe_battle_hunger_damage"
     {
         "BaseClass"						"special_bonus_undefined"        
         "AbilityType"                   "DOTA_ABILITY_TYPE_ATTRIBUTES"

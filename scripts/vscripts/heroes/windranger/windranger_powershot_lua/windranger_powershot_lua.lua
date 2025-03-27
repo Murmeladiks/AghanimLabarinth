@@ -279,9 +279,17 @@ function windranger_powershot_lua:OnProjectileHitHandle( target, location, handl
 
 	data.damage = self.damage
 
-	-- Play effects
-	local sound_cast = "Hero_Windrunner.PowershotDamage"
-	EmitSoundOn( sound_cast, target )
+	target:EmitSound("Hero_Windrunner.PowershotDamage")
+
+	local nMinThreshold = self:GetSpecialValueFor("min_execute_threshold")
+	if target:IsAlive() and nMinThreshold > 0 and not target:IsBoss() and not target:IsBossCreature() and not target.bAbsoluteNoCC and not target.bMotionControlExcluded then
+		local nMaxThreshold = self:GetSpecialValueFor("max_execute_threshold")
+		local nChargePct = math.min(1, self.damage / self:GetSpecialValueFor( "powershot_damage" ))
+		local nUsedThreshold = nMinThreshold + (nChargePct * (nMaxThreshold - nMinThreshold))
+		if target:GetHealthPercent() <= nUsedThreshold then
+			target:Kill(self, caster)
+		end
+	end
 
 	return self.doesNotPierce
 end

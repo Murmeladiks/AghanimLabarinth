@@ -22,6 +22,19 @@ end
 function jakiro_ice_path_lua:Spawn()
 	if IsClient() then return end
 	self.hIceProjectiles = {}
+
+	Timers:CreateTimer(FrameTime(), function()
+		if self:GetLevelSpecialValueFor("detonate_damage", 1) > 0 then
+			self:GetCaster():RemoveAbility("jakiro_ice_path_detonate")
+			self:GetCaster():AddAbility("jakiro_pf_ice_path_detonate"):SetAbilityIndex(7)
+		end
+	end)
+end
+
+------------------------------------------------------------------------------------------
+
+function jakiro_ice_path_lua:GetAssociatedSecondaryAbilities()
+	return "jakiro_pf_ice_path_detonate"
 end
 
 --------------------------------------------------------------------------------
@@ -49,7 +62,7 @@ function jakiro_ice_path_lua:OnSpellStart()
 	local b = a + dir * range
 
 	-- create thinker
-	CreateModifierThinker(
+	local hThinker = CreateModifierThinker(
 		caster, -- player source
 		self, -- ability source
 		"modifier_jakiro_ice_path_lua_thinker", -- modifier name
@@ -60,11 +73,21 @@ function jakiro_ice_path_lua:OnSpellStart()
 			bx = b.x,
 			by = b.y, 
 			bz = b.z,
+			main = 1
 		}, -- kv
 		caster:GetOrigin(),
 		caster:GetTeamNumber(),
 		false
 	)
+
+	if self:GetSpecialValueFor("detonate_damage") > 0 then
+		local hDetonate = caster:FindAbilityByName("jakiro_pf_ice_path_detonate")
+
+		if hDetonate then
+			hDetonate.hThinker = hThinker
+			caster:SwapAbilities(self:GetAbilityName(), "jakiro_pf_ice_path_detonate", false, true)
+		end
+	end
 
 	if IsServer() and self:GetCaster():HasAbility("pathfinder_jakiro_ice_path_barrier") then			
 		local distance = self:GetLevelSpecialValueFor( "range", self:GetLevel() - 1 )	* 0.7		

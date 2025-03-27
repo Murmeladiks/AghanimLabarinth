@@ -8,9 +8,10 @@ LinkLuaModifier( "modifier_marci_companion_run_pf", "heroes/marci/modifier_marci
 LinkLuaModifier( "modifier_marci_companion_run_pf_buff", "heroes/marci/modifier_marci_companion_run_pf_buff", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier( "modifier_marci_companion_run_pf_leap", "heroes/marci/modifier_marci_companion_run_pf_leap", LUA_MODIFIER_MOTION_BOTH )
 LinkLuaModifier( "modifier_generic_arc_lua", "libraries/modifiers/modifier_generic_arc_lua", LUA_MODIFIER_MOTION_BOTH )
+LinkLuaModifier( "marci_alt_check", "heroes/marci/marci_companion_run_pf", LUA_MODIFIER_MOTION_BOTH )
 
 --------------------------------------------------------------------------------
--- Init Abilities
+
 function marci_companion_run_pf:Precache(context)
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_marci.vsndevts", context )
 	PrecacheResource( "particle", "particles/units/heroes/hero_marci/marci_rebound_charge_projectile.vpcf", context )
@@ -21,6 +22,8 @@ function marci_companion_run_pf:Precache(context)
 	PrecacheResource( "particle", "particles/status_fx/status_effect_snapfire_slow.vpcf", context )
 end
 
+--------------------------------------------------------------------------------
+
 function marci_companion_run_pf:GetCastRange(vLocation, hTarget)
 	if self:GetCaster():HasShard("pathfinder_marci_companion_run_global") then
 		return 10000
@@ -28,6 +31,44 @@ function marci_companion_run_pf:GetCastRange(vLocation, hTarget)
 
 	return self:GetSpecialValueFor("max_jump_distance")
 end
+
+--------------------------------------------------------------------------------
+
+function marci_companion_run_pf:GetIntrinsicModifierName()
+	return "marci_alt_check"
+end
+
+--------------------------------------------------------------------------------
+
+function marci_companion_run_pf:OnAbilityPhaseStart()
+	if IsServer() then
+		local hCaster = self:GetCaster()
+		local hIntrinsic = hCaster:FindModifierByName(self:GetIntrinsicModifierName())
+
+		if not hIntrinsic then self.bAltCast = false return end
+
+		self.bAltCast = hIntrinsic:GetStackCount() > 0 and true or false
+	end
+	return true
+end
+
+--------------------------------------------------------------------------------
+
+function marci_companion_run_pf:IsAltCasted()
+	return self.bAltCast
+end
+
+--------------------------------------------------------------------------------
+
+function marci_companion_run_pf:GetBehavior()
+	if self:GetSpecialValueFor("ally_impact_damage_pct") > 0 then
+		return self.BaseClass.GetBehavior(self)
+	end
+
+	return DOTA_ABILITY_BEHAVIOR_UNIT_TARGET + DOTA_ABILITY_BEHAVIOR_VECTOR_TARGETING + DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT + DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES
+end
+
+--------------------------------------------------------------------------------
 
 function marci_companion_run_pf:CastFilterResultTarget(hTarget)
 	if self:GetCaster() == hTarget then
@@ -59,11 +100,15 @@ function marci_companion_run_pf:CastFilterResultTarget(hTarget)
 	return UF_SUCCESS
 end
 
+--------------------------------------------------------------------------------
+
 function marci_companion_run_pf:CastFilterResultLocation(vLocation)
 	self.pointcast = vLocation
 
 	return UF_SUCCESS
 end
+
+--------------------------------------------------------------------------------
 
 function marci_companion_run_pf:GetCustomCastErrorTarget(hTarget)
 	if IsServer() then
@@ -72,6 +117,8 @@ function marci_companion_run_pf:GetCustomCastErrorTarget(hTarget)
 
 	return "#dota_hud_error_cant_cast_on_self"
 end
+
+--------------------------------------------------------------------------------
 
 function marci_companion_run_pf:OnVectorTargetingStart(location, cursor_targets)
 	if not self.target_cast then return end
@@ -173,7 +220,6 @@ function marci_companion_run_pf:DrawTargetFX(target)
 	ParticleManager:SetParticleControl(self.target_fx, 2, target_origin)
 end
 
-
 function marci_companion_run_pf:OnSpellStart()
 	local caster = self:GetCaster()
 	local target = self:GetCursorTarget()
@@ -207,7 +253,7 @@ function marci_companion_run_pf:OnSpellStart()
 		Ability = self,	
 		iMoveSpeed = speed,
 		bDodgeable = true,
-		iSourceAttachment = DOTA_PROJECTILE_ATTACHMENT_NONE,
+		iSourceAttachment = DOTA_PROJECTILE_ATTACHMENT_HITLOCATION,
 		EffectName = "particles/units/heroes/hero_marci/marci_rebound_charge_projectile.vpcf",
 	}
 	local proj = ProjectileManager:CreateTrackingProjectile(info)
@@ -265,7 +311,11 @@ function marci_companion_run_pf:OnTargetReached(target)
 	if allied then
 		self.target:AddNewModifier(caster, self, "modifier_marci_companion_run_pf_buff", { duration = buff })
 
-		local unleash_shard = caster:FindAbilityByName("pathfinder_marci_companion_run_unleash")
+		if self:IsAltCasted() then
+			self:LeapToPoint(self.target)
+		end
+
+		--[[local unleash_shard = caster:FindAbilityByName("pathfinder_marci_companion_run_unleash")
 		if unleash_shard then
 			local guardian = caster:FindAbilityByName("marci_guardian_pf")
 
@@ -273,11 +323,11 @@ function marci_companion_run_pf:OnTargetReached(target)
 				local duration = guardian:GetSpecialValueFor("buff_duration")
 				target:AddNewModifier(caster, guardian, "modifier_marci_guardian_pf", { duration = duration })
 			end
-		end
+		end]]
 	end
 
 	self:ThrowUnitsToDestination(target, self.point)
-	self:LeapToPoint()
+	self:LeapToPoint(caster)
 end
 
 function marci_companion_run_pf:ThrowUnitsToDestination(target, point)
@@ -306,18 +356,18 @@ function marci_companion_run_pf:ThrowUnitsToDestination(target, point)
 	end
 end
 
-function marci_companion_run_pf:LeapToPoint()
+function marci_companion_run_pf:LeapToPoint(hUnit)
 	local caster = self:GetCaster()
 
-	if not caster:IsAlive() then return end
+	if not hUnit:IsAlive() then return end
 
-	local origin = caster:GetOrigin()
+	local origin = hUnit:GetOrigin()
 	local direction = self.point - origin
 	local distance = direction:Length2D()
 	direction.z = 0
 	direction = direction:Normalized()
 
-	caster:SetForwardVector(direction)
+	hUnit:SetForwardVector(direction)
 
 	local duration = 0.5
 	local height = self:GetSpecialValueFor("min_height_above_highest")
@@ -325,7 +375,7 @@ function marci_companion_run_pf:LeapToPoint()
 	local distance = distance - offset
 	local landing_pos = origin + distance * direction
 
-	local arc = caster:AddNewModifier(
+	local arc = hUnit:AddNewModifier(
 		caster,
 		self,
 		"modifier_generic_arc_lua",
@@ -338,21 +388,29 @@ function marci_companion_run_pf:LeapToPoint()
 			fix_end = false,
 			isStun = true,
 			isForward = true,
-			activity = ACT_DOTA_OVERRIDE_ABILITY_2,
+			activity = caster == hUnit and ACT_DOTA_OVERRIDE_ABILITY_2 or 0,
 		} 
 	)
 
 	arc:SetEndCallback(function(interrupted)
-		self:OnFinalLanding(self.point, self.target)
+		if hUnit == caster then
+			self:OnFinalLanding(self.point, self.target)
+		else
+			self:OnAllyFinalLanding(self.point, self.target, hUnit)
+		end
 	end)
 
 	Timers:CreateTimer(duration - 0.1, function()
-		caster:StartGesture(ACT_DOTA_CAST_ABILITY_2_END)
-		caster:FaceTowards(self.point)
+		if hUnit == caster then
+			caster:StartGesture(ACT_DOTA_CAST_ABILITY_2_END)
+		end
+		hUnit:FaceTowards(self.point)
 	end)
 
 	-- play effects
-	self:PlayEffects3(caster, arc)
+	if hUnit == caster then
+		self:PlayEffects3(caster, arc)
+	end
 end
 
 function marci_companion_run_pf:OnFinalLanding(location, target)
@@ -391,18 +449,23 @@ function marci_companion_run_pf:OnFinalLanding(location, target)
 
 	self:PlayEffects2(location, radius)
 
-	local unleash_shard = caster:FindAbilityByName("pathfinder_marci_companion_run_unleash")
-	if unleash_shard then
-		local guardian = caster:FindAbilityByName("marci_guardian_pf")
+	--local unleash_shard = caster:FindAbilityByName("pathfinder_marci_companion_run_unleash")
+	if self:GetSpecialValueFor("postjump_flurry_charges") > 0 then
+		--local guardian = caster:FindAbilityByName("marci_guardian_pf")
 		local unleash = caster:FindAbilityByName("marci_unleash_lua")
 
-		if allied and guardian and guardian:IsTrained() then
+		--[[if allied and guardian and guardian:IsTrained() then
 			local duration = guardian:GetSpecialValueFor("buff_duration")
 			caster:AddNewModifier(caster, guardian, "modifier_marci_guardian_pf", {duration = duration})
-		end
+		end]]
 
 		if unleash and unleash:IsTrained() then
-			caster:AddNewModifier(caster, unleash, "modifier_marci_unleash_lua_fury", {type = MARCI_UNLEASH_STACK_COMPANION_RUN})
+			local hUnleashActive = caster:FindModifierByName("modifier_marci_unleash_lua")
+			if hUnleashActive then
+				hUnleashActive:SetDuration(hUnleashActive:GetRemainingTime() + self:GetSpecialValueFor("postjump_unleash_duration"), true)
+			else
+				caster:AddNewModifier(caster, unleash, "modifier_marci_unleash_lua_fury", {type = MARCI_UNLEASH_STACK_COMPANION_RUN})
+			end
 		end
 	end
 
@@ -410,6 +473,37 @@ function marci_companion_run_pf:OnFinalLanding(location, target)
 	if global_shard then
 		local heal = caster:GetMaxHealth() * global_shard:GetSpecialValueFor("heal_percent") * 0.01
 		caster:Heal(heal, global_shard)
+	end
+end
+
+function marci_companion_run_pf:OnAllyFinalLanding(location, target, hUnit)
+	local caster = self:GetCaster()
+
+	local radius = self:GetSpecialValueFor("landing_radius")
+	local damage = self:GetSpecialValueFor("impact_damage")
+	
+	local enemies = FindUnitsInRadius(
+		caster:GetTeamNumber(),
+		location,
+		nil,
+		radius,
+		DOTA_UNIT_TARGET_TEAM_ENEMY,
+		DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
+		0,
+		0,
+		false
+	)
+
+	local damageTable = {
+		attacker = caster,
+		damage = damage * self:GetSpecialValueFor("ally_impact_damage_pct") / 100,
+		damage_type = DAMAGE_TYPE_MAGICAL,
+		ability = self,
+	}
+
+	for _,enemy in pairs(enemies) do
+		damageTable.victim = enemy
+		ApplyDamage(damageTable)
 	end
 end
 
@@ -501,7 +595,7 @@ function marci_companion_run_pf:OnTargetReachedSelfCast(target, is_first)
 		self.previous_targets[target] = true
 		caster:AddNewModifier(caster, self, "modifier_marci_companion_run_pf_leap", { target = next_target:entindex() })
 	else
-		self:LeapToPoint()
+		self:LeapToPoint(caster)
 	end
 
 end
@@ -529,4 +623,36 @@ function marci_companion_run_pf:FindNextLeapTarget(ignore, is_first)
 		end
 	end
 
+end
+
+--------------------------------------------------------------------------------
+
+marci_alt_check = class({})
+
+--------------------------------------------------------------------------------
+
+function marci_alt_check:IsHidden()	return true end
+function marci_alt_check:IsPurgable()	return false end
+function marci_alt_check:IsPermanent()	return true end
+function marci_alt_check:RemoveOnDeath()	return false end
+
+function marci_alt_check:OnCreated()
+	if IsClient() then return end
+	self:SetStackCount(-1)
+end
+
+--------------------------------------------------------------------------------
+
+function marci_alt_check:DeclareFunctions( kv )
+	return {MODIFIER_EVENT_ON_ORDER}
+end
+
+--------------------------------------------------------------------------------
+
+function marci_alt_check:OnOrder(event)
+	if IsClient() or event.unit ~= self:GetParent() then return end
+
+	if event.order_type == DOTA_UNIT_ORDER_CAST_TOGGLE_ALT then
+		self:SetStackCount(-self:GetStackCount())
+	end
 end

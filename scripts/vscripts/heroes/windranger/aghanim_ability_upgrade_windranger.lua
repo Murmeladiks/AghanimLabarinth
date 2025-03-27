@@ -103,7 +103,7 @@ MINOR_ABILITY_UPGRADES["npc_dota_hero_windrunner"] = {
 	},
 }
 
-MINOR_ABILITY_UPGRADES_FACET_REPLACEMENTS["npc_dota_hero_windrunner"] = {
+--[[MINOR_ABILITY_UPGRADES_FACET_REPLACEMENTS["npc_dota_hero_windrunner"] = {
 	["windranger_focus_fire_lua_bonus_attack_speed"] = {
 		RequiredFacetID = 3,
 		ReplacedMinor = {
@@ -115,7 +115,7 @@ MINOR_ABILITY_UPGRADES_FACET_REPLACEMENTS["npc_dota_hero_windrunner"] = {
 			ability_image = "windrunner_whirlwind"
 		}
 	}
-}
+}]]
 
 STAT_UPGRADE_EXCLUDES["npc_dota_hero_windrunner"] = {"aghsfort_minor_stat_upgrade_bonus_evasion"}
 
@@ -143,7 +143,7 @@ SPECIAL_ABILITY_UPGRADES["npc_dota_hero_windrunner"] =
 	--"pathfinder_special_windranger_powershot_ricochet",	
 }
 
-SPECIAL_ABILITY_UPGRADES_FACET_REPLACEMENTS["npc_dota_hero_windrunner"] = {
+--[[SPECIAL_ABILITY_UPGRADES_FACET_REPLACEMENTS["npc_dota_hero_windrunner"] = {
 	["pathfinder_special_windranger_focusfire_trueshot"] = {
 		RequiredFacetID = 3,
 		ReplacedSpecial = "pathfinder_special_windranger_whirlwind_trueshot"
@@ -156,7 +156,7 @@ SPECIAL_ABILITY_UPGRADES_FACET_REPLACEMENTS["npc_dota_hero_windrunner"] = {
 		RequiredFacetID = 3,
 		ReplacedSpecial = "pathfinder_special_windranger_whirlwind_lifesteal"
 	},
-}
+}]]
 
 item_windranger_shackleshot_lua_stun_duration = item_small_scepter_fragment
 item_windranger_shackleshot_lua_shackle_distance = item_small_scepter_fragment
@@ -168,7 +168,7 @@ item_windranger_windrun_lua_movespeed_bonus_pct = item_small_scepter_fragment
 item_windranger_powershot_lua_powershot_damage = item_small_scepter_fragment
 
 item_windranger_focus_fire_lua_bonus_attack_speed = item_small_scepter_fragment
-item_windranger_focus_fire_lua_attacks_per_second = item_small_scepter_fragment
+--item_windranger_focus_fire_lua_attacks_per_second = item_small_scepter_fragment
 item_windranger_focus_fire_lua_cooldown = item_small_scepter_fragment
 
 PURCHASABLE_SHARDS[ "npc_dota_hero_windrunner" ] =
@@ -180,14 +180,15 @@ PURCHASABLE_SHARDS[ "npc_dota_hero_windrunner" ] =
 	"item_windranger_windrun_lua_movespeed_bonus_pct",
 	"item_windranger_powershot_lua_powershot_damage",
 	"item_windranger_focus_fire_lua_cooldown",
+	"item_windranger_focus_fire_lua_bonus_attack_speed",
 }
 
 
-PURCHASABLE_SHARDS_FACET_ADDITIONS["npc_dota_hero_windrunner"] = {
+--[[PURCHASABLE_SHARDS_FACET_ADDITIONS["npc_dota_hero_windrunner"] = {
 	[2] = {
 		"item_windranger_focus_fire_lua_bonus_attack_speed",
 	},
 	[3] = {
 		"item_windranger_focus_fire_lua_attacks_per_second",
 	},
-}
+}]]

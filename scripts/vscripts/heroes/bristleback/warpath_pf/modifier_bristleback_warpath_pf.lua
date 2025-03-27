@@ -67,10 +67,13 @@ end
 function modifier_bristleback_warpath_pf:GetModifierPreAttack_BonusDamage(keys)
 	if not self:GetParent():IsIllusion() then
 		-- Need to call this somewhere other than OnCreated since it can be boosted by talent
-		local damage_per_stack =
-			self:GetAbility():GetSpecialValueFor("damage_per_stack") + self:GetCaster():FindTalentValue("special_bonus_imba_bristleback_3")
+		local damage_per_stack = self:GetAbility():GetSpecialValueFor("damage_per_stack") + self:GetCaster():FindTalentValue("special_bonus_imba_bristleback_3")
 
-		return damage_per_stack * self:GetStackCount()
+		if self:GetParent():HasModifier("modifier_bristleback_warpath_active") then
+			return damage_per_stack * self:GetStackCount() * (1 + (self:GetAbility():GetSpecialValueFor("active_bonus_attack_percent") / 100))
+		else
+			return damage_per_stack * self:GetStackCount()
+		end
 	end
 end
 
@@ -83,7 +86,11 @@ end
 --------------------------------------------------------------------------------
 
 function modifier_bristleback_warpath_pf:GetModifierMoveSpeedBonus_Percentage(keys)
-	return self:GetAbility():GetSpecialValueFor("move_speed_per_stack") * self:GetStackCount()
+	if self:GetParent():HasModifier("modifier_bristleback_warpath_active") then
+		return (self:GetAbility():GetSpecialValueFor("move_speed_per_stack") * self:GetStackCount()) * (1 + (self:GetAbility():GetSpecialValueFor("active_bonus_movement_percent") / 100))
+	else
+		return self:GetAbility():GetSpecialValueFor("move_speed_per_stack") * self:GetStackCount()
+	end
 end
 
 --------------------------------------------------------------------------------

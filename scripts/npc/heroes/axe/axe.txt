@@ -9,13 +9,11 @@
 		"Ability3"					"axe_counter_helix_lua"	 	
 		"Ability6"					"axe_culling_blade_lua"
 
-		"Ability10"		"special_bonus_attack_speed_25"
-		"Ability11"		"special_bonus_movement_speed_20"
 		"Ability12"		"special_bonus_mp_regen_5"
 		"Ability13"		"special_bonus_unique_counter_helix_attack"
-		"Ability14"		"special_bonus_pathfinder_axe_culling_blade_lua+kill_threshold"
+		"Ability14"		"special_bonus_unique_axe_5"
 		"Ability15"		"special_bonus_hp_regen_20"
-		"Ability16"		"special_bonus_pathfinder_axe_berserkers_call_lua+radius"
-		"Ability17"		"special_bonus_pathfinder_axe_battle_hunger_lua+damage_per_second"
+		"Ability16"		"special_bonus_unique_axe_2"
+		"Ability17"		"special_bonus_unique_axe_battle_hunger_damage"
 	}
 }

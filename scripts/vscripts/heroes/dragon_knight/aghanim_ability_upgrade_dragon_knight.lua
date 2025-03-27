@@ -72,8 +72,19 @@ MINOR_ABILITY_UPGRADES["npc_dota_hero_dragon_knight"] = {
 	{
 		description = "pathfinder_dk_dragon_tail_attack_damage",
 		ability_name = "pathfinder_dk_dragon_tail",
-		special_value_name = "attack_damage",
-		operator = MINOR_ABILITY_UPGRADE_OP_ADD,
+		special_values =
+		{
+			{
+				special_value_name = "damage",
+				operator = MINOR_ABILITY_UPGRADE_OP_ADD,
+				value = 40,
+			},
+			{
+				special_value_name = "attack_damage",
+				operator = MINOR_ABILITY_UPGRADE_OP_ADD,
+				value = 12,
+			},
+		},
 		value = 12,
 	},
 	
@@ -98,9 +109,9 @@ MINOR_ABILITY_UPGRADES["npc_dota_hero_dragon_knight"] = {
 	{
 		description = "dragon_knight_pf_dragon_blood_cleave_damage",
 		ability_name = "dragon_knight_pf_dragon_blood",
-		special_value_name = "cleave_damage",
+		special_value_name = "magic_damage",
 		operator = MINOR_ABILITY_UPGRADE_OP_ADD,
-		value = 7,
+		value = 6,
 		required_facet = 1
 	},
 

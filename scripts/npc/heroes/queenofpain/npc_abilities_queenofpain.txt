@@ -5,14 +5,9 @@
 	//=================================================================================================================
 	"queenofpain_succubus"
 	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-		"MaxLevel"						"1"
 		"AbilityValues"
 		{
-			"spell_lifesteal"			"8.0"
+			"spell_lifesteal"			"2.0"
 			"close_radius"				
 			{
 				"value"		"300"
@@ -24,6 +19,10 @@
 				"affected_by_aoe_increase"	"1"
 			}
 			"spell_lifesteal_close"		"14.0"
+            "lifesteal_reflected"
+			{
+				"special_bonus_facet_queenofpain_facet_bondage"	"1"
+			}
 		}
 	}
 
@@ -58,7 +57,7 @@
     
         // Cost
         //-------------------------------------------------------------------------------------------------------------
-        "AbilityManaCost"               "125 135 145 155"
+        "AbilityManaCost"               "100 110 120 130"
 
         // Special
         //-------------------------------------------------------------------------------------------------------------
@@ -66,7 +65,7 @@
         {
             "strike_damage"			
 			{
-				"value"								"30 60 90 120"
+				"value"								"50 80 110 140"
 				"special_bonus_scepter"				"+50"
 			}
 			"duration_damage"		"20 40 60 80"

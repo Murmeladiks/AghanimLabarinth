@@ -56,6 +56,23 @@ function modifier_dawnbreaker_celestial_hammer_lua_thinker:OnIntervalThink()
 		self.caster:GetTeamNumber(),
 		false
 	)
+
+	if self.ability:GetSpecialValueFor("fire_trail_move_speed") > 0 then
+		CreateModifierThinker(
+			self.caster, -- player source
+			self.ability, -- ability source
+			"modifier_dawnbreaker_celestial_hammer_lua_trail_buff", -- modifier name
+			{
+				duration = self.duration,
+				x = self.prev_pos.x,
+				y = self.prev_pos.y,
+			}, -- kv
+			self.parent:GetOrigin(),
+			self.caster:GetTeamNumber(),
+			false
+		)
+	end
+
 	self.prev_pos = self.parent:GetOrigin()
 end
 
@@ -79,11 +96,13 @@ function modifier_dawnbreaker_celestial_hammer_lua_thinker:GleamingHammer()
 	end)
 end
 
+--------------------------------------------------------------------------------
+
 function modifier_dawnbreaker_celestial_hammer_lua_thinker:Delay()
 	self:PlayEffects1()
 	self:StartIntervalThink( self.delay )
 
-	self:GleamingHammer()
+	--self:GleamingHammer()
 
 	if self:GetCaster():HasAbility("dawnbreaker_celestial_hammer_lua_skewer") and not self:GetCaster():PassivesDisabled() then
 		local sound = "Hero_Leshrac.Split_Earth"

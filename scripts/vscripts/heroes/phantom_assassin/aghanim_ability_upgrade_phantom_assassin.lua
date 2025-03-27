@@ -39,7 +39,7 @@ MINOR_ABILITY_UPGRADES["npc_dota_hero_phantom_assassin"] = {
 				value = 3,
 			},
 		},
-		required_facet = 1
+		required_facet = 3
 	},
 	
 	{

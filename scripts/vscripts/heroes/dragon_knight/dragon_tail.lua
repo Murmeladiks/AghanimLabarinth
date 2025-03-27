@@ -88,6 +88,22 @@ function pathfinder_dk_dragon_tail:HitSingle( target )
 		hAttackModifier.bActive = false
 	end
 
+	local nDamage = self:GetSpecialValueFor("damage")
+
+	local hWyrmWrath = caster:FindAbilityByName("dragon_knight_pf_dragon_blood")
+
+	if hWyrmWrath and hWyrmWrath:IsTrained() then
+		nDamage = nDamage + hWyrmWrath:GetSpecialValueFor("spell_damage")
+	end
+
+	ApplyDamage({
+		attacker = caster,
+		victim = target,
+		damage = nDamage,
+		damage_type = (self:GetSpecialValueFor("physical_damage_type") > 0) and DAMAGE_TYPE_PHYSICAL or DAMAGE_TYPE_MAGICAL,
+		ability = self
+	})
+
 	target:AddNewModifier(caster, self, "modifier_stunned", {duration = duration})
 end
 

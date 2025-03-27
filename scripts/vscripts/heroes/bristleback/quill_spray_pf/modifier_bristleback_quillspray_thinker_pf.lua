@@ -27,6 +27,7 @@ function modifier_bristleback_quillspray_thinker_pf:OnCreated(kv)
 	if not IsServer() then return end
 	self.owner = kv.quilly and EntIndexToHScript(kv.quilly) or self.caster
 	self.attempt_bleeding = kv.bPassive == 1 and self.caster:HasShard("pathfinder_bristleback_bristleback_magical_bleed")
+	self.bPassiveSpray = kv.bPassive == 1 or 0
 
 	-- Establish table to populate hit enemies with (so they only get hit once per quill spray)
 	self.hit_enemies = {}
@@ -99,7 +100,7 @@ function modifier_bristleback_quillspray_thinker_pf:OnIntervalThink()
 				self.caster,
 				self.ability,
 				"modifier_bristleback_quill_spray_pf",
-				{duration = self.quill_stack_duration}
+				{duration = self.quill_stack_duration, bPassive = self.bPassiveSpray}
 			)
 
 			

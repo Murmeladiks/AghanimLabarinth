@@ -20,7 +20,6 @@ end
 function modifier_shackle_stun:OnCreated(table)
 	if IsServer() then
 		self:GetParent():StartGesture(ACT_DOTA_DISABLED)
-		print(self:GetRemainingTime())
 	end
 	self:StartIntervalThink(0.2)
 end
@@ -29,7 +28,6 @@ end
 
 function modifier_shackle_stun:OnDestroy()
 	if IsServer() then
-		print("destroy")
 		self:GetParent():FadeGesture(ACT_DOTA_DISABLED)
 		if self:GetAbility():GetCaster():HasAbility("pathfinder_special_windranger_shackleshot_sleep") then
 			local sleep_duration = self:GetAbility():GetCaster():FindAbilityByName("pathfinder_special_windranger_shackleshot_sleep"):GetLevelSpecialValueFor("duration", 1)

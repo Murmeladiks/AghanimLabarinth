@@ -135,9 +135,7 @@ function modifier_dragon_knight_pf_dragon_blood:OnCreated(kv)
 	self.bRedDragon = hAbility:GetSpecialValueFor("is_red_dragon") > 0
 	self.bBlueDragon = hAbility:GetSpecialValueFor("is_blue_dragon") > 0
 
-	self.nStartRadius = hAbility:GetSpecialValueFor("cleave_starting_width")
-	self.nEndRadius = hAbility:GetSpecialValueFor("cleave_ending_width")
-	self.nDistance = hAbility:GetSpecialValueFor("cleave_distance")
+	self.nMagicDamage = hAbility:GetSpecialValueFor("magic_damage")
 
 	local hDragonAbility = hCaster:FindAbilityByName("dragon_knight_pf_elder_dragon_form")
 
@@ -148,8 +146,19 @@ end
 
 --------------------------------------------------------------------------------
 
+function modifier_dragon_knight_pf_dragon_blood:OnRefresh(kv)
+	local hAbility = self:GetAbility()
+	
+	self.nMagicDamage = hAbility:GetSpecialValueFor("magic_damage")
+end
+
+--------------------------------------------------------------------------------
+
 function modifier_dragon_knight_pf_dragon_blood:DeclareFunctions()
-	return {MODIFIER_EVENT_ON_ATTACK_LANDED}
+	return {
+		MODIFIER_EVENT_ON_ATTACK_LANDED,
+		MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_MAGICAL
+	}
 end
 
 --------------------------------------------------------------------------------
@@ -160,11 +169,48 @@ function modifier_dragon_knight_pf_dragon_blood:OnAttackLanded(event)
 
 	if self.bGreenDragon then
 		self:CorrosiveAttack(hTarget)
-	elseif self.bRedDragon then
-		self:CleaveAttack(hTarget, event.original_damage)
-	else
+	elseif self.bBlueDragon then
 		self:ColdAttack(hTarget)
 	end	
+end
+
+--------------------------------------------------------------------------------
+
+function modifier_dragon_knight_pf_dragon_blood:GetModifierProcAttack_BonusDamage_Magical(event)
+	if IsClient() or not self.bRedDragon then return end
+	local hParent = self:GetParent()
+	local hAbility = self:GetAbility()
+	local hCaster = self:GetCaster()
+	local hTarget = event.target
+
+	if hParent:IsIllusion() then return end
+
+	if hCaster:HasModifier("modifier_dragon_knight_pf_elder_dragon_form") or self:GetStackCount() == 1 then
+		local tDamageTable = {
+			attacker = hParent,
+			victim = nil,
+			damage = self.nMagicDamage * (1 + (hParent:FindAbilityByName("dragon_knight_pf_elder_dragon_form"):GetSpecialValueFor("fire_breath_effect_bonus") / 100)),
+			damage_type = DAMAGE_TYPE_MAGICAL,
+			ability = hAbility
+		}
+
+		local hEnemies = FindUnitsInRadius(hCaster:GetTeam(), hTarget:GetOrigin(), nil, self.nSplashRadius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, 0, 0, false)
+
+		for _, hEnemy in pairs(hEnemies) do
+			if hEnemy ~= hTarget then
+				tDamageTable.victim = hEnemy
+				ApplyDamage(tDamageTable)
+			end
+		end
+
+		self:SetStackCount(0)
+	end
+
+	if not hTarget:IsBuilding() and not hTarget:IsOther() then
+		return self.nMagicDamage
+	end
+
+	return 0
 end
 
 --------------------------------------------------------------------------------
@@ -186,39 +232,6 @@ function modifier_dragon_knight_pf_dragon_blood:CorrosiveAttack(hTarget)
 		end
 
 		self:SetStackCount(0)
-	end
-end
-
---------------------------------------------------------------------------------
-
-function modifier_dragon_knight_pf_dragon_blood:CleaveAttack(hTarget, nDamage)
-	local hParent = self:GetParent()
-	local hAbility = self:GetAbility()
-	local hCaster = self:GetCaster()
-
-	if hParent:IsIllusion() then return end
-
-	local nCleaveDamage = hAbility:GetSpecialValueFor("cleave_damage")
-
-	if hCaster:HasModifier("modifier_dragon_knight_pf_elder_dragon_form") or self:GetStackCount() == 1 then
-		local tDamageTable = {
-			attacker = hParent,
-			victim = nil,
-			damage = nDamage * (nCleaveDamage + hParent:FindAbilityByName("dragon_knight_pf_elder_dragon_form"):GetSpecialValueFor("fire_breath_effect_bonus")) / 100,
-			damage_type = DAMAGE_TYPE_PHYSICAL,
-			ability = hAbility
-		}
-
-		local hEnemies = FindUnitsInRadius(hCaster:GetTeam(), hTarget:GetOrigin(), nil, self.nSplashRadius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, 0, 0, false)
-
-		for _, hEnemy in pairs(hEnemies) do
-			if hEnemy ~= hTarget then
-				tDamageTable.victim = hEnemy
-				ApplyDamage(tDamageTable)
-			end
-		end
-	else
-		DoCleaveAttack(hParent, hTarget, hAbility, nDamage * nCleaveDamage / 100, self.nStartRadius, self.nEndRadius, self.nDistance, "particles/units/heroes/hero_sven/sven_spell_great_cleave.vpcf")
 	end
 end
 
@@ -274,7 +287,7 @@ function modifier_dragon_knight_pf_corrosive_breath_dot:OnCreated()
 		attacker = hCaster,
 		victim = self:GetParent(),
 		damage = self.nDamage,
-		damage_type = DAMAGE_TYPE_MAGICAL,
+		damage_type = DAMAGE_TYPE_PHYSICAL,
 		ability = hAbility
 	}
 

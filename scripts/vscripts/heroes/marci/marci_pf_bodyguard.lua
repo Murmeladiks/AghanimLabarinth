@@ -54,6 +54,11 @@ function marci_pf_bodyguard:OnSpellStart()
 		return
 	end
 
+	if self.hCurrentAlly and self.hCurrentAlly:HasModifier("modifier_marci_pf_bodyguarded") then
+		self.hCurrentAlly:RemoveModifierByName("modifier_marci_pf_bodyguarded")
+	end
+
+	self.hCurrentAlly = hTarget
 	
 	hTarget:AddNewModifier(hCaster, self, "modifier_marci_pf_bodyguarded", {duration = self:GetSpecialValueFor("bodyguard_duration")})
 
@@ -128,6 +133,7 @@ function modifier_marci_pf_bodyguard_self:OnCreated()
 	self.nAttackRangeBuffer = hAbility:GetSpecialValueFor("bodyguard_attack_range_buffer")
 	self.nAttackCooldown = hAbility:GetSpecialValueFor("counter_cooldown")
 	self.bReadyToCounter = true
+	self.nSharedLifesteal = hAbility:GetSpecialValueFor("shared_healing_percent") / 100
 end
 
 --------------------------------------------------------------------------------
@@ -170,12 +176,20 @@ function modifier_marci_pf_bodyguard_self:OnAttacked(event)
 
 	if hAttacker == self:GetParent() then
 		local nLifesteal = event.damage * hAbility:GetSpecialValueFor("lifesteal_pct") / 100
+		local hCurrentAlly = hAbility.hCurrentAlly
 
 		hAttacker:HealWithParams(nLifesteal, hAbility, true, true, hCaster, false)
 
 		ParticleManager:ReleaseParticleIndex(
 			ParticleManager:CreateParticle("particles/generic_gameplay/generic_lifesteal.vpcf", PATTACH_ABSORIGIN_FOLLOW, hAttacker)
 		)
+
+		if self.nSharedLifesteal > 0 and hCurrentAlly and hCurrentAlly:HasModifier("modifier_marci_pf_bodyguarded") then
+			hCurrentAlly:HealWithParams(nLifesteal * self.nSharedLifesteal, hAbility, true, true, hCaster, false)
+			ParticleManager:ReleaseParticleIndex(
+				ParticleManager:CreateParticle("particles/generic_gameplay/generic_lifesteal.vpcf", PATTACH_ABSORIGIN_FOLLOW, hCurrentAlly)
+			)
+		end
 	elseif (hAttacker:HasModifier("modifier_marci_pf_bodyguarded") or hTarget:HasModifier("modifier_marci_pf_bodyguarded_enemy")) and (hTarget:GetOrigin() - hCaster:GetOrigin()):Length2D() <= (hCaster:Script_GetAttackRange() + self.nAttackRangeBuffer) and self.bReadyToCounter then
 		self.bReadyToCounter = false
 
@@ -208,7 +222,11 @@ function modifier_marci_pf_bodyguarded:OnCreated()
 	local hCaster = self:GetCaster()
 	local hParent = self:GetParent()
 
-	self.nArmor = hAbility:GetSpecialValueFor("bonus_armor")
+	self.nSharedPct = hAbility:GetSpecialValueFor("max_partner_penalty") / 100
+	self.nLifesteal = (hAbility:GetSpecialValueFor("lifesteal_pct") / 100) * self.nSharedPct
+	self.nDamagePct = hAbility:GetSpecialValueFor("bonus_damage") * self.nSharedPct
+
+	self.nHealShare = hAbility:GetSpecialValueFor("shared_healing_percent") / 100
 
 	if IsClient() then
 		local nBuffFX = ParticleManager:CreateParticle("particles/units/heroes/hero_marci/marci_sidekick_buff.vpcf", PATTACH_CUSTOMORIGIN, hCaster)
@@ -227,13 +245,43 @@ end
 --------------------------------------------------------------------------------
 
 function modifier_marci_pf_bodyguarded:DeclareFunctions()
-	return {MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS}
+	return {
+		MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE,
+		MODIFIER_EVENT_ON_ATTACKED
+	}
 end
 
 --------------------------------------------------------------------------------
 
-function modifier_marci_pf_bodyguarded:GetModifierPhysicalArmorBonus()
-	return self.nArmor
+function modifier_marci_pf_bodyguarded:GetModifierBaseDamageOutgoing_Percentage()
+	return self.nDamagePct
+end
+
+--------------------------------------------------------------------------------
+
+function modifier_marci_pf_bodyguarded:OnAttacked(event)
+	if IsClient() then return end
+	local hAttacker = event.attacker
+	local hTarget = event.target
+	local hCaster = self:GetCaster()
+	local hAbility = self:GetAbility()
+
+	if hAttacker ~= self:GetParent() or not hTarget or hTarget:GetTeam() == hAttacker:GetTeam() or hTarget:IsBuilding() or hTarget:IsOther() then return end
+
+	local nLifesteal = event.damage * self.nLifesteal
+
+	hAttacker:HealWithParams(nLifesteal, hAbility, true, true, hCaster, false)
+
+	if self.nHealShare > 0 and hCaster:IsAlive() then
+		hCaster:HealWithParams(nLifesteal * self.nHealShare, hAbility, true, true, hCaster, false)
+		ParticleManager:ReleaseParticleIndex(
+			ParticleManager:CreateParticle("particles/generic_gameplay/generic_lifesteal.vpcf", PATTACH_ABSORIGIN_FOLLOW, hCaster)
+		)
+	end
+
+	ParticleManager:ReleaseParticleIndex(
+		ParticleManager:CreateParticle("particles/generic_gameplay/generic_lifesteal.vpcf", PATTACH_ABSORIGIN_FOLLOW, hAttacker)
+	)
 end
 
 --------------------------------------------------------------------------------
@@ -269,8 +317,6 @@ function modifier_marci_pf_bodyguarded_enemy:OnCreated()
 	local hCaster = self:GetCaster()
 	local hParent = self:GetParent()
 
-	self.nArmor = -hAbility:GetSpecialValueFor("bonus_armor")
-
 	if IsClient() then
 		local nDebuffFX = ParticleManager:CreateParticle("particles/units/heroes/hero_marci/marci_sidekick_debuff.vpcf", PATTACH_CUSTOMORIGIN, hCaster)
 		ParticleManager:SetParticleControlEnt(nDebuffFX, 0, hParent, PATTACH_OVERHEAD_FOLLOW, nil, Vector(0, 0, 0), true)
@@ -283,18 +329,6 @@ function modifier_marci_pf_bodyguarded_enemy:OnCreated()
 	local nRangeFX = ParticleManager:CreateParticle("particles/units/heroes/hero_marci/marci_bodyguard_radius_enemy.vpcf", PATTACH_ABSORIGIN_FOLLOW, hCaster)
 	ParticleManager:SetParticleControl(nRangeFX, 1, Vector(hCaster:Script_GetAttackRange() + hAbility:GetSpecialValueFor("bodyguard_attack_range_buffer"), 0, 0))
 	self:AddParticle(nRangeFX, false, false, -1, false, false)
-end
-
---------------------------------------------------------------------------------
-
-function modifier_marci_pf_bodyguarded_enemy:DeclareFunctions()
-	return {MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS}
-end
-
---------------------------------------------------------------------------------
-
-function modifier_marci_pf_bodyguarded_enemy:GetModifierPhysicalArmorBonus()
-	return self.nArmor
 end
 
 --------------------------------------------------------------------------------

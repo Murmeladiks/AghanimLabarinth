@@ -364,8 +364,14 @@ function modifier_pathfinder_necromastery_souls:AddNecromasterySouls(soul_count)
 	if self:GetParent():PassivesDisabled() then
 		return nil
 	end
+	local nMaxSouls = self:GetAbility():GetSpecialValueFor("max_souls")
+	local hFrenzyAbility = self:GetCaster():FindAbilityByName("nevermore_pf_frenzy")
 
-	self:SetStackCount(math.min(self:GetStackCount() + soul_count, self:GetAbility():GetSpecialValueFor("max_souls")))
+	if hFrenzyAbility and self:GetParent():HasModifier("modifier_nevermore_pf_frenzy") then
+		nMaxSouls = nMaxSouls + hFrenzyAbility:GetSpecialValueFor("soul_cost")
+	end
+
+	self:SetStackCount(math.min(self:GetStackCount() + soul_count, nMaxSouls))
 end
 
 function modifier_pathfinder_necromastery_souls:RemoveNecromasterySouls(soul_count)

@@ -96,7 +96,9 @@ function modifier_jakiro_ice_path_lua_thinker:OnCreated( kv )
 	self.duration = self:GetAbility():GetSpecialValueFor( "duration" )
 	self.radius = self:GetAbility():GetSpecialValueFor( "path_radius" )
 
-	if not IsServer() then return end	
+	if not IsServer() then return end
+
+	self.bMain = kv.main and kv.main == 1
 		
 
 	-- ability properties
@@ -150,14 +152,46 @@ function modifier_jakiro_ice_path_lua_thinker:OnCreated( kv )
 	self:PlayEffects2()
 end
 
-function modifier_jakiro_ice_path_lua_thinker:OnRefresh( kv )
-end
+function modifier_jakiro_ice_path_lua_thinker:Detonate()
+	local hAbility = self:GetAbility()
+	local hCaster = self:GetCaster()
 
-function modifier_jakiro_ice_path_lua_thinker:OnRemoved()
+	local nDamage = hAbility:GetSpecialValueFor("detonate_damage")
+	local nStunDuration = hAbility:GetSpecialValueFor("detonate_stun_duration")
+
+	local hEnemies = FindUnitsInLine(hCaster:GetTeam(), self.startpoint, self.endpoint, nil, self.radius, self.abilityTargetTeam, self.abilityTargetType, self.abilityTargetFlags)
+
+	local tDamageTable = {
+		attacker = hCaster,
+		victim = nil,
+		damage = nDamage,
+		damage_type = DAMAGE_TYPE_MAGICAL,
+		ability = hAbility
+	}
+
+	for _, hEnemy in pairs(hEnemies) do
+		tDamageTable.victim = hEnemy
+		ApplyDamage(tDamageTable)
+
+		hEnemy:AddNewModifier(hCaster, hAbility, "modifier_jakiro_ice_path_stun", {duration = nStunDuration * (1 - hEnemy:GetStatusResistance())})
+	end
+
+	EmitSoundOnLocationWithCaster(self.startpoint, "Hero_Jakiro.IcePath.Detonate", hCaster)
 end
 
 function modifier_jakiro_ice_path_lua_thinker:OnDestroy()
 	if not IsServer() then return end
+	
+	if self.bMain and self:GetAbility():GetSpecialValueFor("detonate_damage") > 0 then
+		local hDetonate = self:GetCaster():FindAbilityByName("jakiro_pf_ice_path_detonate")
+
+		if hDetonate then
+			self:GetCaster():SwapAbilities("jakiro_pf_ice_path_detonate", self:GetAbility():GetAbilityName(), false, true)
+		end
+
+		self:Detonate()
+	end
+
 	UTIL_Remove( self:GetParent() )
 end
 
@@ -279,7 +313,7 @@ function modifier_jakiro_ice_path_lua_thinker:PlayEffects1()
 	ParticleManager:SetParticleControl( effect_cast, 0, self.startpoint )
 	ParticleManager:SetParticleControl( effect_cast, 1, self.endpoint )
 	ParticleManager:SetParticleControl( effect_cast, 2, Vector( 0, 0, self.delay ) )
-	ParticleManager:ReleaseParticleIndex( effect_cast )
+	self:AddParticle(effect_cast, false, false, -1, false, false)
 
 	-- Create Sound
 
@@ -309,7 +343,7 @@ function modifier_jakiro_ice_path_lua_thinker:PlayEffects2()
 		Vector(0,0,0), -- unknown
 		true -- unknown, true
 	)
-	ParticleManager:ReleaseParticleIndex( effect_cast )
+	self:AddParticle(effect_cast, false, false, -1, false, false)
 
 	-- Create Sound
 	if self.bHalf then return end

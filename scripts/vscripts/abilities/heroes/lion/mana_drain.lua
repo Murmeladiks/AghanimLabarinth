@@ -1,9 +1,5 @@
 LinkLuaModifier( "modifier_aghsfort_lion_mana_drain", "abilities/heroes/lion/mana_drain", LUA_MODIFIER_MOTION_NONE )
 --Abilities
-function IsValid(cobject)
-    return cobject ~= nil and not cobject:IsNull()
-end
-
 if aghsfort_lion_mana_drain == nil then
 	aghsfort_lion_mana_drain = class({})
 end

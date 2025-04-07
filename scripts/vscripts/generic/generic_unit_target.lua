@@ -7,11 +7,11 @@ generic_unit_target.data = {
 	projectile = nil,
 }
 
-function generic_unit_target:Init( spell )
-	self.data.spell = spell,
-	self.data.caster = spell:GetCaster(),
-	self.data.target = spell:GetCursorTarget(),
-end
+-- function generic_unit_target:Init( spell )
+-- 	self.data.spell = spell,
+-- 	self.data.caster = spell:GetCaster(),
+-- 	self.data.target = spell:GetCursorTarget(),
+-- end
 
 
 

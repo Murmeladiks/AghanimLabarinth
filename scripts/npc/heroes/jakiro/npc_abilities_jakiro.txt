@@ -1,20 +1,18 @@
 "Hero_Jakiro"
-{
-	
+{    
+	//=================================================================================================================
+	// Double Attack
+	//=================================================================================================================
 	"jakiro_double_trouble"
 	{
-	// General
+		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"jakiro_double_trouble"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS"
-		"MaxLevel"						"1"
-		"Innate"						"1"
-		"AbilityValues"
-		{
-			
-
-		}
+		"DependentOnAbility"			"jakiro_macropyre_lua"
 	}
+	
+	//=================================================================================================================
+	// Ability: Jakiro's Dual Breath
+	//=================================================================================================================
     "jakiro_dual_breath_lua"
 	{
 		// Ability Technical Aspect
@@ -129,7 +127,8 @@
 			"path_delay"				"0.2"
 			"duration"
 			{
-				"value"					"1.25 1.50 1.75 2.0"
+				"value"										"1.25 1.50 1.75 2.0"
+				"special_bonus_facet_jakiro_ice_breaker"	"=2 =2 =2 =2"
 				"special_bonus_unique_jakiro_ice_path_lua_duration"	"+5"
 			}
 			"path_radius"				
@@ -144,64 +143,106 @@
 			}
 			"range"						"1200"
 			"start_range"				"12"
+
+			"detonate_damage"
+			{
+				"value"													"=0 =0 =0 =0"
+				"special_bonus_facet_jakiro_ice_breaker"				"=75 =125 =175 =225"
+			}
+			"detonate_stun_duration"
+			{
+				"value"													"=0"
+				"special_bonus_facet_jakiro_ice_breaker"				"=0.5"
+			}
+			"detonate_projectile_speed"
+			{
+				"value"													"=0"
+				"special_bonus_facet_jakiro_ice_breaker"				"=2400"
+			}
 		}
+	}
+
+	//=================================================================================================================
+	// Jakiro's Ice Path Detonate
+	//=================================================================================================================
+	"jakiro_pf_ice_path_detonate"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"                     "ability_lua"
+        "ScriptFile"					"heroes/jakiro/jakiro_pf_ice_path_detonate"
+        "AbilityTextureName"            "jakiro_ice_path_detonate"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastAnimation"			"ACT_DOTA_OVERRIDE_ABILITY_3"
+		"AbilityCastGestureSlot"		"DEFAULT"
+		"MaxLevel"						"1"
+	
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.0"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"1.0"
+	
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
 	}
 
 	//=================================================================================================================
 	// Ability: Jakiro's Liquid Fire
 	//=================================================================================================================
-	"jakiro_liquid_fire_lua"
+	"jakiro_pf_liquid_fire"
 	{
-		"BaseClass"						"ability_lua"
-		"ScriptFile"					"heroes/jakiro/jakiro_liquid_fire_lua"
-		"AbilityTextureName"			"jakiro_liquid_fire"
-		
-		"precache"
-		{
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_jakiro.vsndevts"
-			"particle"	"particles/units/heroes/hero_jakiro/jakiro_base_attack_fire.vpcf"
-			"particle"	"particles/units/heroes/hero_jakiro/jakiro_liquid_fire_explosion.vpcf"
-			"particle"	"particles/units/heroes/hero_jakiro/jakiro_liquid_fire_debuff.vpcf"
-		}
-		
-		// Ability General
+		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_AOE"
+		"BaseClass"                     "ability_lua"
+        "ScriptFile"					"heroes/jakiro/jakiro_pf_liquid_fire"
+        "AbilityTextureName"            "jakiro_liquid_fire"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_DEAD"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"FightRecapLevel"				"1"
-		"MaxLevel"						"4"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+		"AbilitySound"					"Hero_Jakiro.LiquidFire"
+		"LinkedAbility"					"jakiro_pf_liquid_ice"
 
-		// Ability Casting
-		//-------------------------------------------------------------------------------------------------------------		
-		"AbilityCastPoint"				"0.35"		
-
-		// Ability Resource
+		// Stats
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"				"13 10 7 4"
-
+		"AbilityDuration"				"5.0"
+		"AbilityCastRange"				"600"
+		"AbilityCastPoint"				"0.0 0.0 0.0 0.0"
+					
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityValues"
 		{
 			"slow_attack_speed_pct"
 			{
-				"value"					"20 30 40 50"
-				"special_bonus_unique_jakiro_liquid_fire_lua_slow_attack_speed_pct"	"+50"
+				"value" 						"-30 -40 -50 -60"
+				"special_bonus_unique_jakiro_liquid_fire_lua_slow_attack_speed_pct"	"-50"
 			}
 			"radius"				
 			{
-				"value"						"225"
+				"value"		"300"
 				"affected_by_aoe_increase"	"1"
 			}
-			"damage"				"8 12 16 20"
-			"duration"				"5"
-		}
+			"damage"
+			{
+				"value"				"16 24 32 40"
+
+			}
+			"tick_rate"				"0.5"
+			"building_dmg_pct"		"75"
+		}		
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
 	}
 
 	//=================================================================================================================
@@ -224,17 +265,13 @@
 		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
 		"AbilitySound"					"Hero_Jakiro.LiquidFire"
 		"FightRecapLevel"				"1"
-		"HasShardUpgrade"				"1"
+		"LinkedAbility"					"jakiro_pf_liquid_fire"
 
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"				"13 10 7 4"
 		"AbilityCastRange"				"600"
 		"AbilityCastPoint"				"0.0 0.0 0.0 0.0"
-		
-		// Stats
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityModifierSupportBonus"		"35"
 			
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
@@ -260,10 +297,6 @@
 				"affected_by_aoe_increase"	"1"
 			}
 			"tick_rate"				"0.5"
-			"double_head"
-			{
-				"special_bonus_unique_jakiro_3"	"+1"
-			}
 		}		
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
 	}
@@ -457,7 +490,8 @@
         "BaseClass"                     "ability_datadriven"
         "AbilityValues"
         {
-            "chance" "25"
+            "chance" 	"25"
+			"duration"	"50"
         }
 	}
     "pathfinder_jakiro_ice_path_armour"
@@ -478,7 +512,12 @@
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
         "AbilityTextureName"            "jakiro_liquid_fire"
         "MaxLevel"                      "1"
-        "BaseClass"                     "ability_datadriven"       
+        "BaseClass"                     "ability_datadriven"
+
+		"AbilityValues"
+        {
+            "burst_damage" "50"
+        }
 	}
 
     "pathfinder_jakiro_ice_path_barrier"

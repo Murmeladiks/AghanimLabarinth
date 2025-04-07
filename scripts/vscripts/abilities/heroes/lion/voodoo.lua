@@ -3,7 +3,6 @@ LinkLuaModifier( "modifier_aghsfort_lion_voodoo", "abilities/heroes/lion/voodoo"
 function IsValid(cobject)
     return cobject ~= nil and not cobject:IsNull()
 end
-
 aghsfort_lion_voodoo = {}
 function aghsfort_lion_voodoo:Init()
 	self.hex_models = {

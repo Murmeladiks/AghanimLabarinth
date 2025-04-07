@@ -47,3 +47,4 @@
 #base "heroes/gyrocopter/gyrocopter.txt"
 #base "heroes/lion/lion.txt"
 #base "heroes/drow_ranger/drow_ranger.txt"
+#base "heroes/sven/sven.txt"

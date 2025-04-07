@@ -8420,7 +8420,126 @@
 	"aghsfort_disruptor_electromagnetic_repulsion_damage_threshold"	"{s:value} % {s:ability_name} damage threshold"
 
 
+	//--------------------------------------------------------------------------------------------------------------
+	// new hero Sven
+	//--------------------------------------------------------------------------------------------------------------        
+	"DOTA_Tooltip_ability_remake_storm_bolt"                                 "Storm Hammer"
+	"DOTA_Tooltip_ability_remake_storm_bolt_Description"                          "Sven unleashes his magical gauntlet that deals damage and stuns enemy units in a small area around the target"
+	"DOTA_Tooltip_ability_remake_storm_bolt_damage"                          "Damage:"
+	"DOTA_Tooltip_ability_remake_storm_bolt_bolt_aoe"                          "Radius:" 
+	"DOTA_Tooltip_ability_remake_storm_bolt_bolt_stun_duration"                          "Stun Duration:"       
+	"DOTA_Tooltip_ability_remake_great_cleave"                                 "Great Cleave"
+	"DOTA_Tooltip_ability_remake_great_cleave_Description"                          "Sven strikes with great force, cleaving all nearby enemy units with his attack."
+	"DOTA_Tooltip_ability_remake_great_cleave_great_cleave_radius"                          "End Radius:"
+	"DOTA_Tooltip_ability_remake_great_cleave_great_cleave_damage"                          "%Cleave Damage:"   
+	"DOTA_Tooltip_ability_remake_sven_warcry"                                   "Warcry"
+	"DOTA_Tooltip_ability_remake_sven_warcry_Description"                          "Sven's Warcry heartens his allied heroes for battle, increasing their armor and movement speed. Lasts 8 seconds."
+	"DOTA_Tooltip_ability_remake_sven_warcry_warcry_armor"                          "Armor Bonus:"
+	"DOTA_Tooltip_ability_remake_sven_warcry_warcry_movespeed"                          "%Movement Speed Bonus:" 
+	"DOTA_Tooltip_ability_remake_sven_warcry_warcry_duration"                          "Duration:" 
+	"DOTA_Tooltip_ability_remake_sven_gods_strength"                                   "God's Strength"
+	"DOTA_Tooltip_ability_remake_sven_gods_strength_Description"                          "Sven channels his rogue strength, granting bonus damage for 40 seconds."
+	"DOTA_Tooltip_ability_remake_sven_gods_strength_gods_strength_damage"                          "%Attack Damage Bonus:"        
+	"DOTA_Tooltip_ability_remake_sven_gods_strength_duration"                          "Duration:" 
 
+
+
+"DOTA_Tooltip_ability_remake_great_cleave_lifesteal" "Cunning"
+"DOTA_Tooltip_ability_remake_great_cleave_lifesteal_Description" 	"Gain %value%% lifesteal from cleave damage."
+
+"DOTA_Tooltip_ability_remake_great_cleave_great" "Great"
+"DOTA_Tooltip_ability_remake_great_cleave_great_Description" "Increases cleave distance by %value%%."
+
+"DOTA_Tooltip_ability_remake_great_cleave_focus" "Focus"
+"DOTA_Tooltip_ability_remake_great_cleave_focus_Description" "Great Cleave becomes an active ability. While active, Sven's attacks no longer cleave, but instead increase his base attack damage by %value%% of cleave damage for 10 seconds. Cooldown: 20s."
+
+"DOTA_Tooltip_ability_remake_storm_bolt_storm" "Storm"
+"DOTA_Tooltip_ability_remake_storm_bolt_storm_Description" "After Storm Bolt hits an enemy, Sven gains %value%% attack speed for 5 seconds. If the enemy is a Captain, gain an additional 3 attack speed."
+
+"DOTA_Tooltip_ability_remake_storm_bolt_rush" "Courage"
+"DOTA_Tooltip_ability_remake_storm_bolt_rush_Description" "Sven charges forward with Storm Bolt, increasing its cast range by %value%%."
+
+"DOTA_Tooltip_ability_remake_storm_bolt_crit" "Power"
+"DOTA_Tooltip_ability_remake_storm_bolt_crit_Description" "Sven's next attack after casting Storm Bolt will deal a critical strike, with bonus damage equal to %value%% of Storm Bolt's damage."
+
+"DOTA_Tooltip_ability_remake_sven_warcry_destruction" "Destruction"
+"DOTA_Tooltip_ability_remake_sven_warcry_destruction_Description" "Reduces enemy armor by %value%%% of Warcry's armor bonus."
+
+"DOTA_Tooltip_ability_remake_sven_warcry_protect" "Protect"
+"DOTA_Tooltip_ability_remake_sven_warcry_protect_Description" "Grants Sven spell immunity (Black King Bar effect) for 5 seconds."
+
+"DOTA_Tooltip_ability_remake_sven_warcry_magic" "Magic Resist"
+"DOTA_Tooltip_ability_remake_sven_warcry_magic_Description" "Purges debuffs and grants phased movement."
+
+"DOTA_Tooltip_ability_remake_sven_gods_strength_berserker" "God's Blessing"
+"DOTA_Tooltip_ability_remake_sven_gods_strength_berserker_Description" "Increases God's Strength bonus damage by %value%%."
+
+"DOTA_Tooltip_ability_remake_sven_gods_strength_anger" "Anger"
+"DOTA_Tooltip_ability_remake_sven_gods_strength_anger_Description" "Reduces Storm Bolt cooldown by %value%% while God's Strength is active."
+
+"DOTA_Tooltip_ability_remake_sven_gods_strength_focus" "Strength"
+"DOTA_Tooltip_ability_remake_sven_gods_strength_focus_Description" "God's Strength now also increases Sven's Strength by %value%%."
+
+	
+
+	"remake_storm_bolt_cooldown_and_mana_shard"                               "reduce{s:value1} {s:ability_name}cd and mana"
+	"remake_storm_bolt_damage_shard"                                "increase{s:value} {s:ability_name}damage"
+	"remake_great_cleave_damage_talent"                                    "increase{s:value} {s:ability_name}cleave damage"
+	"remake_sven_warcry_duration_and_ms_talent"                                     "increase {s:ability_name} {s:value1}movespeed bonus and{s:value2}duration"
+	"remake_sven_warcry_armor_talent"                                     "increase{s:value} {s:ability_name}armor bonus"
+	"remake_sven_warcry_cooldown_and_mana_shard"                            "reduce{s:value1} {s:ability_name}cd and mana"
+	"remake_sven_gods_strength_talent"                              "increase{s:value} {s:ability_name}bonus attack"
+	"remake_sven_gods_strength_cd_talent"                     "reduce {s:value1} {s:ability_name}cd and mana"
+
+	"DOTA_Tooltip_Ability_item_remake_storm_bolt_cooldown"						"storm bolt:cd"	
+	"DOTA_Tooltip_Ability_item_remake_storm_bolt_cooldown_Description"	"<h1>Common Scepter Fragment</h1>- %value% storm bolt cd"
+
+	 "DOTA_Tooltip_Ability_item_remake_storm_bolt_damage_talent"						"storm bolt:damage"	
+	"DOTA_Tooltip_Ability_item_remake_storm_bolt_damage_talent_Description"	  "<h1>Common Scepter Fragment</h1>+ %value% storm bolt damage"	
+
+	"DOTA_Tooltip_Ability_item_remake_storm_bolt_radius_talent"						"storm bolt:radius"	
+	"DOTA_Tooltip_Ability_item_remake_storm_bolt_radius_talent_Description"	  "<h1>Common Scepter Fragment</h1>+ %value% storm bolt radius"	
+
+	"DOTA_Tooltip_Ability_item_remake_great_cleave_damage_talent"						"great cleave:damage"	
+	"DOTA_Tooltip_Ability_item_remake_great_cleave_damage_talent_Description"	  "<h1>Common Scepter Fragment</h1>+ %value% great cleave damage"	
+
+	"DOTA_Tooltip_Ability_item_remake_sven_warcry_movespeed_talent"						"warcry:movespeed"	
+	"DOTA_Tooltip_Ability_item_remake_sven_warcry_movespeed_talent_Description"	  "<h1>Common Scepter Fragment</h1>+ %value%movespeed"	
+
+	"DOTA_Tooltip_Ability_item_remake_sven_warcry_armor_talent"						"warcry:armor"	
+	"DOTA_Tooltip_Ability_item_remake_sven_warcry_armor_talent_Description"	  "<h1>Common Scepter Fragment</h1>+ %value%armor"	
+
+	"DOTA_Tooltip_Ability_item_remake_sven_warcry_cooldown"						"warcry:cd"	
+	"DOTA_Tooltip_Ability_item_remake_sven_warcry_cooldown_Description"	  "<h1>Common Scepter Fragment</h1>- %value%cd"	
+
+	"DOTA_Tooltip_Ability_item_remake_sven_gods_strength_talent"						"god's strength:attack bonus"	        
+	"DOTA_Tooltip_Ability_item_remake_sven_gods_strength_talent_Description"	  "<h1>Common Scepter Fragment</h1>+ %value%god's strength attack bonus"	
+
+	"DOTA_Tooltip_Ability_item_remake_sven_gods_strength_cd_talent"						"god's strength:cd"	
+	"DOTA_Tooltip_Ability_item_remake_sven_gods_strength_cd_talent_Description"	"<h1>Common Scepter Fragment</h1>- %value%%god's strength cd"
+
+
+
+	//gyrocopter
+	"DOTA_Tooltip_ability_gyrocopter_rocket_barrage_attack"		"Rocket Attack"
+	"DOTA_Tooltip_ability_gyrocopter_rocket_barrage_attack_Description"		"Autoattacks have a 20%% chance to create a Rocket Barrage turret at the enemy location that lasts for 3 secconds."
+	"DOTA_Tooltip_ability_gyrocopter_rocket_barrage_turret"		"Barrage Turret"
+	"DOTA_Tooltip_ability_gyrocopter_rocket_barrage_turret_Description"		"Rocket Barrage summons Turrents on all allies in radius of 600, and summons a Turrent under the foot at the same time."
+	"DOTA_Tooltip_ability_gyrocopter_rocket_barrage_shard"		"Missle Barrage"
+	"DOTA_Tooltip_ability_gyrocopter_rocket_barrage_shard_Description"		"Rocket Barrage is attached to the Homing Missile for the full duration of its flight."
+	"DOTA_Tooltip_ability_gyrocopter_homing_missile_minimissiles"	"MiniMissiles"
+	"DOTA_Tooltip_ability_gyrocopter_homing_missile_minimissiles_Description"	"The Homing Missile splinters into up to 4 extra missiles."
+	"DOTA_Tooltip_ability_gyrocopter_homing_missile_calldown"		"Missile Strike"
+	"DOTA_Tooltip_ability_gyrocopter_homing_missile_calldown_Description"		"On hitting it's target, the Homing Missile creates Call Down at it's location."
+	"DOTA_Tooltip_ability_gyrocopter_flak_cannon_scepter"		"Flak Cannon"
+	"DOTA_Tooltip_ability_gyrocopter_flak_cannon_scepter_Description"		"Adds a Side Gunner that at random attacks enemy units near Gyrocopter. When Flak Cannon is active, side gunner attacks 2 units instead. Prioritizes furthest unit away within its range."
+	"DOTA_Tooltip_ability_gyrocopter_homing_missile_sledmissiles"			"Missiles Ride"
+	"DOTA_Tooltip_ability_gyrocopter_homing_missile_sledmissiles_Description"			"Create a riding missile when cast homing missile. Any ally can saddle up and ride the missile. Enemies hit as the missile passes through them take the Missile's damage. Can not go over impassable terrain."
+	"DOTA_Tooltip_ability_gyrocopter_flak_cannon_missile"		"Cannon Missile"
+	"DOTA_Tooltip_ability_gyrocopter_flak_cannon_missile_Description"		"Every attack during Flak Cannon launches Homing Missiles at main target."
+	"DOTA_Tooltip_ability_gyrocopter_call_down_strafe"	"Strafe"
+	"DOTA_Tooltip_ability_gyrocopter_call_down_strafe_Description"	"Call down summons 3 wingmen that fly over the battle field, hitting all units in range with Rocket Barrage."
+	"aghsfort_gyrocopter_flak_cannon_sidegunner_fire_rate"	"{s:value} {s:ability_name} SIDE GUNNER FIRE RATE"
 
 
 

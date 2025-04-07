@@ -4,7 +4,6 @@ LinkLuaModifier( "modifier_aghsfort_lion_finger_of_death_debuff", "abilities/her
 function IsValid(cobject)
     return cobject ~= nil and not cobject:IsNull()
 end
-
 if aghsfort_lion_finger_of_death == nil then
 	aghsfort_lion_finger_of_death = class({})
 end

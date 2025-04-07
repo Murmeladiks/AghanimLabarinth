@@ -1,9 +1,5 @@
 LinkLuaModifier( "modifier_aghsfort_lion_impale_air", "abilities/heroes/lion/impale", LUA_MODIFIER_MOTION_BOTH )
 --Abilities
-function IsValid(cobject)
-    return cobject ~= nil and not cobject:IsNull()
-end
-
 aghsfort_lion_impale = {}
 
 function aghsfort_lion_impale:Spawn()

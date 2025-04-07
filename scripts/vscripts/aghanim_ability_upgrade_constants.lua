@@ -24,12 +24,23 @@ _G.MINOR_ABILITY_UPGRADES =
    npc_dota_hero_phoenix = require( "minor_ability_upgrades/minor_ability_upgrades_phoenix" ),
    npc_dota_hero_lion = require( "minor_ability_upgrades/minor_ability_upgrades_lion" ),
    npc_dota_hero_drow_ranger = require( "minor_ability_upgrades/minor_ability_upgrades_drow_ranger" ),
+   npc_dota_hero_sven = require( "minor_ability_upgrades/minor_ability_upgrades_sven" ),
+   npc_dota_hero_gyrocopter = require( "minor_ability_upgrades/minor_ability_upgrades_gyrocopter" ),
    --non hero specific upgrades (bonus HP/mana/damage/etc.)
    base_stats_upgrades = require( "minor_ability_upgrades/base_minor_stats_upgrades" ),
 }
 
 _G.STAT_UPGRADE_EXCLUDES =
 {
+   npc_dota_hero_sven = 
+   {
+
+   },
+
+   npc_dota_hero_gyrocopter = 
+   {
+   }, 
+
    npc_dota_hero_omniknight =
    {
       "aghsfort_minor_stat_upgrade_bonus_attack_speed",
@@ -95,6 +106,7 @@ _G.STAT_UPGRADE_EXCLUDES =
 -- NOTE: These are substrings to search for in SPECIAL_ABILITY_UPGRADES
 _G.ULTIMATE_ABILITY_NAMES =
 {
+   npc_dota_hero_sven = "remake_sven_gods_strength",
    npc_dota_hero_omniknight = "omniknight_guardian_angel",
    npc_dota_hero_disruptor = "disruptor_static_storm",
    npc_dota_hero_snapfire = "snapfire_mortimer_kisses", 
@@ -108,10 +120,27 @@ _G.ULTIMATE_ABILITY_NAMES =
    npc_dota_hero_phoenix = "phoenix_supernova",
    npc_dota_hero_lion = "lion_finger_of_death",
    npc_dota_hero_drow_ranger = "drow_ranger_marksmanship",
+   npc_dota_hero_gyrocopter = "gyrocopter_call_down",
 }
 
 -- Lists for ability upgrades go here
 _G.SPECIAL_ABILITY_UPGRADES = {}
+
+SPECIAL_ABILITY_UPGRADES["npc_dota_hero_sven"] = 
+{
+   "remake_storm_bolt_storm",
+   "remake_storm_bolt_rush", 
+   "remake_storm_bolt_crit",
+   "remake_great_cleave_focus",
+   "remake_great_cleave_great",
+   "remake_great_cleave_lifesteal",   
+   "remake_sven_warcry_protect",      
+   "remake_sven_warcry_destruction",
+   "remake_sven_warcry_magic",
+   "remake_sven_gods_strength_berserker",
+   "remake_sven_gods_strength_anger", 
+   "remake_sven_gods_strength_focus",   
+}
 
 SPECIAL_ABILITY_UPGRADES["npc_dota_hero_phoenix"] =
 {         
@@ -397,6 +426,19 @@ SPECIAL_ABILITY_UPGRADES["npc_dota_hero_lion"] =
    "aghsfort_lion_legend_finger_doom",
 }
 
+SPECIAL_ABILITY_UPGRADES[ "npc_dota_hero_gyrocopter" ] =
+{
+   "gyrocopter_rocket_barrage_attack",
+   "gyrocopter_rocket_barrage_turret",
+   "gyrocopter_rocket_barrage_shard",
+   "gyrocopter_flak_cannon_scepter",
+   "gyrocopter_homing_missile_calldown",
+   "gyrocopter_homing_missile_minimissiles",
+   "gyrocopter_flak_cannon_missile", 
+   "gyrocopter_homing_missile_sledmissiles",
+   "gyrocopter_call_down_strafe",
+}
+
 require( "items/item_small_scepter_fragment" )
 
 _G.PURCHASABLE_SHARDS = {}
@@ -447,6 +489,28 @@ PURCHASABLE_SHARDS[ "npc_dota_hero_phoenix" ] =
    "item_phoenix_supernova_pf_max_health_for_egg",
    "item_phoenix_supernova_pf_stun_duration",
    
+}
+
+--Sven
+item_remake_storm_bolt_cooldown = item_small_scepter_fragment
+item_remake_sven_gods_strength_cooldown = item_small_scepter_fragment
+item_remake_storm_bolt_damage_talent = item_small_scepter_fragment
+item_remake_great_cleave_damage_talent = item_small_scepter_fragment
+item_remake_great_cleave_radius_talent = item_small_scepter_fragment
+item_remake_sven_warcry_talent = item_small_scepter_fragment
+item_remake_sven_warcry_duration_talent = item_small_scepter_fragment
+item_remake_sven_gods_strength_talent = item_small_scepter_fragment
+
+PURCHASABLE_SHARDS[ "npc_dota_hero_sven" ] =
+{
+   "item_remake_storm_bolt_cooldown",
+   "item_remake_sven_gods_strength_cooldown",
+   "item_remake_storm_bolt_damage_talent",
+   -- "item_remake_great_cleave_damage_talent",
+   "item_remake_great_cleave_radius_talent",
+   "item_remake_sven_warcry_talent",
+   "item_remake_sven_warcry_duration_talent",
+   "item_remake_sven_gods_strength_talent",
 }
 
 --Venomancer

@@ -32,7 +32,8 @@
 	"npc_dota_hero_lich"					"1"
 	"npc_dota_hero_luna"					"1"
 	"npc_dota_hero_void_spirit"				"1"
-
+	"npc_dota_hero_gyrocopter"				"1"
+	
 	// Pathfinders Original
 	"npc_dota_hero_dawnbreaker"				"1"
 	"npc_dota_hero_venomancer"				"1"

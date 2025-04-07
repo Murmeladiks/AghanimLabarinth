@@ -8,7 +8,7 @@ end
 -- Required .lua files, which help organize functions contained in our addon.
 -- Make sure to call these beneath the mode's class creation.
 ------------------------------------------------------------------------------------------------------------------------------------------------------
-
+require("libraries/utils/common")
 require("extensions/init")
 require("libraries/timers")
 require("libraries/utils")

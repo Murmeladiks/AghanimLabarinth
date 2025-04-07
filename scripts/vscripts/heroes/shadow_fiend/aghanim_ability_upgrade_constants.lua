@@ -142,7 +142,7 @@ SPECIAL_ABILITY_UPGRADES["npc_dota_hero_nevermore"] =
 	"pathfinder_nevermore_special_requiem_soul_projectile",
 	"pathfinder_nevermore_special_requiem_sleep",
 	
-	"pathfinder_nevermore_special_necromastery_revenant",   
+	--"pathfinder_nevermore_special_necromastery_revenant",   
 	"pathfinder_nevermore_special_necromastery_attack_soul",   
 	"pathfinder_nevermore_special_necromastery_lifesteal",
 	
